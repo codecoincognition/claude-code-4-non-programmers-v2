@@ -1,0 +1,118 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(rm * ~/work/**)",
+      "Bash(sudo *)",
+      "mcp__gmail__send_*",
+      "mcp__notion__create_page(database_id=db_crm_8f3a)",
+      "mcp__notion__update_page(database_id=db_crm_8f3a)",
+      "mcp__notion__delete_page(database_id=db_crm_8f3a)",
+      "Bash(curl * | sh)",
+      "Bash(curl * | bash)",
+      "Write(~/.ssh/**)",
+      "Write(~/Library/**)"
+    ],
+    "ask": [
+      "Bash(git push --force *)",
+      "Bash(git reset --hard *)",
+      "Write(~/work/.claude/settings.local.json)",
+      "Write(~/.claude/settings.json)"
+    ],
+    "allow": [
+      "Read(~/work/**)",
+      "Edit(~/work/**)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(grep *)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(npm test*)"
+    ]
+  },
+
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/work/scripts/morning-brief.sh --read-only",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"[$(date -Iseconds)] $CLAUDE_TOOL_INPUT\" >> ~/.claude/logs/audit/bash.log"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/work/scripts/long-task-ping.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/work/scripts/end-of-day.sh"
+          }
+        ]
+      }
+    ]
+  },
+
+  "env": {
+    "ANTHROPIC_API_KEY_REF": "keychain:claude-code",
+    "CLAUDE_DEFAULT_MODEL": "sonnet",
+    "CLAUDE_MAX_TOKENS_PER_REQUEST": "8000",
+    "CLAUDE_LOG_DIR": "~/.claude/logs"
+  },
+
+  "mcpServers": {
+    "gmail":    { "command": "npx", "args": ["-y", "@anthropic-ai/mcp-gmail@pinned"] },
+    "calendar": { "command": "npx", "args": ["-y", "@anthropic-ai/mcp-calendar@pinned"] },
+    "notion":   { "command": "npx", "args": ["-y", "@notion/mcp-notion@pinned"] },
+    "slack":    { "command": "npx", "args": ["-y", "@anthropic-ai/mcp-slack@pinned"] },
+    "buffer":   { "command": "npx", "args": ["-y", "@buffer/mcp-buffer@pinned"] },
+    "personal-data": {
+      "command": "node",
+      "args": ["~/work/mcp-servers/personal-data/server.js"]
+    }
+  },
+
+  "agents": {
+    "searchPaths": [
+      "~/work/.claude/agents",
+      "~/work/private-agents"
+    ]
+  },
+  "skills": {
+    "searchPaths": [
+      "~/work/.claude/skills"
+    ]
+  },
+
+  "outputStyle": "concise",
+  "statusLine": "{model} | {agent} | {tokens-this-session}",
+  "theme": "dark"
+}

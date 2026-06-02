@@ -1,0 +1,13 @@
+competitor,tier_name,monthly_usd,annual_usd,features
+Acme,Free,0,0,basic
+Acme,Pro,29,290,full + SSO
+Acme,Enterprise,null,null,contact us
+Beacon,Starter,15,150,basic + 1 seat
+Beacon,Team,49,490,full + 10 seats
+Beacon,Enterprise,null,null,contact us
+Cobalt,Free,0,0,basic
+Cobalt,Growth,39,390,full + analytics
+Drift,Solo,19,190,basic
+Drift,Business,79,790,full + SSO + audit log
+Ember,Free,0,0,basic
+Ember,Pro,25,250,full

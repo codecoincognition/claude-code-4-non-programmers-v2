@@ -1,0 +1,18 @@
+date,description,category,amount
+2026-07-03,Customer revenue — invoices,revenue,412800.00
+2026-07-31,Customer revenue — invoices,revenue,438100.00
+2026-08-29,Customer revenue — invoices,revenue,451300.00
+2026-09-30,Customer revenue — invoices,revenue,449700.00
+2026-07-15,Hosting & infrastructure,cogs,-58200.00
+2026-08-15,Hosting & infrastructure,cogs,-61400.00
+2026-09-15,Hosting & infrastructure,cogs,-63100.00
+2026-07-20,Payment processing fees,cogs,-12100.00
+2026-08-20,Payment processing fees,cogs,-12800.00
+2026-09-20,Payment processing fees,cogs,-13050.00
+2026-09-28,Refund cluster — billing incident,cogs,-21400.00
+2026-07-05,Payroll,opex,-188000.00
+2026-08-05,Payroll,opex,-191500.00
+2026-09-05,Payroll,opex,-194200.00
+2026-07-10,SaaS tooling,opex,-9400.00
+2026-08-10,SaaS tooling,opex,-9600.00
+2026-09-10,SaaS tooling,opex,-9750.00

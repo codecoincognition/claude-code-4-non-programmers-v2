@@ -1,0 +1,59 @@
+date,amount,description,bank_category
+2026-01-05,5809.52,Client invoice payment,Income
+2026-01-14,6507.84,Client invoice payment,Income
+2026-01-27,6102.64,Client invoice payment,Income
+2026-01-03,-1450.00,Acme Cloud annual seat,Software
+2026-01-06,-89.99,Notion subscription,Software
+2026-01-09,-2600.00,Contractor — design,Services
+2026-01-11,-312.40,Office Depot supplies,Supplies
+2026-01-15,-24.00,Bank monthly fee,Bank
+2026-01-18,-742.18,Flight — client visit,Travel
+2026-01-21,-188.55,Team lunch,Meals
+2026-01-24,-1250.00,Accountant retainer,Professional
+2026-01-29,-2557.71,AWS hosting,Software
+2026-02-04,8033.26,Client invoice payment,Income
+2026-02-19,6166.74,Client invoice payment,Income
+2026-02-02,-1450.00,Acme Cloud annual seat,Software
+2026-02-05,-89.99,Notion subscription,Software
+2026-02-08,-3100.00,Contractor — development,Services
+2026-02-12,-455.20,Office supplies restock,Supplies
+2026-02-14,-24.00,Bank monthly fee,Bank
+2026-02-17,-980.44,Hotel — conference,Travel
+2026-02-20,-410.33,Conference meals,Meals
+2026-02-23,-1250.00,Accountant retainer,Professional
+2026-02-26,-512.10,SaaS analytics tool,Software
+2026-02-27,-3570.00,Quarterly insurance premium,Professional
+2026-03-03,5396.95,Client invoice payment,Income
+2026-03-11,5523.52,Client invoice payment,Income
+2026-03-20,5515.18,Client invoice payment,Income
+2026-03-28,5064.35,Client invoice payment,Income
+2026-03-01,-1450.00,Acme Cloud annual seat,Software
+2026-03-04,-89.99,Notion subscription,Software
+2026-03-07,-2800.00,Contractor — design,Services
+2026-03-10,-301.77,Office supplies,Supplies
+2026-03-13,-24.00,Bank monthly fee,Bank
+2026-03-16,-1102.65,Flights — client trip,Travel
+2026-03-19,-266.41,Client dinner,Meals
+2026-03-22,-1250.00,Accountant retainer,Professional
+2026-03-25,-3626.91,Equipment — laptop refresh,Supplies
+2026-03-30,-2184.68,Software license bundle,Software
+2026-04-03,5369.32,Client invoice payment,Income
+2026-04-17,6234.03,Client invoice payment,Income
+2026-04-28,6196.65,Client invoice payment,Income
+2026-04-02,-1418.68,Acme Cloud annual seat,Software
+2026-04-04,-24.00,Bank monthly fee,Bank
+2026-04-06,-2000.00,Contractor — development,Services
+2026-04-08,-1847.22,Flights + hotel — SF client trip,Travel
+2026-04-10,-1872.95,SaaS platform annual renewal,Software
+2026-04-12,-146.75,Office supplies,Supplies
+2026-04-14,-302.41,Team lunch,Meals
+2026-04-16,-112.89,Rideshare — client meetings,Travel
+2026-04-18,-178.14,Printer toner,Supplies
+2026-04-20,-273.73,Client dinner,Meals
+2026-04-22,-3200.00,Contractor — designer onboarding,Services
+2026-04-24,-1250.00,New vendor — legal review,Uncategorized
+2026-04-26,-947.28,SaaS subscription renewal,Software
+2026-04-27,-224.05,Parking — client site,Travel
+2026-04-29,-287.85,Stationery,Supplies
+2026-04-30,-24.00,Bank wire fee,Bank
+2026-04-30,-177.48,Coffee meetings,Meals

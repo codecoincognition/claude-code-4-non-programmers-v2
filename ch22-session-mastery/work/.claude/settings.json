@@ -1,0 +1,5 @@
+{
+  "_comment": "From Make-it-yours prompt 2: set default effort and model so you don't set them at the start of every session. The chapter places this at ~/.claude/settings.json (your real home config); it ships here under work/.claude/ so the companion folder stays self-contained. Model name is illustrative — that surface evolves quarterly; use the latest Sonnet alias your install reports.",
+  "effort": "high",
+  "model": "claude-sonnet-4-7"
+}

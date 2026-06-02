@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": { "paths_changed": "site/launch/**" },
+        "command": "cd ~/work/site/launch && ./pre-deploy.sh && vercel deploy --prod --yes >> .last-deploy.log 2>&1"
+      }
+    ]
+  }
+}

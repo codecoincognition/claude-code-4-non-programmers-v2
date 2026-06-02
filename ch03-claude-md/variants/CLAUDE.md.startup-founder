@@ -1,0 +1,7 @@
+# CLAUDE.md
+1. Don't assume. Don't hide confusion. Surface tradeoffs.
+2. Minimum code that solves the problem. Nothing speculative.
+3. Touch only what you must. Clean up only your own mess.
+4. Define success criteria. Loop until verified.
+5. I run a 4-person startup. ~/work/private/ has financials and investor docs (read-only). ~/work/public/ is everything else.
+6. Never edit anything in ~/work/private/. Drafts in ~/work/public/ are fine. If you're about to email an investor, stop and ask.

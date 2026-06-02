@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ \"$(date +%u)\" = \"7\" ]; then echo '{\"systemMessage\":\"Sunday brain review: list the three brain entries from this week that gained the most new [[wikilinks]], and one entry that has not been linked to anything yet (so I can link it or delete it). Scan ~/work/brain/.\"}'; fi"
+          }
+        ]
+      }
+    ]
+  }
+}

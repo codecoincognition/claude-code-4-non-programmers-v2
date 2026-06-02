@@ -1,0 +1,9 @@
+# Placeholder — this folder is intentionally empty in Chapter 3.
+#
+# Chapter 4 fills it with your first slash command (/reconcile).
+# A slash command is a named recurring prompt that lives as a single
+# Markdown file here: ~/work/.claude/commands/<name>.md
+#
+# Created in Chapter 3 Step 2 so the .claude/ anatomy map has real
+# folders to point at. Delete this .gitkeep file once you add a real
+# command — it only exists so the empty directory survives in git.

@@ -1,0 +1,9 @@
+# Placeholder — this folder is intentionally empty in Chapter 3.
+#
+# Chapter 6 introduces skills; Chapter 14 authors one from scratch.
+# Each skill is a folder with a SKILL.md inside:
+# ~/work/.claude/skills/<skill-name>/SKILL.md
+#
+# Created in Chapter 3 Step 2 so the .claude/ anatomy map has real
+# folders to point at. Delete this .gitkeep file once you add a real
+# skill — it only exists so the empty directory survives in git.

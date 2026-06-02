@@ -1,0 +1,72 @@
+[
+  {
+    "counterparty": "aria@beaconhealth.example",
+    "company": "Beacon Health",
+    "subject": "Re: pricing for the 50-seat plan",
+    "timestamp": "2026-05-02T14:12:00",
+    "body_excerpt": "Happy to confirm — the 50-seat plan runs $7,200/yr. Let me know if you'd like the annual discount."
+  },
+  {
+    "counterparty": "aria@beaconhealth.example",
+    "company": "Beacon Health",
+    "subject": "Re: SOC2 questionnaire",
+    "timestamp": "2026-05-04T09:33:00",
+    "body_excerpt": "Attached is our completed SOC2 questionnaire and the latest report summary."
+  },
+  {
+    "counterparty": "aria@beaconhealth.example",
+    "company": "Beacon Health",
+    "subject": "Demo follow-up — calendar?",
+    "timestamp": "2026-05-06T16:01:00",
+    "body_excerpt": "Great talking through the demo today. Want me to send over a calendar invite for the deeper dive?"
+  },
+  {
+    "counterparty": "dkim@northpoint.example",
+    "company": "Northpoint",
+    "subject": "Re: contract terms",
+    "timestamp": "2026-05-06T10:20:00",
+    "body_excerpt": "On pricing — it's $4,800/yr for 25 seats. We can lock that for two years."
+  },
+  {
+    "counterparty": "acme-procurement@acmerobotics.example",
+    "company": "Acme Robotics",
+    "subject": "Re: comparing the Pro and Team tiers",
+    "timestamp": "2026-05-03T10:14:00",
+    "body_excerpt": "Pro adds SSO and the audit log; Team is per-seat. Here's the comparison."
+  },
+  {
+    "counterparty": "acme-procurement@acmerobotics.example",
+    "company": "Acme Robotics",
+    "subject": "Re: terms — section 4.2",
+    "timestamp": "2026-05-05T11:02:00",
+    "body_excerpt": "Accepting your redline on 4.2. The liability cap is fine as edited. Sending the updated contract."
+  },
+  {
+    "counterparty": "sarah@chen-consulting.example",
+    "company": "Chen Consulting",
+    "subject": "Re: W9 for the engagement",
+    "timestamp": "2026-05-02T08:00:00",
+    "body_excerpt": "Attached is the signed W9. Let me know if you need anything else for the books."
+  },
+  {
+    "counterparty": "sarah@chen-consulting.example",
+    "company": "Chen Consulting",
+    "subject": "Re: Q3 estimated tax payment",
+    "timestamp": "2026-05-04T13:45:00",
+    "body_excerpt": "The Q3 estimate looks right. I'll schedule the payment before the deadline."
+  },
+  {
+    "counterparty": "sarah@chen-consulting.example",
+    "company": "Chen Consulting",
+    "subject": "Re: books review meeting",
+    "timestamp": "2026-05-05T09:10:00",
+    "body_excerpt": "Next month works for the books review. How's the second Tuesday?"
+  },
+  {
+    "counterparty": "sarah@chen-consulting.example",
+    "company": "Chen Consulting",
+    "subject": "Re: receipts folder",
+    "timestamp": "2026-05-06T17:30:00",
+    "body_excerpt": "Uploaded April receipts to the shared folder. Thanks for the reminder."
+  }
+]

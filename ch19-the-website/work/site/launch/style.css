@@ -1,0 +1,46 @@
+:root {
+  --ink: #111; --paper: #fff; --accent: #2c5cdb;
+  --muted: #666; --rule: #eee; --max: 64ch;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  color: var(--ink); background: var(--paper); line-height: 1.5;
+}
+.hero, .value, .proof, .faq, .register, footer {
+  padding: 2rem 1.25rem; max-width: 64rem; margin: 0 auto;
+}
+.hero { display: grid; gap: 2rem; }
+@media (min-width: 720px) {
+  .hero { grid-template-columns: 1fr 1fr; align-items: center; }
+}
+h1 { font-size: clamp(2rem, 5vw, 3.25rem); margin: 0 0 1rem; }
+.lede { font-size: 1.125rem; color: var(--muted); }
+.stat strong { font-size: 1.5rem; color: var(--accent); }
+.cta {
+  display: inline-block; padding: 0.85rem 1.4rem;
+  background: var(--accent); color: #fff;
+  text-decoration: none; border-radius: 6px; font-weight: 600;
+}
+.cta-secondary { background: var(--ink); }
+.value ul { padding-left: 1.25rem; }
+.proof .logos { display: flex; gap: 2rem; color: var(--muted); }
+.faq details { padding: 0.75rem 0; border-top: 1px solid var(--rule); }
+.faq summary { cursor: pointer; font-weight: 600; }
+form { display: grid; gap: 0.75rem; max-width: var(--max); }
+form label { display: grid; gap: 0.25rem; font-size: 0.95rem; }
+form input {
+  padding: 0.65rem 0.75rem; font-size: 1rem;
+  border: 1px solid var(--rule); border-radius: 4px;
+}
+form button {
+  padding: 0.85rem; background: var(--accent); color: #fff;
+  font-weight: 600; border: 0; border-radius: 6px; cursor: pointer;
+}
+.honey { position: absolute; left: -9999px; }
+.status { font-size: 0.95rem; min-height: 1.5em; }
+.status.ok { color: #167c34; }
+.status.err { color: #b00020; }
+footer { text-align: center; color: var(--muted); }
+.fine { font-size: 0.85rem; }

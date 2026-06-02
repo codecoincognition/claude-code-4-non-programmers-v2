@@ -1,0 +1,31 @@
+{
+  "_comment": "The settings.json exactly as Claude first writes it in Step 3 — BEFORE the 'When the leash chafes' tightening. Note the allow list has no Edit/Write entries yet, so every CLAUDE.md edit prompts for approval. The main work/.claude/settings.json in this repo is the AFTER state (Edit/Write inside ~/work/ auto-approve). Shown here so you can see what changed and why.",
+  "permissions": {
+    "defaultMode": "plan",
+    "allow": [
+      "Read(*)",
+      "Grep(*)",
+      "Bash(git status)",
+      "Bash(git diff)",
+      "Bash(ls *)"
+    ],
+    "ask": [
+      "Bash(rm *)",
+      "Bash(*)"
+    ],
+    "deny": [
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(**/.env)",
+      "Bash(env | grep SECRET_*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "~/work/scripts/show-brief.sh" }]
+      }
+    ]
+  }
+}

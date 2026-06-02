@@ -1,0 +1,7 @@
+# CLAUDE.md
+1. Don't assume. Don't hide confusion. Surface tradeoffs.
+2. Minimum code that solves the problem. Nothing speculative.
+3. Touch only what you must. Clean up only your own mess.
+4. Define success criteria. Loop until verified.
+5. I run a small marketing consulting firm. My work folder is ~/work/. My finance data is in ~/work/finance/.
+6. Never edit anything outside ~/work/. Never send a client email — only draft. If you're about to do something irreversible, ask first.

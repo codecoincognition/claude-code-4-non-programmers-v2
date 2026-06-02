@@ -1,0 +1,11 @@
+INVOICE
+
+Invoice #: 2025-Q3-INV-0042
+Date: 2025-07-15
+Bill to: Acme Corp
+From: Maya's Marketing Consulting
+
+Description: Q3 retainer — content + paid social management
+Amount due: $4,500.00
+Due date: 2025-07-30
+Status: PAID

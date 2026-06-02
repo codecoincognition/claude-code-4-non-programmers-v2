@@ -1,0 +1,19 @@
+{
+  "name": "maya-launch",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Webinar registration landing page — visible page + serverless lead-capture into Notion.",
+  "type": "module",
+  "scripts": {
+    "build": "node --loader ts-node/esm og-image-generator.ts",
+    "og": "node --loader ts-node/esm og-image-generator.ts"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.15",
+    "@vercel/og": "^0.6.2"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.0"
+  }
+}

@@ -1,0 +1,9 @@
+# Secrets — env vars live in the Vercel dashboard, not in the repo
+.env.local
+.env
+
+# Build / deploy artifacts
+node_modules/
+.vercel/
+public/og.png
+.last-deploy.log

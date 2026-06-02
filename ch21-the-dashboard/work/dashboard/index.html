@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+  Reference render of the dashboard. In the live system this file is
+  regenerated every build by `claude --print < templates/build-prompt.md`,
+  with the six JSON snapshots inlined. This checked-in copy is a frozen
+  example so you can open it directly in a browser and see the shape.
+  No fetch calls — the snapshot data is inlined below.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maya Consulting — Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root { --navy: #1a2238; --cream: #f5f0e6; --stale: #e0a800; --dead: #c0392b; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: -apple-system, system-ui, sans-serif;
+           background: var(--cream); color: var(--navy); padding: 24px; }
+    h1 { font-size: 20px; margin: 0 0 16px; }
+    .row { display: grid; gap: 16px; margin-bottom: 16px; }
+    .row-kpi { grid-template-columns: repeat(4, 1fr); }
+    .row-charts { grid-template-columns: repeat(2, 1fr); }
+    .row-mixed { grid-template-columns: repeat(3, 1fr); }
+    .card { background: #fff; border-radius: 12px; padding: 16px;
+            box-shadow: 0 2px 8px rgba(26,34,56,.08); }
+    .kpi-label { font-size: 12px; text-transform: uppercase; letter-spacing: .04em;
+                 color: #6b7280; }
+    .kpi-value { font-size: 30px; font-weight: 700; margin-top: 4px; }
+    .freshness { font-size: 11px; color: #6b7280; margin-top: 8px; }
+    .stale-bar { font-size: 11px; font-weight: 600; padding: 4px 8px; border-radius: 6px;
+                 margin-bottom: 8px; background: var(--stale); color: #1a2238; }
+    .stale-bar.red { background: var(--dead); color: #fff; }
+    ul.pages { list-style: none; margin: 0; padding: 0; font-size: 14px; }
+    ul.pages li { display: flex; justify-content: space-between; padding: 4px 0;
+                  border-bottom: 1px solid #eee; }
+    @media (max-width: 720px) {
+      .row-kpi, .row-charts, .row-mixed { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Maya Consulting — Dashboard</h1>
+
+  <!-- ROW 1 — KPI cards -->
+  <div class="row row-kpi">
+    <div class="card"><div class="kpi-label">MRR</div>
+      <div class="kpi-value">$87,400</div>
+      <div class="freshness">data from 2026-05-08 03:14 UTC</div></div>
+    <div class="card"><div class="kpi-label">New customers</div>
+      <div class="kpi-value">14</div>
+      <div class="freshness">data from 2026-05-08 03:14 UTC</div></div>
+    <div class="card"><div class="kpi-label">Churn</div>
+      <div class="kpi-value">2</div>
+      <div class="freshness">data from 2026-05-08 03:14 UTC</div></div>
+    <div class="card"><div class="kpi-label">Runway</div>
+      <div class="kpi-value">11 mo</div>
+      <div class="freshness">data from 2026-05-08 03:14 UTC</div></div>
+  </div>
+
+  <!-- ROW 2 — charts -->
+  <div class="row row-charts">
+    <div class="card"><canvas id="traffic"></canvas>
+      <div class="freshness">data from 2026-05-08 03:14 UTC</div></div>
+    <div class="card">
+      <div class="stale-bar" id="li-stale" style="display:none"></div>
+      <canvas id="linkedin"></canvas>
+      <div class="freshness" id="li-fresh">data from 2026-05-07 18:14 UTC</div></div>
+  </div>
+
+  <!-- ROW 3 — mixed -->
+  <div class="row row-mixed">
+    <div class="card"><canvas id="nps"></canvas>
+      <div class="freshness">NPS 58 · 47 respondents · data from 2026-05-08 03:14 UTC</div></div>
+    <div class="card"><canvas id="okr"></canvas>
+      <div class="freshness">data from 2026-05-08 03:14 UTC</div></div>
+    <div class="card"><strong>Top pages</strong>
+      <ul class="pages">
+        <li><span>/</span><span>2,104</span></li>
+        <li><span>/services</span><span>1,387</span></li>
+        <li><span>/case-studies</span><span>912</span></li>
+      </ul>
+      <div class="freshness">data from 2026-05-08 03:14 UTC</div></div>
+  </div>
+
+  <script>
+    // Snapshot data is inlined at build time — no fetch on load.
+    const ga = {"sessions_daily":[512,488,603,577,641,590,538,612,559,627,601,588,574,633]};
+    const li = {"engagement":[342,218,510],"snapshot_ts":"2026-05-07T18:14:11Z","fallback_used":false};
+    const nps = {"score":58};
+    const okrs = [{"name":"MRR","percent_complete":67},{"name":"Funnel","percent_complete":82},{"name":"NPS","percent_complete":45}];
+
+    new Chart(document.getElementById('traffic'), {
+      type: 'line',
+      data: { labels: ga.sessions_daily.map((_, i) => `d${i + 1}`),
+              datasets: [{ label: 'Sessions/day', data: ga.sessions_daily,
+                           borderColor: '#1a2238', tension: .3 }] },
+      options: { plugins: { legend: { display: false } } }
+    });
+
+    new Chart(document.getElementById('linkedin'), {
+      type: 'bar',
+      data: { labels: ['Post 1', 'Post 2', 'Post 3'],
+              datasets: [{ label: 'Engagement', data: li.engagement, backgroundColor: '#1a2238' }] },
+      options: { plugins: { legend: { display: false } } }
+    });
+
+    new Chart(document.getElementById('nps'), {
+      type: 'doughnut',
+      data: { labels: ['NPS', 'Remaining'],
+              datasets: [{ data: [nps.score, 100 - nps.score],
+                           backgroundColor: ['#1a2238', '#e5e1d6'] }] },
+      options: { circumference: 180, rotation: 270, cutout: '70%',
+                 plugins: { legend: { display: false } } }
+    });
+
+    new Chart(document.getElementById('okr'), {
+      type: 'bar',
+      data: { labels: okrs.map(o => o.name),
+              datasets: [{ data: okrs.map(o => o.percent_complete), backgroundColor: '#1a2238' }] },
+      options: { indexAxis: 'y', scales: { x: { max: 100 } },
+                 plugins: { legend: { display: false } } }
+    });
+
+    // Freshness indicator for LinkedIn (stale-data demo from the chapter).
+    const ageHrs = (Date.now() - new Date(li.snapshot_ts)) / 3.6e6;
+    const bar = document.getElementById('li-stale');
+    if (ageHrs > 24) {
+      const days = Math.floor(ageHrs / 24);
+      bar.style.display = 'block';
+      bar.textContent = `LinkedIn: data from ${li.snapshot_ts.slice(0,10)} — ${days} days old`
+        + (li.fallback_used ? ' (scrape did not run yesterday — fallback to most recent)' : '');
+      if (ageHrs > 72) bar.classList.add('red');
+    }
+  </script>
+</body>
+</html>

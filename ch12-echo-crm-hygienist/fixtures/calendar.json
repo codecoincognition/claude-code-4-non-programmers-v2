@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Northpoint security review",
+    "date": "2026-05-09",
+    "organizer": "maya@example.com",
+    "counterparty": "dkim@northpoint.example",
+    "company": "Northpoint"
+  },
+  {
+    "title": "Becker & Co product demo",
+    "date": "2026-05-08",
+    "organizer": "maya@example.com",
+    "counterparty": "tom@beckerco.example",
+    "company": "Becker & Co"
+  },
+  {
+    "title": "Team standup",
+    "date": "2026-05-05",
+    "organizer": "lead@example.com",
+    "counterparty": "internal",
+    "company": "internal"
+  }
+]

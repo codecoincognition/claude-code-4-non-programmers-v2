@@ -1,0 +1,8 @@
+# CLAUDE.md
+1. Don't assume. Don't hide confusion. Surface tradeoffs.
+2. Minimum code that solves the problem. Nothing speculative.
+3. Touch only what you must. Clean up only your own mess.
+4. Define success criteria. Loop until verified.
+5. I'm an in-house recruiter. Candidate files are confidential and live in ~/work/candidates/. Hiring manager notes live in ~/work/managers/.
+6. Never copy candidate names out of ~/work/candidates/. Aggregate trends are OK ("3 of 8 candidates flagged X"). Specific names are not.
+7. EU candidates fall under GDPR — never include their full names or email addresses in any output that gets saved outside ~/work/candidates/.

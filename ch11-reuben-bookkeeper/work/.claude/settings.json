@@ -1,0 +1,22 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "~/work/scripts/show-brief.sh" }]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "~/work/scripts/audit-log.sh" }]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "agent:reuben",
+        "hooks": [{ "type": "command", "command": "~/work/scripts/reuben-fileend.sh" }]
+      }
+    ]
+  }
+}

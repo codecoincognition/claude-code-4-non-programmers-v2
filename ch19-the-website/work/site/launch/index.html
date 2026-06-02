@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing for SaaS founders &mdash; free 60-min workshop</title>
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- ===== Invisible layer: meta tags + Open Graph + Twitter card (Step 6) ===== -->
+  <meta name="description" content="A 60-min workshop on the pricing decision that quietly costs SaaS founders 30% of revenue.">
+
+  <meta property="og:title" content="Pricing for SaaS founders">
+  <meta property="og:description" content="A 60-min workshop. Free, live, with Q&amp;A.">
+  <meta property="og:image" content="/og.png">
+  <meta property="og:url" content="https://maya-launch.vercel.app/">
+  <meta property="og:type" content="website">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pricing for SaaS founders">
+  <meta name="twitter:description" content="A 60-min workshop. Free, live, with Q&amp;A.">
+  <meta name="twitter:image" content="/og.png">
+
+  <!-- ===== Invisible layer: schema.org Event + Offer (Step 6) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Pricing for SaaS founders",
+    "description": "A 60-minute workshop on SaaS tier-2 pricing.",
+    "startDate": "2026-05-13T18:00:00-04:00",
+    "endDate":   "2026-05-13T19:00:00-04:00",
+    "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://maya-launch.vercel.app/"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "url": "https://maya-launch.vercel.app/#register",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-copy">
+      <h1>Pricing for SaaS founders</h1>
+      <p class="lede">A 60-minute workshop on the one decision
+      that quietly costs you 30% of revenue. Free, live, with Q&amp;A.</p>
+      <p class="stat"><strong>47%</strong> of SaaS companies mis-price tier 2.</p>
+      <a class="cta" href="#register">Save my seat</a>
+    </div>
+    <div class="hero-art"><!-- placeholder; swap in a real image later --></div>
+  </header>
+
+  <section class="value">
+    <h2>What you'll walk out with</h2>
+    <ul>
+      <li>A pricing audit of your current tiers</li>
+      <li>The four mistakes that show up in 80% of pricing pages</li>
+      <li>A worksheet for repricing tier 2 by next Friday</li>
+      <li>The recording, in case you can't make it live</li>
+    </ul>
+  </section>
+
+  <section class="proof">
+    <h2>Trusted by founders at</h2>
+    <div class="logos"><span>Acme</span><span>Globex</span><span>Initech</span></div>
+  </section>
+
+  <section class="faq">
+    <h2>Common questions</h2>
+    <details><summary>Is this for early-stage or scale-stage?</summary>
+      <p>Both. The framework moves from "no pricing yet" to "five tiers and a fight."</p></details>
+    <details><summary>Will the recording be available?</summary>
+      <p>Yes. Everyone who registers gets the recording within 24h.</p></details>
+    <details><summary>Will you pitch me a course at the end?</summary>
+      <p>No. The workshop is the workshop. There's a longer course if you want it; we mention it once at the end and never again.</p></details>
+    <details><summary>Can I bring my co-founder?</summary>
+      <p>Yes. Each registration is one seat. Two of you, two registrations, same email domain is fine.</p></details>
+  </section>
+
+  <section id="register" class="register">
+    <h2>Save your seat</h2>
+    <form id="register-form" novalidate>
+      <label>Name <input name="name" autocomplete="name" required></label>
+      <label>Email <input name="email" type="email"
+        autocomplete="email" required></label>
+      <label>Company <input name="company"
+        autocomplete="organization" required></label>
+      <input type="text" name="website" tabindex="-1"
+        autocomplete="off" class="honey">
+      <button type="submit">Save my seat</button>
+      <p class="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <footer>
+    <a class="cta cta-secondary" href="#register">Save my seat</a>
+    <p class="fine">One email. No spam. Unsubscribe anytime.</p>
+  </footer>
+
+  <script src="/script.js" defer></script>
+</body>
+</html>

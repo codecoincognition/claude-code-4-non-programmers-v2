@@ -1,0 +1,8 @@
+DELTA AIR LINES
+Electronic Receipt
+Date: 2026-07-08
+Passenger: Maya Chen
+Itinerary: SFO -> Zenith (round trip)
+Confirmation: DLZ4QK
+Total charged: $412.30
+Card ending: 1007 (corporate Amex)

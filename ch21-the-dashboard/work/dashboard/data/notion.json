@@ -1,0 +1,8 @@
+{
+  "okrs": [
+    { "name": "Grow MRR to $100k", "percent_complete": 67, "owner": "Maya" },
+    { "name": "Ship the launch funnel", "percent_complete": 82, "owner": "Co-founder" },
+    { "name": "Hit NPS 60", "percent_complete": 45, "owner": "Support" }
+  ],
+  "snapshot_ts": "2026-05-08T03:14:37Z"
+}

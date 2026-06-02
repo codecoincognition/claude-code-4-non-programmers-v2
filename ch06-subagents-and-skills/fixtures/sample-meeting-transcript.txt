@@ -1,0 +1,37 @@
+Weekly Sync — Reconciliation Workflow
+2026-05-28, 14:00 EST
+Attendees: Maya, Dana, Priya
+
+[14:01] Maya: Quick one today. Three things — the Q3 reconciliation
+status, the new client onboarding for Northwind, and whether we keep
+building the billing integration in-house or buy.
+
+[14:02] Dana: Reconciliation first. I sent the April bank export Friday.
+The Stripe side is missing the May file — I'll get that to you by
+tomorrow morning. Once you have it the Q3 close should be a day of work.
+
+[14:04] Maya: Good. Let's say I close Q3 by Friday EOD. Priya, anything
+blocking on your end?
+
+[14:05] Priya: Only that the categorization rules still flag every
+vendor refund as income. We agreed last month I'd fix the rule but I
+haven't. I'll do it before you run the close so the numbers are clean.
+
+[14:07] Maya: Perfect, that's a hard dependency — please get the refund
+rule fixed before Thursday. Now, Northwind onboarding.
+
+[14:08] Dana: They want us live by mid-June. The blocker is they use a
+billing SDK we've never touched. We need to decide: build the webhook
+integration ourselves or buy the off-the-shelf connector for $400/mo.
+
+[14:11] Priya: I lean build. We'll own it and it's not that complex —
+mostly webhook idempotency, which is a solved problem.
+
+[14:12] Maya: I want a real answer, not a vibe. Let's have Claude's
+library-researcher read how the SDK handles webhooks and idempotency,
+and we decide Thursday based on that. Dana, can you run that and bring
+the one-pager?
+
+[14:13] Dana: Yes. I'll have the research summary by Thursday's standup.
+
+[14:14] Maya: Then we decide build-vs-buy Thursday. Wrap. Thanks all.

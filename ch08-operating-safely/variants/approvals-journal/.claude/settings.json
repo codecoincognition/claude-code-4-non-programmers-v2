@@ -1,0 +1,11 @@
+{
+  "_comment": "Make it yours #3 — approve once, document why. Adds a Stop hook that fires at the end of each session and asks you to jot a one-line note about what you approved and why. Merge this 'hooks' block into your existing ~/work/.claude/settings.json (keep your SessionStart and PreToolUse hooks too).",
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "~/work/scripts/approvals-journal.sh" }]
+      }
+    ]
+  }
+}

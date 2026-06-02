@@ -1,0 +1,11 @@
+# concepts/ starts empty
+#
+# One file per term whose meaning you want to lock down — your work vocabulary.
+# Filename = the term, slugified. Example: relative-strength.md
+#
+# Ask Claude: "Add a concept entry to brain/concepts/ for {term}. Define it in my
+# words, note where I keep relearning it, add [[wikilinks]] to projects/patterns
+# that use it."
+#
+# This .gitkeep exists only so the empty folder survives a git clone. Delete it
+# once you have real entries.

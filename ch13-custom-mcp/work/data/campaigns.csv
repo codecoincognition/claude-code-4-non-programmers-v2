@@ -1,0 +1,48 @@
+name,launched_at,outcome,channel,notes
+spring-onboarding-refresh,2023-02-14,shipped,email,Revamped welcome series; open rate +12%
+referral-beta,2023-03-02,shipped,in-app,Soft launch to 500 users; positive
+pricing-page-v2,2023-03-21,cut,web,Killed after stakeholder disagreement
+q1-webinar-series,2023-04-05,shipped,events,Three sessions; 1.2k registrations
+auto-tag launch,2023-04-19,shipped,blog+email,Flagship feature; best-performing post of Q2
+mobile-push-pilot,2023-05-08,shipped,push,Opt-in flow tested; 22% adoption
+summer-discount-blast,2023-05-24,shipped,email,Seasonal promo; 8% conversion
+partner-co-marketing-a,2023-06-12,cut,social,Partner pulled out two weeks before
+templates-gallery,2023-06-29,shipped,web,New gallery page; bounce rate down
+integrations-roundup,2023-07-17,shipped,blog,Listicle of 10 integrations; evergreen
+back-to-school-push,2023-08-03,cut,email,Pulled; creative not ready in time
+case-study-acme,2023-08-21,shipped,blog,Customer story; sales used it heavily
+feature-flag-launch,2023-09-06,shipped,in-app,Gradual rollout; no incidents
+fall-product-keynote,2023-09-25,shipped,events,Livestreamed; 3k peak viewers
+dark-mode-announce,2023-10-11,shipped,social,Most-shared tweet of the year
+halloween-easter-egg,2023-10-30,cut,in-app,Scoped too late; missed the date
+black-friday-bundle,2023-11-15,shipped,email,Biggest revenue day; sold out tier
+year-in-review-2023,2023-12-04,shipped,email,Personalized recap; high open rate
+holiday-pause-notice,2023-12-20,shipped,email,Support-hours notice; logistics only
+new-year-goals,2024-01-09,shipped,blog,Productivity angle; seasonal traffic
+api-v3-preview,2024-01-26,shipped,docs,Developer preview; positive forum buzz
+team-plan-launch,2024-02-13,shipped,web+email,New pricing tier; steady uptake
+valentines-gift-cards,2024-02-29,cut,email,Killed; legal review on gift cards
+spring-redesign-tease,2024-03-18,shipped,social,Teaser thread before redesign
+mobile-app-2.0,2024-04-04,shipped,push+blog,Major version; store rating up
+earth-day-pledge,2024-04-22,cut,social,Killed; timing clashed with mobile-app-2.0
+q2-customer-summit,2024-05-09,shipped,events,In-person; pipeline impact noted
+ai-assistant-beta,2024-05-27,shipped,in-app,Waitlist of 4k; high intent
+summer-sale-2024,2024-06-13,shipped,email,Repeat of 2023 playbook; held up
+docs-overhaul,2024-07-01,shipped,docs,Search satisfaction up sharply
+freemium-experiment,2024-07-19,cut,web,Killed after CAC math broke
+back-to-school-2024,2024-08-06,shipped,email,Education vertical again; solid
+enterprise-sso,2024-08-23,shipped,docs,Security feature; sales unblock
+autumn-keynote-2024,2024-09-10,shipped,events,Roadmap reveal; press pickup
+analytics-dashboard,2024-09-27,shipped,blog,Data feature; demo-heavy post
+collaboration-spaces,2024-10-15,shipped,in-app,Multiplayer feature; sticky
+spooky-template-pack,2024-10-31,shipped,web,Seasonal templates; nice traffic
+black-friday-2024,2024-11-15,shipped,email,Record again; tier sold out fast
+year-in-review-2024,2024-12-03,shipped,email,Recap v2; even higher opens
+winter-maintenance,2024-12-19,cut,email,Merged into holiday-pause notice
+new-year-templates,2025-01-08,shipped,web,Goal-setting templates; trended
+api-v3-ga,2025-01-27,shipped,docs,General availability; smooth
+voice-of-customer,2025-02-14,shipped,blog,Survey results writeup; shared widely
+mobile-offline-mode,2025-03-05,cut,push,Killed; tech debt blocked it
+spring-launch-2025,2025-03-24,shipped,events,Multi-feature; strong quarter
+workflow-automations,2025-09-12,shipped,in-app,Power-user feature; retention lift
+agent-templates-launch,2026-04-21,shipped,blog+email,Newest flagship; voice reference for future

@@ -1,0 +1,10 @@
+{
+  "followers": 4231,
+  "engagement": [355, 240, 498],
+  "top_posts": [
+    { "title": "Why we killed our Monday status doc", "reactions": 301, "comments": 44, "url": "https://www.linkedin.com/feed/update/post-1" },
+    { "title": "The 6-tab problem every founder has", "reactions": 211, "comments": 25, "url": "https://www.linkedin.com/feed/update/post-2" },
+    { "title": "Static dashboards beat real-time dashboards", "reactions": 489, "comments": 63, "url": "https://www.linkedin.com/feed/update/post-3" }
+  ],
+  "snapshot_ts": "2026-05-09T18:14:11Z"
+}

@@ -1,0 +1,6 @@
+# Synthetic `vercel ls` output — the shape deploys-monitor reads for the vercel source.
+# Columns: age  deployment-url  state  duration
+  2m   maya-site-q1w2e3.vercel.app   ● Building   2m
+  14m  maya-site-a8c2f1.vercel.app   ● Error      45s
+  3h   maya-site-r5t6y7.vercel.app   ● Ready      1m
+  1d   maya-site-u8i9o0.vercel.app   ● Ready      1m

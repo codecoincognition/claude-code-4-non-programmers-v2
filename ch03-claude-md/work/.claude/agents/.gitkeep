@@ -1,0 +1,9 @@
+# Placeholder — this folder is intentionally empty in Chapter 3.
+#
+# Chapter 6 introduces the agents family; Chapters 9-12 hire four named
+# specialists (Iris, Atlas, Reuben, Echo). Each subagent lives as a single
+# Markdown file here: ~/work/.claude/agents/<name>.md
+#
+# Created in Chapter 3 Step 2 so the .claude/ anatomy map has real
+# folders to point at. Delete this .gitkeep file once you add a real
+# agent — it only exists so the empty directory survives in git.

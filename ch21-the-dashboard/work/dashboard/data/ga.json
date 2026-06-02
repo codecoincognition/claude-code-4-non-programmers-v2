@@ -1,0 +1,10 @@
+{
+  "sessions_daily": [512, 488, 603, 577, 641, 590, 538, 612, 559, 627, 601, 588, 574, 633],
+  "top_pages": [
+    { "path": "/", "sessions": 2104 },
+    { "path": "/services", "sessions": 1387 },
+    { "path": "/case-studies", "sessions": 912 }
+  ],
+  "conversions": 47,
+  "snapshot_ts": "2026-05-08T03:14:31Z"
+}

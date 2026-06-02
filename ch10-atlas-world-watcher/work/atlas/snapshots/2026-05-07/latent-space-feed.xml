@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Atlas snapshot — Latent Space RSS — captured 2026-05-07 (synthetic fixture) -->
+<rss version="2.0">
+  <channel>
+    <title>Latent Space</title>
+    <link>https://www.latent.space/</link>
+    <description>The AI engineer newsletter.</description>
+    <item>
+      <title>Agents in Production: Lessons from 2026</title>
+      <link>https://www.latent.space/p/agents-in-production-2026</link>
+      <pubDate>Mon, 05 May 2026 14:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Eval Stack Nobody Talks About</title>
+      <link>https://www.latent.space/p/the-eval-stack</link>
+      <pubDate>Thu, 01 May 2026 14:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

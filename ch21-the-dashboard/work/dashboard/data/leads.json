@@ -1,0 +1,23 @@
+{
+  "conversion_rate_by_day": [
+    { "date": "2026-04-09", "rate": 0.031 },
+    { "date": "2026-04-16", "rate": 0.038 },
+    { "date": "2026-04-23", "rate": 0.042 },
+    { "date": "2026-04-30", "rate": 0.047 },
+    { "date": "2026-05-07", "rate": 0.051 }
+  ],
+  "leads_by_source": {
+    "linkedin_paid": 64,
+    "organic_search": 121,
+    "twitter": 38,
+    "direct": 52
+  },
+  "top_converting_cta": {
+    "variant": "B — \"See it live\"",
+    "conversion_rate": 0.061,
+    "confidence_interval": [0.048, 0.074],
+    "views_per_variant": 640,
+    "winner_called": true
+  },
+  "snapshot_ts": "2026-05-08T03:14:45Z"
+}

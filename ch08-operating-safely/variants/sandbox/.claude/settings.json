@@ -1,0 +1,20 @@
+{
+  "_comment": "Make it yours #2 — loosen for a sandbox. Drop this at ~/work/sandbox/.claude/settings.json. Inside this folder only, acceptEdits is the default and all shell is allowed — but the global deny list (ssh, aws, .env) is repeated here so it stays intact. The sandbox is throwaway, not sensitive.",
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Read(*)",
+      "Grep(*)",
+      "Edit(./**)",
+      "Write(./**)",
+      "Bash(*)"
+    ],
+    "ask": [],
+    "deny": [
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(**/.env)",
+      "Bash(env | grep SECRET_*)"
+    ]
+  }
+}

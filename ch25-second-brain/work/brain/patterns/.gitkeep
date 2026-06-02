@@ -1,0 +1,13 @@
+# patterns/ starts empty
+#
+# One file per play that's worked more than once — your reusable playbooks.
+# Filename = the pattern, slugified. Example: static-dashboards-over-spas.md
+#
+# The dashboard README and the Chart.js ADR forward-reference
+# [[patterns/static-dashboards-over-spas]] — a dashed node in Obsidian until you
+# fill it in. When you next reach for that pattern, ask Claude:
+#   "Write the pattern entry brain/patterns/static-dashboards-over-spas.md.
+#    Add [[wikilinks]] back to the projects that used it."
+#
+# This .gitkeep exists only so the empty folder survives a git clone. Delete it
+# once you have real entries.

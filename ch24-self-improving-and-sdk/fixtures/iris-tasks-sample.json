@@ -1,0 +1,31 @@
+{
+  "_comment": "Synthetic sample of three Iris Notion Tasks DB rows from the last 24 hours. This is the input the meta-judge agent grades against. Not real data — replace via the Notion MCP.",
+  "rows": [
+    {
+      "title": "Re: Q3 roadmap sign-off",
+      "routing": "action",
+      "drafted_reply": "Approved. Ship it.",
+      "manual_tag": null,
+      "notion_url": "https://www.notion.so/example/q3-roadmap-signoff",
+      "received_at": "2026-05-30T07:14:00-04:00"
+    },
+    {
+      "title": "FYI — design system newsletter #42",
+      "routing": "action",
+      "drafted_reply": null,
+      "manual_tag": "FYI",
+      "notion_url": "https://www.notion.so/example/design-newsletter-42",
+      "received_at": "2026-05-30T09:02:00-04:00",
+      "_note": "Meta-judge would flag this: routed to action but Devon manually tagged it FYI — tag-override disagreement."
+    },
+    {
+      "title": "Invoice #2025-118 due Friday",
+      "routing": "commit",
+      "drafted_reply": "Thanks so much for sending this over!!! I'll get right on it 😊",
+      "manual_tag": null,
+      "notion_url": "https://www.notion.so/example/invoice-2025-118",
+      "received_at": "2026-05-30T11:47:00-04:00",
+      "_note": "Meta-judge would flag the drafted reply: off-tone vs Devon's terse, factual voice."
+    }
+  ]
+}

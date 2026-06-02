@@ -1,0 +1,16 @@
+date,event_type,customer_id,plan,mrr_delta,stripe_fee
+2026-07-02,subscription.created,cus_0412,growth,1200.00,42.00
+2026-07-08,subscription.created,cus_0418,starter,290.00,11.30
+2026-07-19,subscription.created,cus_0423,growth,1200.00,42.00
+2026-07-22,subscription.canceled,cus_0388,starter,-290.00,0.00
+2026-08-04,subscription.created,cus_0431,scale,3400.00,116.00
+2026-08-11,subscription.canceled,cus_0301,growth,-1200.00,0.00
+2026-08-12,subscription.canceled,cus_0309,growth,-1200.00,0.00
+2026-08-12,subscription.canceled,cus_0314,starter,-290.00,0.00
+2026-08-13,subscription.canceled,cus_0322,starter,-290.00,0.00
+2026-08-21,subscription.created,cus_0444,growth,1200.00,42.00
+2026-09-03,subscription.created,cus_0452,scale,3400.00,116.00
+2026-09-09,subscription.created,cus_0460,growth,1200.00,42.00
+2026-09-17,subscription.canceled,cus_0356,starter,-290.00,0.00
+2026-09-28,refund.issued,cus_0431,scale,0.00,-116.00
+2026-09-29,subscription.created,cus_0471,starter,290.00,11.30

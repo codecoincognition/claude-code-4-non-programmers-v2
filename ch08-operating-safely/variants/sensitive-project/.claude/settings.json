@@ -1,0 +1,26 @@
+{
+  "_comment": "Make it yours #1 — tighten for a sensitive project. Drop this at ~/work/clients/{client}/.claude/settings.json. Per-project settings nest under their folder and override the global ones. Read-only on this folder, all shell denied, every audit line tagged with the client name.",
+  "permissions": {
+    "defaultMode": "plan",
+    "allow": [
+      "Read(./**)"
+    ],
+    "ask": [],
+    "deny": [
+      "Bash(*)",
+      "Edit(**)",
+      "Write(**)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(**/.env)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "~/work/scripts/audit-log-client.sh" }]
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--
+  FIXTURE — what a bot-blocked fetch of Acme's pricing page looks like.
+  This is the page that fooled Atlas in the "night Acme went to zero"
+  beat: the text-extraction logic found "$0" in the captcha copy
+  ("no charge to continue") and reported a 100% price cut.
+
+  Use this to test the Source-completeness check: feed it to Atlas and
+  confirm he writes "fetch failed — possible bot block" instead of a
+  confident-but-wrong signal, and does NOT overwrite the last good
+  snapshot. Note: this page is only 287 characters of body text and
+  contains "verify you are human" — both completeness-check tripwires.
+-->
+<html lang="en">
+<head><title>Just a moment...</title></head>
+<body>
+<main>
+  <h1>Verify you are human</h1>
+  <p>Please complete the captcha below to continue. There is no
+  charge to continue ($0). This step protects acme.example.com from
+  automated traffic.</p>
+  <div id="captcha-widget"></div>
+</main>
+</body>
+</html>

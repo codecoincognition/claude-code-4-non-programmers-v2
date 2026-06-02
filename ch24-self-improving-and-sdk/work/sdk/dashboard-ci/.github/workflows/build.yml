@@ -1,0 +1,38 @@
+name: dashboard-build
+
+# Wires the Agent SDK script into GitHub Actions.
+# Every push to main triggers the build. The agent runs on
+# GitHub's servers — Devon's Mac mini / laptop is no longer
+# load-bearing. Also runs nightly on a cron.
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    # 06:00 America/New_York — nightly dashboard refresh.
+    # GitHub Actions cron is UTC; 10:00 UTC ~= 06:00 EDT.
+    - cron: "0 10 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run dashboard build agent
+        run: npm run build

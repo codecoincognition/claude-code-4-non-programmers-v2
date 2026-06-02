@@ -1,0 +1,7 @@
+# CLAUDE.md
+1. Don't assume. Don't hide confusion. Surface tradeoffs.
+2. Minimum code that solves the problem. Nothing speculative.
+3. Touch only what you must. Clean up only your own mess.
+4. Define success criteria. Loop until verified.
+5. I'm a PhD candidate in cognitive science. My drafts go in ~/work/papers/. My data lives in ~/work/data/ (read-only).
+6. Never modify the bibliography file directly — always show me the diff first. Never overwrite anything in ~/work/data/.

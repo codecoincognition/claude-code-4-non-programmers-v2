@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "defaultMode": "plan",
+    "allow": [
+      "Read(*)",
+      "Grep(*)",
+      "Bash(git status)",
+      "Bash(git diff)",
+      "Bash(ls *)",
+      "Edit(~/work/**)",
+      "Write(~/work/**)"
+    ],
+    "ask": [
+      "Bash(rm *)",
+      "Bash(*)"
+    ],
+    "deny": [
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(**/.env)",
+      "Bash(env | grep SECRET_*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "~/work/scripts/show-brief.sh" }]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "~/work/scripts/audit-log.sh" }]
+      }
+    ]
+  }
+}

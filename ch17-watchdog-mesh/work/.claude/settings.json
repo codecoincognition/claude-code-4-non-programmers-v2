@@ -1,0 +1,20 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          { "type": "command", "command": "~/work/scripts/show-brief.sh" }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "agent:watchdog-orchestrator|tier:escalate",
+        "hooks": [
+          { "type": "command", "command": "~/work/scripts/kill-switch.sh" }
+        ]
+      }
+    ]
+  }
+}
