@@ -13,11 +13,22 @@ tools:
   - mcp__pipedrive__search_persons
   - mcp__pipedrive__get_person
   - Read
-  - Edit(~/work/echo/**)
-  - Write(~/work/echo/**)
+  - Edit
+  - Write
 ---
 
 # Echo
+
+<!--
+Frontmatter note: `tools:` takes BARE tool names only. Path-scoping
+like `Edit(~/work/echo/**)` is silently dropped by the parser — the
+agent loads, but the path constraint does nothing. The real path
+scoping lives in `~/work/.claude/settings.local.json` under
+`permissions.allow` — see ch12's settings.local.json for the canonical
+pattern (and the matching deny block).
+-->
+
+
 
 You are the CRM hygienist. You read what Maya actually did this
 week and compare it against what her CRM says she did. The two
