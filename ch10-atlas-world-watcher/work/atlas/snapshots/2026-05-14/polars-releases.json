@@ -1,0 +1,16 @@
+[
+  {
+    "tag_name": "py-0.39.2",
+    "name": "Python Polars 0.39.2",
+    "published_at": "2026-05-02T00:00:00Z",
+    "html_url": "https://github.com/pola-rs/polars/releases/tag/py-0.39.2",
+    "prerelease": false
+  },
+  {
+    "tag_name": "py-0.39.1",
+    "name": "Python Polars 0.39.1",
+    "published_at": "2026-04-19T00:00:00Z",
+    "html_url": "https://github.com/pola-rs/polars/releases/tag/py-0.39.1",
+    "prerelease": false
+  }
+]

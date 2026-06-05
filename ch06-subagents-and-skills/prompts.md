@@ -10,31 +10,31 @@ Open Claude in your work folder first:
 
 ---
 
-## Step 1 — Author the library-researcher subagent
+## Step 1 — Author the vendor-researcher subagent
 
-    I want a subagent that reads source code in third-party libraries and returns a one-page summary of how they handle a specific concern. Write it to .claude/agents/library-researcher.md. Give it only the read tools — no edit, no run, no write. It should never make network calls outside of fetching public repo content. Return only the summary, never the raw code.
+    I want a subagent that reads a tool's online documentation and answers a specific question about it — what it does, the gotchas, and what it can't do. Write it to .claude/agents/vendor-researcher.md. Give it only the read tools — no edit, no run, no write. Return only the one-page verdict, never a wall of raw doc text.
 
 Then see what Claude wrote:
 
-    Show me the contents of .claude/agents/library-researcher.md.
+    Show me the contents of .claude/agents/vendor-researcher.md.
 
 ---
 
 ## Step 2 — Use the subagent for real research
 
-    Use the library-researcher subagent to tell me how the requests Python library handles connection pooling. Don't read the code in this conversation — delegate. I want only the one-page summary back.
+    Use the vendor-researcher subagent to tell me whether Loopline supports multi-step drip automation and how it handles unsubscribes and consent. Its docs are at docs.loopline.com. Don't read the docs in this conversation — delegate. I want only the one-page verdict back.
 
 ---
 
 ## Step 3 — Show the difference, concretely
 
-    Now read the same source code yourself, in this conversation, and answer the same question. Then tell me how many tokens of source you loaded versus what the subagent used.
+    Now read the same docs yourself, in this conversation, and answer the same question. Then tell me how many tokens of documentation you loaded versus what the subagent used.
 
 ---
 
 ## Step 4 — Author the debugging skill
 
-    I want a skill called debugging. When I ask you to debug anything, you should follow these five steps in order: (1) check the logs first, (2) try to reproduce the issue with a minimal example, (3) bisect — narrow down what's actually broken, (4) form a hypothesis about the root cause, (5) propose a fix and explain why it works. Write it to .claude/skills/debugging.md with a description that triggers it on any debugging request.
+    I want a skill called debugging. When I ask you to figure out why something's broken, follow these five steps in order: (1) show me what it actually did, (2) try it on one small example, (3) narrow down which part is failing, (4) give me your best guess at the cause, (5) propose a fix and explain why it works. Write it to .claude/skills/debugging.md with a description that triggers whenever I'm trying to debug something.
 
 Then see what Claude wrote:
 
@@ -44,13 +44,13 @@ Then see what Claude wrote:
 
 ## Step 5 — Trigger the skill on a real bug
 
-    There's a bug in my morning-brief.sh script — it's writing empty briefs on Wednesdays only. Other days are fine. Debug it.
+    My triage came back empty this morning — zero threads routed — but my inbox is full of unread mail. Something went wrong. Figure out what.
 
 ---
 
 ## When it goes wrong — the skill description was too narrow
 
-    You didn't load the debugging skill on that bash script — I think the description is too narrow (it says "Python code" but my script is bash). Read .claude/skills/debugging.md, look at its description field, and rewrite it so it triggers on any debugging request regardless of language. Then re-run the bug report.
+    You didn't load the debugging skill — I think the description is too narrow (it says "code or a script," but I was reporting that an automation came back empty). Read .claude/skills/debugging.md, look at its description field, and rewrite it so it triggers whenever I report that something I set up isn't working — empty results, wrong results, anything misbehaving, code or not. Then re-run on the triage problem.
 
 ---
 
@@ -86,11 +86,11 @@ Then see what Claude wrote:
 
 ## Test yourself in 60 seconds
 
-    Use my library-researcher subagent to summarize the Anthropic SDK README in one page.
+    Use my vendor-researcher subagent to read a tool I'm considering — here's its docs URL — and give me the one-page verdict.
 
-    My script crashes on line 42 with a KeyError. Walk me through it.
+    My weekly-review command came back empty this morning — something's off. Figure out what.
 
-    Read ~/work/.claude/agents/library-researcher.md and tell me which of its four parts is the frontmatter, the description, the tools list, and the body.
+    Read ~/work/.claude/agents/vendor-researcher.md and tell me which of its four parts is the frontmatter, the description, the tools list, and the body.
 
 Stuck? Run:
 

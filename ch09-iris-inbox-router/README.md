@@ -1,21 +1,23 @@
 # Chapter 9 — Iris, your inbox-to-system router
 
-This chapter hires Iris: a named subagent who reads the last 12 hours of your Gmail and today's Calendar every morning, routes each thread to a Notion Tasks DB row (an action), a Notion Project Notes page (FYI / commit), a Gmail draft (a reply, **saved not sent**), or Archive (with a reason) — and leaves a one-page queue summary at the top of your morning brief. She runs as a long-running session on a weekday schedule, has her own output-style voice, and is doubly locked out of sending mail (her allowlist excludes the send tool, and the deny list blocks it again). It is the first chapter where you stop running prompts and start onboarding a hire: agent proposes, human disposes.
+This chapter hires Iris: a named subagent who reads the last 12 hours of your Gmail and today's Calendar every morning, routes each thread to a Notion Tasks DB row (an action), a Notion Project Notes page (FYI / commit), a Gmail draft (a reply, **saved not sent**), or Archive (with a reason) — and leaves a one-page queue summary at the top of your morning brief. She runs as a long-running session on a weekday schedule, has her own voice rules inlined in her agent file, and is doubly locked out of sending mail (her allowlist excludes the send tool, and the deny list blocks it again). It is the first chapter where you stop running prompts and start onboarding a hire: agent proposes, human disposes.
 
 ## Files
 
 | Path | What it is |
 |---|---|
-| `work/.claude/agents/iris.md` | Iris's agent file — frontmatter (name, description, tools allowlist, output-style) plus her job description, draft-as-Maya block, queue rules, and the numerical-claim discipline added in the When-it-goes-wrong beat |
-| `work/.claude/output-styles/iris.md` | Iris's queue voice (calm, dry, bulleted, names reasoning, never signs) — governs the queue, NOT the drafts |
+| `work/.claude/agents/iris.md` | Iris's agent file — frontmatter (name, description, tools allowlist, **and the `Stop` hook that fires `iris-queue.sh` when her session ends**) plus her job description, voice paragraph, draft-as-Maya block, Queue voice rules, and the numerical-claim discipline added in the When-it-goes-wrong beat |
 | `work/.claude/settings.local.json` | Permission profile from Ch 8 with the second lock: `mcp__gmail__send_*` on the deny list |
-| `work/.claude/settings.json` | The Stop hook (extended from Ch 7) that fires `iris-queue.sh` when Iris's session ends |
+| `work/.claude/settings.json` | The `SessionStart` hook (from Ch 7) that runs `show-brief.sh` at session open — Iris's Stop hook now lives in her own frontmatter (auto-converts to `SubagentStop`), not in settings.json |
+| `work/scripts/iris-launcher.sh` | On-demand wrapper for `claude --resume iris --agent iris -p "…"` — same shape as `iris-morning.sh` but runnable any time without waiting for cron |
 | `work/scripts/iris-morning.sh` | The morning launcher — resumes the named `iris` session, runs the routing, exits |
 | `work/scripts/iris-queue.sh` | Stop-hook aggregator — writes `~/work/queue/{date}.md` and flags any entry with numeric figures `[verify-numbers]` |
 | `work/scripts/show-brief.sh` | The Ch 7 morning brief assembler, extended with an "Iris's queue" section |
 | `work/queue/2026-05-13.md` | A full sample queue file — the daily surface Maya reviews |
 | `work/CLAUDE.md` | Portable Notion IDs (Tasks DB, Project Notes parent, Leads DB) that Iris reads on launch |
 | `fixtures/README.md` | The shape of Iris's live inputs (Gmail, Calendar, Notion) — nothing to seed; she reads your real account |
+
+> **Note (post-fix):** Earlier drafts of this chapter shipped a separate `work/.claude/output-styles/iris.md` for Iris's queue voice. That file is removed — `output-style:` is not a real subagent frontmatter field, and the voice rules now live inline in `iris.md`'s "Queue voice" section where Iris actually reads them.
 
 ## How to use
 

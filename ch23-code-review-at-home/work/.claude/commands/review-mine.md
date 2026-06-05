@@ -26,5 +26,9 @@ After the per-file reviews:
 If a file is in ~/work/.claude/commands/ — always /security-review
 (slash commands grant permissions, not just docs).
 If a file is a shell script — first /sandbox, then /security-review.
-If a file is in a folder of similar files (≥3 siblings with the
-same extension) — propose /batch instead of single-file review.
+If the work spans many independent files across the codebase AND
+each file warrants its own pull request AND you're in a git
+repository — propose /batch. /batch decomposes into 5-30 units,
+spawns one background subagent per unit in an isolated git
+worktree, and opens a PR per unit. For small sweeps (under 5
+units), use a direct Edit/Write loop instead.

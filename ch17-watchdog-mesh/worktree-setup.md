@@ -16,16 +16,29 @@ The chapter prompt:
 What Claude runs underneath:
 
 ```bash
-git worktree add ~/work/worktrees/watchdog-mesh main
+git worktree add -b watchdog-mesh ~/work/worktrees/watchdog-mesh main
 ```
+
+The `-b watchdog-mesh` flag creates a **new branch** called
+`watchdog-mesh` rooted at `main` and checks it out into the new worktree.
+Without `-b`, git would try to check out `main` itself in the second
+worktree — and git refuses to have the same branch checked out in two
+places at once, so `git worktree add ~/work/worktrees/watchdog-mesh main`
+errors with *"main is already checked out at ~/work"*. Giving the
+worktree its own branch sidesteps that.
 
 Verify:
 
 ```bash
 git worktree list
 #   /Users/maya/work                           4a8c2f1 [main]
-#   /Users/maya/work/worktrees/watchdog-mesh   4a8c2f1 [main]
+#   /Users/maya/work/worktrees/watchdog-mesh   4a8c2f1 [watchdog-mesh]
 ```
+
+Same commit (`4a8c2f1`), two branches, two folders. The mesh now has
+its own room and its own branch — commits inside
+`~/work/worktrees/watchdog-mesh/` land on `watchdog-mesh`, not `main`,
+until you deliberately merge them.
 
 ## Why a worktree for the mesh
 
@@ -56,4 +69,5 @@ Underneath:
 
 ```bash
 git worktree remove ~/work/worktrees/watchdog-mesh
+git branch -D watchdog-mesh    # optional: delete the branch too
 ```

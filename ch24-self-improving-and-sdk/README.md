@@ -5,12 +5,12 @@ This chapter builds the meta layer: a self-improving loop that observes your own
 ## File-by-file
 
 - `work/.claude/skills/morning-conflict-check.md` — the skill `/insights-to-skills` authored from pattern 1 (after `/triage`, check the calendar for conflicts). Tagged with provenance.
-- `work/.claude/agents/meta-judge.md` — the reviewer-for-Iris subagent. Reads Iris's last 24 hours of Notion routing, grades each against three criteria (routing, tone, tag-respect), pings disagreements to Slack. Runs weekdays 8:30 AM, before `/triage`.
+- `work/.claude/agents/meta-judge.md` — the reviewer-for-Iris subagent. Reads Iris's last 24 hours of Notion routing, grades each against three criteria (routing, tone, tag-respect), pings disagreements to Slack. Intended cadence: weekdays 8:30 AM, before `/triage` — wire the schedule via `/schedule` (cloud routine) or a local cron that invokes this agent. Subagent frontmatter has no `schedule:` key; adding one is silently ignored.
 - `work/.claude/insights-config.md` — the gate config for `/insights-to-skills`: the gate question, the 60-second default-deny, the per-run cap of 1 skill, and the provenance-tag policy.
 - `work/.claude/three-layer.md` — the architecture note mapping all eight of Devon's built jobs to slash / subagent / SDK layers.
 - `work/sdk/dashboard-ci/` — the Agent SDK build, wired into CI:
-  - `package.json` — declares `@anthropic-ai/claude-code`.
-  - `build.ts` — the SDK script (import client → configure agent → run with prompt → read result → exit code + Slack ping).
+  - `package.json` — declares `@anthropic-ai/claude-agent-sdk`.
+  - `build.ts` — the SDK script (one import: `query`; configuration in `options` with `systemPrompt` / `allowedTools` / `permissionMode` / `mcpServers`; iterate the async iterable with `for await`; read the `result` message; exit non-zero on `is_error`).
   - `.github/workflows/build.yml` — GitHub Actions: push-to-main, nightly cron, manual dispatch.
   - `README.md` — env vars / secrets and setup.
 - `fixtures/README.md` — input shapes for `/insights` (session history), Iris's Notion output, Slack write surfaces, and the declined Friday-summary skill.

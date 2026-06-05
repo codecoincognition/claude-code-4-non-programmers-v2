@@ -4,33 +4,56 @@
 // reads refresher scripts, runs the build, deploys, pings Slack.
 //
 // Five things the chapter calls out about this script:
-//   1. Import the SDK client      (one line — a regular dependency)
-//   2. Configure the agent        (system prompt, tools, model)
-//   3. Run with a prompt          (one-line prompt; agent dispatches)
-//   4. Read the structured output (exit codes, findings, traces)
-//   5. Side effect                (exit code + the Slack ping the agent sends)
+//   1. One import: `query` from @anthropic-ai/claude-agent-sdk.
+//      There is no `new ClaudeAgent(...)` class — `query()` is the
+//      whole surface.
+//   2. `query()` returns an async iterable; iterate with `for await`.
+//      Each item is one message (system init, tool-use, tool-result,
+//      assistant text, and finally a `result` message wrapping the run).
+//   3. Configuration goes in `options`: `systemPrompt`, `allowedTools`
+//      (note the name — NOT `tools`), `permissionMode`, `mcpServers`.
+//   4. `permissionMode: "acceptEdits"` is the CI posture — no human
+//      around to answer an approval prompt.
+//   5. The script's side effect is the process exit code. The Slack
+//      ping is a side effect of the agent's own tool calls.
 
-import { ClaudeAgent } from "@anthropic-ai/claude-code";
+import { query } from "@anthropic-ai/claude-agent-sdk";
 
-const agent = new ClaudeAgent({
-  model: "claude-sonnet-4-7",
-  systemPrompt: `
-    You are a build agent. You run in CI. Your job is to:
-    1. Run the six refreshers in ~/work/dashboard/refreshers/
-    2. Run build.sh; verify exit code 0
-    3. Deploy via vercel CLI
-    4. On success, post deploy URL to #devon-deploys via Slack MCP
-    5. On failure, post the error trace to #devon-deploys
+const systemPrompt = `
+  You are a build agent. You run in CI. Your job is to:
+  1. Run the six refreshers in ./dashboard/refreshers/
+  2. Run build.sh; verify exit code 0
+  3. Deploy via the vercel CLI
+  4. On success, post the deploy URL to #devon-deploys via Slack MCP
+  5. On failure, post the error trace to #devon-deploys
 
-    No interactive prompts. No human approval steps. Fail loudly.
-  `,
-  tools: ["Bash", "Read", "mcp__slack"],
-});
+  No interactive prompts. No human approval steps. Fail loudly.
+`;
 
-const result = await agent.run({
+let lastResult: { is_error?: boolean; result?: string } | null = null;
+
+for await (const message of query({
   prompt: "Run the dashboard build pipeline. Deploy on success.",
-});
+  options: {
+    systemPrompt,
+    allowedTools: ["Bash", "Read", "Write", "mcp__slack"],
+    permissionMode: "acceptEdits",
+    mcpServers: {
+      slack: {
+        command: "npx",
+        args: ["-y", "@modelcontextprotocol/server-slack"],
+      },
+    },
+  },
+})) {
+  // Stream every message to the CI log so the GitHub Actions run page
+  // shows the agent's reasoning and tool calls in real time.
+  console.log(JSON.stringify(message));
+  if (message.type === "result") lastResult = message;
+}
 
-if (result.exitCode !== 0) {
-  process.exit(result.exitCode);
+// In CI the side effect is the process exit code plus the Slack ping
+// the agent itself sent. Anything non-success fails the workflow.
+if (!lastResult || lastResult.is_error) {
+  process.exit(1);
 }

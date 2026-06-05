@@ -1,10 +1,37 @@
 # Kill-switch hook for the watchdog mesh — Windows variant (PowerShell).
-# Same logic as kill-switch.sh: per-interception 4-digit code, 60s timeout, append-only log.
+# Same logic as kill-switch.sh: reads the PreToolUse JSON payload from
+# stdin, gates only on the "[WATCHDOG:ESCALATE]" prefix, blocks with
+# exit 2 (the documented Claude Code blocking exit code).
 
 $ErrorActionPreference = "Stop"
 
 $Log = "$HOME\work\watchdog\escalations.log"
-$ProposedAction = if ($args.Count -ge 1) { $args[0] } else { "unspecified" }
+$LogDir = Split-Path $Log -Parent
+if (-not (Test-Path $LogDir)) { New-Item -ItemType Directory -Path $LogDir | Out-Null }
+
+# Read the JSON hook payload from stdin.
+$Payload = [Console]::In.ReadToEnd()
+try {
+    $Parsed = $Payload | ConvertFrom-Json
+} catch {
+    # Malformed payload — fail open (pass through) so we don't block real work.
+    exit 0
+}
+
+$ToolName = if ($Parsed.tool_name) { $Parsed.tool_name } else { "unknown" }
+$Message = ""
+if ($Parsed.tool_input) {
+    if ($Parsed.tool_input.text)    { $Message = $Parsed.tool_input.text }
+    elseif ($Parsed.tool_input.message) { $Message = $Parsed.tool_input.message }
+}
+
+# Only gate watchdog-orchestrator escalate-tier sends.
+if ($Message -notlike "*[WATCHDOG:ESCALATE]*") {
+    exit 0
+}
+
+$Snippet = if ($Message.Length -gt 80) { $Message.Substring(0, 80) } else { $Message }
+$ProposedAction = "${ToolName}: $Snippet"
 $Code = "{0:0000}" -f (Get-Random -Minimum 0 -Maximum 10000)
 $Now = (Get-Date).ToString("yyyy-MM-ddTHH:mm:sszzz")
 
@@ -29,7 +56,8 @@ if (Wait-Job $job -Timeout 60) {
     Stop-Job $job
     $now2 = (Get-Date).ToString("yyyy-MM-ddTHH:mm:sszzz")
     Add-Content -Path $Log -Value "[$now2] DENIED (timeout): $ProposedAction"
-    exit 1
+    [Console]::Error.WriteLine("Kill-switch timed out")
+    exit 2
 }
 
 $now3 = (Get-Date).ToString("yyyy-MM-ddTHH:mm:sszzz")
@@ -38,5 +66,6 @@ if ($entered -eq $Code) {
     exit 0
 } else {
     Add-Content -Path $Log -Value "[$now3] DENIED (wrong code): $ProposedAction"
-    exit 1
+    [Console]::Error.WriteLine("Kill-switch denied: wrong code")
+    exit 2
 }

@@ -4,8 +4,6 @@ description: >
   Reviewer for Iris. Reads Iris's last 24 hours of routing
   decisions, grades each against three criteria, surfaces
   disagreements as Slack pings.
-schedule: weekdays 8:30 AM
-schedule_tz: "America/New_York"
 tools:
   - mcp__notion
   - mcp__slack
@@ -13,6 +11,11 @@ tools:
 ---
 
 # Meta-judge — Iris reviewer
+
+<!-- Scheduling is wired separately (via the /schedule cloud routine or a
+local cron that invokes this agent), NOT in this agent file. Subagent
+frontmatter has no `schedule` / `schedule_tz` keys — adding them is
+silently ignored. See Ch 7 for hook-and-schedule plumbing. -->
 
 You wake up daily, before /triage. You read Iris's output and
 grade it. You do not retrain Iris. You do not change her rules.

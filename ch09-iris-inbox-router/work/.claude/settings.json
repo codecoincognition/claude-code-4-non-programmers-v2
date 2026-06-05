@@ -1,10 +1,10 @@
 {
   "hooks": {
-    "Stop": [
+    "SessionStart": [
       {
-        "matcher": "agent:iris",
+        "matcher": "",
         "hooks": [
-          { "type": "command", "command": "~/work/scripts/iris-queue.sh" }
+          { "type": "command", "command": "~/work/scripts/show-brief.sh" }
         ]
       }
     ]

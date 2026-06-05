@@ -43,12 +43,22 @@ Workflow: read the chapter, then `git clone` this repo, copy the matching `chNN-
 | 23 — Code review at home | A personal code-review surface built on top of Claude. | [`ch23-code-review-at-home`](./ch23-code-review-at-home) |
 | 24 — Self-improving and the SDK | A self-improving automation loop, a meta-judge agent, and moving scheduled work into CI via the Agent SDK. | [`ch24-self-improving-and-sdk`](./ch24-self-improving-and-sdk) |
 | 25 — Your second brain | An llm-wiki: a plain-Markdown knowledge base with Obsidian as the visualizer and Claude as the writer. | [`ch25-second-brain`](./ch25-second-brain) |
+| 26 — The Sunday-night governance hour | The closing chapter — no new primitives. Two practices (the weekly governance hour, the three-question rubric for firing an agent) and the two artifacts they produce. | [`ch26-coda`](./ch26-coda) |
 
 A [`cheatsheet`](./cheatsheet) folder collects the quick-reference material.
 
+## Appendices
+
+| Appendix | What it ships | Folder |
+|---|---|---|
+| A — Prompt library | The 30-prompt library from Appendix A, in copy-pasteable form. | [`appendix-a-prompt-library`](./appendix-a-prompt-library) |
+| B — Cost and safety | Reference scripts and configuration for the cost-monitoring and safety conventions in Appendix B. | [`appendix-b-cost-safety`](./appendix-b-cost-safety) |
+| C — Plugin marketplace rubric | The Tier 1 / Tier 2 / Tier 3 rubric from Appendix C, as a checklist file. | [`appendix-c-marketplace-rubric`](./appendix-c-marketplace-rubric) |
+| F — `settings.json` | One operator's working `~/.claude/settings.json`, comment-free and valid strict JSON, with the annotated walkthrough in Appendix F as its source of truth. | [`appendix-f-settings`](./appendix-f-settings) |
+
 ## If you wandered in here as an engineer
 
-This book is written for non-programmers, but the artifacts are real, inspectable code and configuration. If you want the technical detail behind any chapter, read that chapter's own `README.md` — each one documents the files it ships, what's load-bearing across chapters, and where state lives (registry entries and auth tokens deliberately stay out of the repo, in `~/.claude.json` and your OS Keychain). A consolidated `ENGINEER-GUIDE.md` covering the architecture across all chapters is planned for the root of this repo.
+This book is written for non-programmers, but the artifacts are real, inspectable code and configuration. For per-chapter detail, read that chapter's own `README.md` — each one documents the files it ships, what's load-bearing across chapters, and where state lives (registry entries and auth tokens deliberately stay out of the repo, in `~/.claude.json` and your OS Keychain). For the architecture view across all 26 chapters — the five extension layers, the three-layer architecture from Ch 24, permission and plan-mode semantics — read [`ENGINEER-GUIDE.md`](./ENGINEER-GUIDE.md) at the root of this repo.
 
 ## License
 

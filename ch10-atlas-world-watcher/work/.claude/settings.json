@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Edit(~/work/atlas/**)",
+      "Write(~/work/atlas/**)",
+      "Read(~/work/atlas/**)"
+    ]
+  }
+}

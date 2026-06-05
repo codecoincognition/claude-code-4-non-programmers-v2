@@ -10,7 +10,7 @@
     ],
     "PreToolUse": [
       {
-        "matcher": "agent:watchdog-orchestrator|tier:escalate",
+        "matcher": "mcp__slack__send_message|mcp__slack__post_message",
         "hooks": [
           { "type": "command", "command": "~/work/scripts/kill-switch.sh" }
         ]

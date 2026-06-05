@@ -7,9 +7,40 @@ to Slack `#devon-deploys`. On failure it posts the error trace instead.
 
 ## Files
 
-- `package.json` — declares `@anthropic-ai/claude-code` as a dependency, `npm run build` runs the agent.
-- `build.ts` — the Agent SDK script. Imports the client, configures the agent (system prompt, tools, model), runs with a one-line prompt, reads the structured result, exits with the agent's exit code.
+- `package.json` — declares `@anthropic-ai/claude-agent-sdk` as a dependency; `npm run build` runs the agent.
+- `build.ts` — the Agent SDK script. One import (`query`), one `for await` loop, configuration in `options` (`systemPrompt`, `allowedTools`, `permissionMode`, `mcpServers`). Reads the `result` message at the end of the stream, exits non-zero on `is_error`.
 - `.github/workflows/build.yml` — wires the script into GitHub Actions. Runs on every push to `main`, nightly via cron, and on manual dispatch.
+
+## Install
+
+```bash
+npm install @anthropic-ai/claude-agent-sdk
+```
+
+## SDK shape (what `build.ts` looks like)
+
+```ts
+import { query } from "@anthropic-ai/claude-agent-sdk";
+
+for await (const message of query({
+  prompt: "Run the dashboard build pipeline. Deploy on success.",
+  options: {
+    systemPrompt: "...",
+    allowedTools: ["Bash", "Read", "Write", "mcp__slack"],
+    permissionMode: "acceptEdits",
+    mcpServers: { /* ... */ },
+  },
+})) {
+  if (message.type === "result" && message.is_error) process.exit(1);
+}
+```
+
+Notes on the shape:
+
+- `query()` is the whole surface — there is no `new ClaudeAgent(...)` class.
+- `query()` returns an **async iterable**; you iterate with `for await`. Each item is one message (system init, tool-use, tool-result, assistant text, and finally a `result` message wrapping the run).
+- The option key is `allowedTools` (not `tools`).
+- `permissionMode: "acceptEdits"` is the CI posture — no human around to answer an approval prompt.
 
 ## Env vars / secrets
 
@@ -33,5 +64,5 @@ still refreshes nightly.
 
 ## Notes
 
-- `claude-sonnet-4-7` is the model named in the chapter. Swap to whatever model is current when you clone.
-- The agent expects `~/work/dashboard/refreshers/` and `build.sh` to exist on the runner — clone Ch 23's dashboard artifacts alongside this, or adjust the system prompt paths.
+- Model selection: the SDK picks a default Claude model; override with `options.model` (use the friendly alias `"sonnet"` or `"opus"` so the setting doesn't rot when minor versions roll).
+- The agent expects the refreshers folder and `build.sh` to exist on the runner — clone Ch 23's dashboard artifacts alongside this, or adjust the system prompt paths.

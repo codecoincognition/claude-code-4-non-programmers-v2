@@ -52,9 +52,14 @@ the command at `~/work/.claude/commands/cancel-leak.md` (project-scoped, not glo
    `name | monthly_cost | last_charge_date | cancellation_url`). A synthetic sample
    ships at `work/finance/subscription-leaks.md`.
 4. Run it: *"Run cancel-leak on ~/work/finance/subscription-leaks.md."*
-   - The first cancellation runs in plan mode (you approve each click).
-   - After the first success, Claude auto-approves with guards: it pauses before
-     any final-confirmation modal, on any login/password prompt, and on any
+   - The first cancellation runs in **default per-action approval mode** (the
+     Ch 8 default `y`/`n` approve prompt, applied to the browser surface) —
+     Claude proposes each navigate/click/fill and waits for your y/n. Plan
+     mode would be read-only (describe-only), so it is *not* the right mode
+     for this command.
+   - After the first success, you hit Shift+Tab to cycle into auto-approve
+     (acceptEdits / auto mode). Claude still pauses and asks before any
+     final-confirmation modal, on any login/password prompt, and on any
      anti-automation page (falling back to computer use).
    - The only acceptable terminal state is "subscription will not renew" — any
      free-month / pause / discount / demoted-tier path is refused and escalated.

@@ -1,4 +1,13 @@
 {
+  "permissions": {
+    "allow": [
+      "Read(~/work/data/**)",
+      "Read(~/work/books/**)",
+      "Edit(~/work/books/**)",
+      "Write(~/work/books/**)",
+      "Bash(~/work/scripts/reuben-deterministic.sh)"
+    ]
+  },
   "hooks": {
     "SessionStart": [
       {
@@ -10,12 +19,6 @@
       {
         "matcher": "",
         "hooks": [{ "type": "command", "command": "~/work/scripts/audit-log.sh" }]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "matcher": "agent:reuben",
-        "hooks": [{ "type": "command", "command": "~/work/scripts/reuben-fileend.sh" }]
       }
     ]
   }

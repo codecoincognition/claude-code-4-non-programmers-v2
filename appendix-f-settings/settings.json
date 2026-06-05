@@ -81,10 +81,10 @@
     ]
   },
 
+  "apiKeyHelper": "~/work/scripts/keychain-claude-code.sh",
+
   "env": {
-    "ANTHROPIC_API_KEY_REF": "keychain:claude-code",
     "CLAUDE_DEFAULT_MODEL": "sonnet",
-    "CLAUDE_MAX_TOKENS_PER_REQUEST": "8000",
     "CLAUDE_LOG_DIR": "~/.claude/logs"
   },
 
@@ -100,19 +100,9 @@
     }
   },
 
-  "agents": {
-    "searchPaths": [
-      "~/work/.claude/agents",
-      "~/work/private-agents"
-    ]
-  },
-  "skills": {
-    "searchPaths": [
-      "~/work/.claude/skills"
-    ]
-  },
-
   "outputStyle": "concise",
-  "statusLine": "{model} | {agent} | {tokens-this-session}",
-  "theme": "dark"
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  }
 }
