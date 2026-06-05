@@ -20,23 +20,23 @@ cd ~/work && claude
 
 Then:
 
-> I want to start every Claude session in plan mode by default. First, show me the four permission modes and what each one does — then make the change in ~/work/.claude/settings.json.
+> I want to start every Claude session in plan mode by default. First, show me the main permission modes and what each one does — then make the change in ~/work/.claude/settings.json.
 
 Produces: `permissions.defaultMode = "plan"` in `work/.claude/settings.json`.
 
 ### Step 2 — See what plan mode looks like before you trust it
 
-Quit (Ctrl-C twice or `/exit`), open a fresh session, then ask for a delete you
-will refuse:
+Quit (Ctrl-C twice or `/exit`), open a fresh session, then ask for a cleanup
+that touches files:
 
 ```
 claude
 ```
 
-> Delete the file ~/work/briefs/test.md.
+> Plan a cleanup of ~/work/briefs/ — find anything older than 30 days, propose what to do with it, but do not touch anything yet.
 
-When the plan appears (`1. Delete ~/work/briefs/test.md`), answer `n`. Nothing is
-deleted. That's the leash working.
+Claude returns the plan and asks for approval before any deletion. That's the
+leash working. (You can refuse, edit the plan, or approve in bulk.)
 
 ### Step 3 — Add an allow / ask / deny list
 
@@ -54,10 +54,12 @@ Expect: auto-approve, deny-blocked, ask. One of each.
 
 ### Step 4 — Install the audit-logging hook
 
-> Now install the PreToolUse audit hook from Chapter 7's hook menu. Every time Claude is about to use any tool, append one line to ~/work/.claude/audit.log with the timestamp, the tool name, and the first 200 characters of what it's about to do. Don't block anything — just log. Save the script to ~/work/scripts/audit-log.sh and add the hook entry to settings.json.
+> Set up the every-time-you're-about-to-use-a-tool hook from Ch 7's menu — the one that lets me write a logger. Every time Claude is about to use any tool, append one line to ~/work/.claude/audit.log with the timestamp, the tool name, and the first 200 characters of what it's about to do. Don't block anything — just log. Wire it up so it runs before every tool call.
 
-Produces: `work/scripts/audit-log.sh` (15 lines, always exits 0) and the
-`PreToolUse` block in `settings.json`.
+Produces: `work/scripts/audit-log.sh` (15 lines, always exits 0) and a
+`PreToolUse` block in `settings.json` (Claude picks the right event under the
+hood — you described "every time Claude is about to use any tool" in plain
+English).
 
 Seed the log:
 
@@ -125,7 +127,7 @@ Reference: `variants/sandbox/.claude/settings.json`.
 
 ### 3. Approve once, document why
 
-> Whenever I approve a tool call manually, write a one-line note to `~/work/.claude/approvals.log` with what I approved and why I think I approved it. Use a Stop hook so it asks me at the end of each session.
+> Whenever I approve a tool call manually, write a one-line note to `~/work/.claude/approvals.log` with what I approved and why I think I approved it. Ask me at the end of each session — right when you finish.
 
 Reference: `variants/approvals-journal/.claude/settings.json` +
 `variants/approvals-journal/scripts/approvals-journal.sh`.
@@ -157,7 +159,7 @@ Reference: `variants/log-rotate/rotate-audit-log.sh` (includes the cron line).
 Three prompts from the chapter close. If all three land, you're ready for Chapter 9.
 
 1. > Confirm plan mode is on by default in this folder. Explain in one sentence what that changes about how you propose actions.
-2. > Add npm install to my allow list. Then show me the line in my audit log that captured the change.
+2. > Add git pull to my allow list. Then show me the line in my audit log that captured the change.
 3. > Tail the last 20 lines of ~/work/.claude/audit.log and tell me what the most recent tool call was.
 
 Stuck? Run:

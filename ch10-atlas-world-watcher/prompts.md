@@ -4,7 +4,7 @@ Every prompt the chapter has you type, in the order it appears.
 
 ## Step 1 — Author the Atlas agent
 
-> I want a second staff member named Atlas. His job: every weeknight, read a watchlist of competitor pricing pages, GitHub release feeds, and RSS feeds; save snapshots; diff against last week; write a signal file with anything that moved. Read-only on the public web; writes only to ~/work/atlas/. Slack DM to me on big moves. Author his agent file at ~/work/.claude/agents/atlas.md. Tools: WebFetch, browser MCP for sites that need it, mcp__github__list_releases, Read, Edit on ~/work/atlas/, mcp__slack__send_message for escalations only.
+> I want a second staff member named Atlas. His job: every weeknight, read a watchlist of competitor pricing pages, GitHub release feeds, and RSS feeds; save snapshots; diff against last week; write a signal file with anything that moved. Read-only on the public web; writes only to ~/work/atlas/. Slack DM to me on big moves. Author his agent file at ~/work/.claude/agents/atlas.md. Let him fetch web pages, use a real browser for sites that need it, read GitHub release feeds, read and write files inside ~/work/atlas/, and send a Slack message — but only for the escalations.
 
 ## Step 2 — Set up the watchlist
 
@@ -16,7 +16,7 @@ Every prompt the chapter has you type, in the order it appears.
 
 ## Step 4 — Schedule Atlas to run nightly
 
-> Schedule Atlas to run every weeknight at 11 PM. Different schedule from Iris's morning cron — she runs at 7 AM weekdays, Atlas runs at 11 PM weekdays.
+> Schedule Atlas every weeknight at 11 PM. Run it locally on this laptop, not on the cloud — Atlas writes to ~/work/atlas/, which only exists here. Different time from Iris's morning run — she's at 7 AM weekdays, Atlas at 11 PM weekdays.
 
 ## Step 5 — Simulate a week passing — Atlas's first real diff
 
@@ -36,7 +36,7 @@ Every prompt the chapter has you type, in the order it appears.
 
 ## When it goes wrong — the recovery prompt
 
-> Atlas reported a phantom pricing change on Acme last night because his fetch returned a captcha page instead of the real pricing. Update Atlas's system prompt so (a) before he trusts a fetched page, he checks: extract length must be at least 500 characters AND the page must contain a recognizable pricing keyword like "$" or "month" or "plan"; (b) if the fetch is suspicious — short, captcha-like, login-walled — Atlas writes a "fetch failed — possible bot block" signal instead of a confident-but-wrong one; (c) in those cases he does NOT overwrite the snapshot for that source, so the diff stays clean for the next real fetch; (d) escalate only after two consecutive successful, real fetches. Show me both the system prompt diff and how Atlas now handles a fake captcha snapshot.
+> Atlas woke me at 11 PM about a fake price change — turns out his fetch got a captcha page instead of the real Acme pricing. Fix him: before he trusts a fetched page, make him sanity-check it actually looks like a pricing page (long enough, has a dollar sign or "month" or "plan" somewhere). If the page looks like a captcha or a login wall, have him write "fetch failed — possible bot block" instead of pretending he saw a price change, and don't overwrite the last good snapshot. And don't escalate to Slack unless two real fetches in a row both confirm the change. Show me what changed and walk me through how he'd now handle a captcha night.
 
 ## Make it yours — five follow-up prompts
 

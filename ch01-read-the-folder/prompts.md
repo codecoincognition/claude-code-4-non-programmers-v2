@@ -17,7 +17,7 @@ Open Claude in your home folder first:
 
     Read everything in ~/Downloads. Don't move or delete anything. Do three things in one pass:
 
-    1. Write a categorized report to ~/Downloads/to-act-on.md. Include: types and counts of files, anything flagged as a duplicate (use byte-hash, not just filenames), anything that looks like an action — contracts, invoices, subscription confirmations.
+    1. Write a categorized report to ~/Downloads/to-act-on.md. Include: types and counts of files, anything that looks like a duplicate (check the actual file contents, not just the names — three contracts can share a filename and be totally different files), anything that looks like an action — contracts, invoices, subscription confirmations.
 
     2. Find the subscription confirmation PDFs and also write ~/work/finance/subscription-leaks-draft.md — a four-column markdown table: name | monthly_cost | last_charge_date | cancellation_url. Pull dollar amounts and cancellation links from the confirmation bodies. For last_charge_date, use the email confirmation date — Chapter 2 will sharpen it against the bank.
 

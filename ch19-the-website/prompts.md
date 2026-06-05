@@ -45,19 +45,19 @@ Answers, batched:
 
 ### Step 4 — The form JS
 
-> Now the script.js. The form submits to /api/submit. We'll build that serverless function in step 5. For now, write the JS that POSTs to /api/submit and shows a success state on 200, an error message on 400/500, and a "try again" link if the user's network drops mid-submit. No external libraries. ~25 lines of vanilla JS.
+> Write the form-submit JavaScript — when the form is submitted, send it to /api/submit, show a success message if it worked, an error message if it didn't, and a "try again" link if their internet dropped. Keep it tiny. No libraries.
 
 ---
 
 ### Step 5 — The serverless function
 
-> Now build the serverless function at ~/work/site/launch/api/submit.ts. It should: (1) accept POST requests with JSON body {name, email, company}, (2) reject if the honeypot field "website" has any value, (3) validate email regex, name length, all three required fields present, (4) write a row to my Notion "Leads" database — I have a Notion integration token I'll paste once into Vercel's environment variables, and the database ID I'll add too, (5) return JSON {success: true} on 200 or {success: false, message} on validation failure, (6) include CORS headers so the form can call /api/submit from the same domain. Show me the function in full. ~40 lines of TypeScript.
+> Build the backend bit that catches the form. It should: take the name/email/company from the form, ignore submissions where the hidden spam-trap field has anything in it, check the email looks real and all three fields are there, write a row to my Notion Leads database (I'll paste the token into Vercel's settings), say success or fail, and let the form on my page call it without being blocked. Show me the whole thing.
 
 ---
 
 ### Step 6 — The invisible layer
 
-> Now the invisible layer that makes the page actually rank and look right when shared. (a) Meta tags + OG card so when someone pastes the URL in Slack it shows a real preview. (b) Generate the OG image (1200x630 PNG) at build time from the headline — write a small Node script that uses @vercel/og to render it. (c) Schema.org Event + Offer markup so Google can render rich results. (d) PostHog analytics — track three events: page_view, cta_click, form_submit_success. Use anonymous tracking — no cookies; PostHog has an option for that. Show me the diff to index.html and any new files.
+> Now the invisible stuff that makes the page show up well when shared and rank in Google. (a) The little preview that pops up when someone pastes the link in Slack. (b) Auto-make the preview image from the headline. (c) The hidden tags Google uses to know this is an event with a price (so it shows up nicely in search results). (d) PostHog for analytics — cookie-free — tracking page views, button clicks, and successful sign-ups. Show me the diff to index.html and any new files.
 
 ---
 
@@ -69,7 +69,7 @@ Answers, batched:
 
 ### Step 8 — A/B test the headline
 
-> Set up an A/B test on the hero headline. Variant A is what we have now. Variant B is "Stop guessing what to charge for tier 2." Cookie-based 50/50 split. Tag every PostHog event with the variant. Don't use any A/B-test SaaS — write the cookie + variant selection in 15 lines of vanilla JS. Important: both headlines must be the same character count to avoid layout shift.
+> Set up an A/B test on the hero headline. Variant A is what we have now. Variant B is "Stop guessing what to charge for tier 2." Half the visitors see A, half see B — use a cookie to pin which one each person sees so they don't flip-flop. Tag every PostHog event with which version they saw. No third-party A/B-test tool. Keep the cookie-and-pick code tiny. Important: both headlines must be the same character count to avoid layout shift.
 
 ---
 

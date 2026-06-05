@@ -4,11 +4,11 @@ Every prompt from the chapter, verbatim and in order.
 
 ## Step 1 — Author the Echo agent
 
-> I want to hire a fourth staff member named Echo. His job: read my outbound Gmail (Sent folder, last 7 days) and Calendar (meetings I ran, last 7 days), cross-reference against my Notion CRM database, and propose the missing or stale CRM entries. He NEVER writes to Notion. He only writes proposals to ~/work/echo/proposed-{date}.md. Author his agent file at ~/work/.claude/agents/echo.md. Tools: mcp__gmail__search (with from:me filter), mcp__gmail__read_thread, mcp__calendar__list_events, mcp__notion__query_database (read), mcp__notion__retrieve_page (read), Read, Edit on ~/work/echo/. Explicitly NOT in his allowlist: any Notion create, update, or delete tool against the CRM database.
+> I want to hire a fourth staff member named Echo. His job: read my outbound Gmail (Sent folder, last 7 days) and Calendar (meetings I ran, last 7 days), cross-reference against my Notion CRM database, and propose the missing or stale CRM entries. He NEVER writes to Notion. He only writes proposals to ~/work/echo/proposed-{date}.md. Author his agent file at ~/work/.claude/agents/echo.md. Let him search my sent mail, read threads, look at my calendar, query and read pages in my Notion CRM database, and read/edit files inside ~/work/echo/. He must NOT have any tool that creates, updates, or deletes pages in Notion.
 
 ## Step 2 — Lock the asymmetry at the settings level
 
-> Add the Notion CRM write tools to the deny list in ~/work/.claude/settings.json, scoped to the CRM database ID — defense in depth, the same way we did for Gmail send in chapter 9. Iris and other agents that legitimately write to OTHER Notion databases (the Tasks DB, the Project Notes DB) should stay unaffected.
+> Block any Notion write tools on my deny list in ~/work/.claude/settings.json — defense in depth, same way we did for Gmail send in chapter 9. I know the deny list can only match tool names (not specific database IDs), so this is broad — we'll tighten it to just the CRM database in a separate hook later.
 
 ## Step 3 — Run Echo's first reconciliation pass
 
@@ -62,7 +62,7 @@ Every prompt from the chapter, verbatim and in order.
 
 **6. Raw-lead-never-promoted, the fourth mismatch.**
 
-> Add a fourth mismatch category to Echo. The Notion Leads database (the one the launch landing page from Chapter 19 writes to) collects raw form submissions. Some of those leads get promoted into the CRM as prospects; some don't, and that's fine — wrong fit, missed-the-window, the form was a tire-kicker. But sometimes a real lead falls through the crack. Echo should propose any lead in the Leads DB that is more than 7 days old and has no matching CRM contact (match on email) and no 'Lost' or 'Dead' status set on the lead row itself. Add `mcp__notion__query_database` against the Leads DB ID to his allowlist (read only — no write tools added). The proposal lands in the daily queue under a new section: 'Raw lead, never promoted.'
+> Add a fourth mismatch category to Echo. The Notion Leads database (the one the launch landing page from Chapter 19 writes to) collects raw form submissions. Some of those leads get promoted into the CRM as prospects; some don't, and that's fine — wrong fit, missed-the-window, the form was a tire-kicker. But sometimes a real lead falls through the crack. Echo should propose any lead in the Leads DB that is more than 7 days old and has no matching CRM contact (match on email) and no 'Lost' or 'Dead' status set on the lead row itself. Let him read the Leads DB — point him at the ID from CLAUDE.md, read only, no write tools. The proposal lands in the daily queue under a new section: 'Raw lead, never promoted.'
 
 ## Test yourself in 60 seconds (chapter-end)
 

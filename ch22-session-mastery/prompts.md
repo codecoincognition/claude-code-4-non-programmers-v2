@@ -26,11 +26,11 @@ chapter introduces them, then the full English prompts.
 - `/context`
 
 ### Devon Scenario 4 — Model and effort
-- `/model claude-opus-4-7`
+- `/model opus`
 - `/effort high`
 - `ultrathink — read orchestrator.md, kill-switch.sh, and the last 200 lines of escalations.log. There's a double-ping bug. Either the orchestrator is double-dispatching deploys-monitor on rapid escalations, or the kill-switch matcher is failing to deduplicate. Pin which one. Show me the evidence and the proposed fix.`
-- `/effort default`
-- `/model claude-sonnet-4-7`
+- `/effort medium`
+- `/model sonnet`
 - `/plan` (or Shift+Tab) — enter plan mode for the risky production step
 
 ### Marketplaces

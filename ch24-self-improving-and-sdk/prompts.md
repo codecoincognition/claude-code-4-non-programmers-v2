@@ -12,20 +12,20 @@ Every prompt the chapter has the reader type, in the order they appear.
 
 ---
 
-**2. /insights-to-skills — pattern 1 (morning calendar follow-up)**
+**2. Distill pattern 1 into a skill (morning calendar follow-up)**
 
 ```
-/insights-to-skills --pattern 1
+Read the /insights report above. Pattern 1 — the post-/triage calendar conflict check — appears in 12 of 18 mornings with verbatim wording 9 of 12 times. Draft a skill at ~/work/.claude/skills/morning-conflict-check.md that captures it. Ask me before writing the file. Before authoring, ask the gating question: "Are you going to keep doing this for the next quarter, or is this a habit you're about to change?"
 ```
 
 Gate answer Devon gives: *"yes, keep doing this for at least the next quarter."*
 
 ---
 
-**3. /insights-to-skills — pattern 2 (Friday summary)**
+**3. Distill pattern 2 into a skill (Friday summary)**
 
 ```
-/insights-to-skills --pattern 2
+Same drill for pattern 2 — the Friday "summarize my week, file under journal/" prompt. Draft a skill, ask me the gating question first, only write the file if I say yes.
 ```
 
 Gate answer Devon gives: *"changing in two weeks; don't generate."* (Skill is NOT authored.)
@@ -35,7 +35,7 @@ Gate answer Devon gives: *"changing in two weeks; don't generate."* (Skill is NO
 **4. Author the meta-judge for Iris**
 
 ```
-Author a meta-judge agent at ~/work/.claude/agents/meta-judge.md. Its job: read Iris's output (the Notion Tasks DB rows + Project Notes pages Iris wrote in the last 24 hours), grade each one against three criteria — was the routing correct (action vs FYI vs commit), is the auto-drafted reply on tone, did Iris respect any thread tags I'd set manually. Surface disagreements as a Slack ping, one ping per disagreement, with the Notion link inline. Run on a daily schedule at 8:30 AM, before /triage.
+Author a meta-judge agent at ~/work/.claude/agents/meta-judge.md. Its job: read Iris's output (the Notion Tasks DB rows + Project Notes pages Iris wrote in the last 24 hours), grade each one against three criteria — was the routing correct (action vs FYI vs commit), is the auto-drafted reply on tone, did Iris respect any thread tags I'd set manually. Surface disagreements as a Slack ping, one ping per disagreement, with the Notion link inline. Keep the agent file itself free of scheduling metadata — I'll wire scheduling separately.
 ```
 
 ---
@@ -51,7 +51,7 @@ Author a meta-judge agent at ~/work/.claude/agents/meta-judge.md. Its job: read 
 **6. Build the Agent SDK script for the dashboard CI build**
 
 ```
-Build me an Agent SDK script that runs the dashboard build in a CI runner. The script should: read the same six refresher scripts in ~/work/dashboard/refreshers/, run the build (the build.sh I reviewed in Ch 23), deploy via Vercel, and post the deploy URL to my Slack #devon-deploys channel. File it at ~/work/sdk/dashboard-ci/. Include package.json, the script, a GitHub Actions workflow file, and a README explaining the env vars I need.
+Build me an Agent SDK script that runs the dashboard build automatically (not on my laptop — somewhere in the cloud that runs jobs). It should run the same six refresher scripts I already have, run build.sh, deploy to Vercel, and post the deploy URL to my Slack channel #devon-deploys. Put it in ~/work/sdk/dashboard-ci/. Include the package file, the script, the cloud-job config, and a README telling me which keys to set.
 ```
 
 ---

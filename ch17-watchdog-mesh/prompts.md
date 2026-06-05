@@ -16,11 +16,14 @@ Every prompt the chapter has you type, in sequence.
 
 ## Step 4 — Install the kill-switch hook
 
-> Add a PreToolUse hook to ~/work/.claude/settings.json that intercepts any tool call from the watchdog orchestrator at tier escalate (or any irreversible side-effect call from any monitor) and requires my explicit confirmation before proceeding. Hook should log every interception to ~/work/watchdog/escalations.log regardless of decision.
+> Add the kill-switch hook to ~/work/.claude/settings.json — intercept any tool call from the watchdog orchestrator at tier escalate (or any irreversible side-effect from any monitor) and require my explicit confirmation before it goes through. Use whichever hook event fires before a tool runs. Log every interception to ~/work/watchdog/escalations.log no matter what I decide.
+
+(Claude picks the right event — it's a `PreToolUse` hook in `settings.json`,
+the same primitive from Ch 7 and Ch 8.)
 
 ## Step 5 — Schedule the orchestrator
 
-> Schedule the orchestrator to run every 15 minutes during weekdays from 7 AM to 11 PM Eastern. Outside those hours, it should be silent.
+> Schedule the orchestrator to run every 15 minutes during weekdays from 7 AM to 11 PM Eastern on this Mac mini. Outside those hours, it should be silent. The mesh has to run on my hardware, not in someone else's cloud.
 
 ## Step 6 — Force one canonical escalation cycle
 
@@ -36,7 +39,7 @@ Every prompt the chapter has you type, in sequence.
 
 ## When it goes wrong — postmortem
 
-> Eleven false-positive escalations overnight from deploys-monitor — queued Vercel builds and queued Buffer posts were both treated as failed. Two fixes I want, in order: (1) read deploys-monitor.md and tighten the rubric per source: a Vercel build is failed only if it transitioned to error or sat in building past 10 minutes; a Buffer post is failed only if its scheduled time has passed and Buffer reports a non-200 response; a dashboard build is failed only if the cron job exited non-zero. Any queued state before the relevant deadline is all_clear. (2) Update the kill-switch hook so HIGH-tier confirmations require something stronger than auto-passthrough — at minimum a tap-to-confirm on my phone, ideally a typed code. Show me both diffs.
+> Eleven false-positive escalations overnight from deploys-monitor — queued Vercel builds and queued Buffer posts were both treated as failed. Two fixes I want, in order: (1) read deploys-monitor.md and tighten the rubric: a Vercel build only counts as failed if it actually errored or got stuck building for more than 10 minutes; a Buffer post only counts as failed if its scheduled time has passed AND Buffer says it didn't go through; a dashboard build only counts as failed if the scheduled job ended with an error. Anything still queued before its deadline is all_clear. (2) Update the kill-switch hook so HIGH-tier confirmations require something stronger than auto-passthrough — at minimum a tap-to-confirm on my phone, ideally a typed code. Show me both diffs.
 
 ## Make it yours — five variations
 

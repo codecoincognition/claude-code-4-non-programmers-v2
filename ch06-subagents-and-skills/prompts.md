@@ -28,7 +28,7 @@ Then see what Claude wrote:
 
 ## Step 3 — Show the difference, concretely
 
-    Now read the same docs yourself, in this conversation, and answer the same question. Then tell me how many tokens of documentation you loaded versus what the subagent used.
+    Now read the same docs here in our main conversation and answer the same question. Then tell me — in plain English — how much of my conversation space got chewed up versus how little came back when the subagent did it.
 
 ---
 

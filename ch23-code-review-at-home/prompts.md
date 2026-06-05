@@ -19,7 +19,7 @@ Review the three files I authored today: ~/work/dashboard/build.sh, ~/work/.clau
 ### Step 3 — /security-review on the cancellation slash command
 
 ```
-Apply both fixes from the cancel-leak.md review. Move the Stripe key to ~/.env and update the slash command to reference $STRIPE_API_KEY. Tighten the auto-approval threshold to verified URL + DOM landmark match.
+Apply both fixes from the cancel-leak.md review. Move the Stripe key to ~/.env and update the slash command to reference $STRIPE_API_KEY. Tighten the auto-approve threshold to require both a verified URL and a recognizable page element (like the page's main heading).
 ```
 
 ### Step 4 — /sandbox on the kill-switch shell script
@@ -30,8 +30,12 @@ Apply both kill-switch.sh fixes from the sandbox results — input length valida
 
 ### Step 5 — /batch — apply one fix to many files at once
 
+(Devon's scene in the chapter — Maya watches while he runs `/batch` on a
+fleet migration. Same prompt shape applies to any same-pattern sweep across
+multiple files.)
+
 ```
-All six refresher scripts in ~/work/dashboard/refreshers/ should follow the same error-handling pattern that /simplify proposed for build.sh — set -euo pipefail at the top, exit-code propagation. Apply that pattern to all six in parallel. Show me a per-file diff before commit.
+/batch migrate every fetch() call in ~/work/dashboard/src/ to use the new typed-client.ts wrapper. Update import lines accordingly. Update any tests that mock the old fetch client to mock the typed client instead. Decompose into per-feature-directory units; one PR per unit.
 ```
 
 ### Step 6 — Consolidate the review session
@@ -47,7 +51,7 @@ Author ~/work/.claude/commands/review-mine.md — a slash command that runs the 
 ```
 
 ```
-Author ~/work/.claude/auto-mode-hints.md — three rules I learned today: .claude/commands/ files are slash commands and get /security-review (not /simplify); shell scripts always /sandbox first; same-pattern files in a folder of 3+ get /batch. Auto mode reads this file at session start.
+Author ~/work/.claude/auto-mode-hints.md — three rules I learned today: .claude/commands/ files are slash commands and get /security-review (not /simplify); shell scripts always /sandbox first; codebase-wide sweeps where each unit warrants its own PR get /batch (and require a git repo). Auto mode reads this file at session start.
 ```
 
 ---
@@ -57,7 +61,7 @@ Author ~/work/.claude/auto-mode-hints.md — three rules I learned today: .claud
 ### Step 8 — Devon scopes the review to the PR diff
 
 ```
-/review-mine — files changed in PR #284. Use auto mode. I want the security-review lens emphasized; this PR adds an authentication endpoint. Run /sandbox on any new shell scripts. /batch any pattern that repeats across files. File the review at ~/work/reviews/pr-284/.
+/review-mine — files changed in PR #284. Use auto mode. I want the security-review lens emphasized; this PR adds an authentication endpoint. Run /sandbox on any new shell scripts. File the review at ~/work/reviews/pr-284/.
 ```
 
 ---

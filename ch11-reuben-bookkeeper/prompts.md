@@ -14,13 +14,13 @@ cp ~/work/companion/ch11-reuben-bookkeeper/data/transactions.csv.sample ~/work/d
 
 ## Step 1 — Write the deterministic core first
 
-> My transactions for the last 90 days are in ~/work/data/transactions.csv — date, amount, description, the bank's category. I want a small shell script that reads this CSV deterministically: total inflow, total outflow, monthly grouping, balance over time. No AI in this script — I want exact arithmetic I can verify. Save it to ~/work/scripts/reuben-deterministic.sh. Show me sample output.
+> My transactions for the last 90 days are in ~/work/data/transactions.csv — date, amount, description, the bank's category. For the numbers I don't want AI guessing — I want exact arithmetic I can check by hand: total inflow, total outflow, the monthly grouping, and the balance over time. Build me something that computes those exactly from the CSV every time, with no AI in the math part. Show me sample output.
 
 ---
 
 ## Step 2 — Author the Reuben agent
 
-> Author the Reuben agent at ~/work/.claude/agents/reuben.md. His job: read the deterministic script's output AND the raw CSV, then categorize transactions (office supplies, software, travel, client revenue, contractor expense, etc.), spot anomalies (any transaction more than 2 standard deviations from the monthly mean for its category), and write a one-page narrative for the month. He NEVER does arithmetic himself — every number in his narrative comes from the deterministic script, quoted verbatim. Tools: Read on ~/work/data/ and ~/work/books/, Edit on ~/work/books/ only, Bash limited to ~/work/scripts/reuben-deterministic.sh. Output goes to ~/work/books/pnl-{month}.md.
+> Author the Reuben agent at ~/work/.claude/agents/reuben.md. His job: read the deterministic script's output AND the raw CSV, then categorize transactions (office supplies, software, travel, client revenue, contractor expense, etc.), spot anomalies (any transaction more than 2 standard deviations from the monthly mean for its category), and write a one-page narrative for the month. He NEVER does arithmetic himself — every number in his narrative comes from the deterministic script, quoted verbatim. Let him read files in ~/work/data/ and ~/work/books/, edit only files in ~/work/books/, and run only the one script — reuben-deterministic.sh. Output goes to ~/work/books/pnl-{month}.md.
 
 ---
 
@@ -30,19 +30,23 @@ cp ~/work/companion/ch11-reuben-bookkeeper/data/transactions.csv.sample ~/work/d
 
 ### Step 3 extension — add the Marketing section
 
-> Extend Reuben to add a Marketing section to the monthly P&L. Read the Notion Leads database (the one the Chapter 19 landing page writes to) for rows submitted in the target month, group by utm_source and utm_campaign, count leads per source, and divide the campaign cost (read from ~/work/data/ad-spend-{month}.csv) by lead count to get cost per lead. Reuben's numerical-fidelity discipline applies — the deterministic script computes the counts and the division; the agent narrates. Add the section to ~/work/books/pnl-{month}.md after "What changed vs. last month."
+> Extend Reuben to add a Marketing section to the monthly P&L. Read the Notion Leads database (the one the Chapter 19 landing page writes to) for rows submitted in the target month, group by utm_source and utm_campaign, count leads per source, and divide the campaign cost (read from ~/work/data/ad-spend-{month}.csv) by lead count to get cost per lead. Same rule as before — the script does the math, Reuben writes the words. Add the section to ~/work/books/pnl-{month}.md after "What changed vs. last month."
 
 ---
 
-## Step 4 — Install the SessionEnd hook
+## Step 4 — Add an end-of-run hook on Reuben
 
-> Install a SessionEnd hook from Chapter 7's hook menu. When a Reuben session ends, check if a new month has been completed since the last Reuben run. If yes, confirm ~/work/books/pnl-{month}.md exists and write a one-line note to ~/work/books/filing-log.md. If no month has crossed, do nothing. Save the script to ~/work/scripts/reuben-fileend.sh and add the hook entry to settings.json.
+> Set up a hook on Reuben's agent file that fires when he finishes a run. Check if a new month has been completed since the last Reuben run. If yes, confirm ~/work/books/pnl-{month}.md exists and write a one-line note to ~/work/books/filing-log.md. If no month has crossed, do nothing.
+
+(Claude wires this through Reuben's frontmatter as a `Stop` event — converted
+to `SubagentStop` when he runs as a subagent — so it fires only when Reuben
+finishes, not at the end of every session.)
 
 ---
 
 ## Step 5 — See the hook with and without a month boundary
 
-> Simulate the SessionEnd hook firing on May 5 with last filing for April (a fresh month — should act). Then simulate it firing on May 5 with last filing for May (no crossing — should do nothing). Walk me through what happens in each case.
+> Simulate Reuben's end-of-run hook firing on May 5 with last filing for April (a fresh month — should act). Then simulate it firing on May 5 with last filing for May (no crossing — should do nothing). Walk me through what happens in each case.
 
 ---
 
