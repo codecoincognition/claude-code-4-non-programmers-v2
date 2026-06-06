@@ -75,13 +75,13 @@ Answers, batched:
 
 ### Step 9 — Auto-redeploy on edit
 
-> When I edit any file in ~/work/site/launch/, Vercel should auto-redeploy when my Claude session ends. Update ~/work/.claude/settings.json: add a Stop hook scoped to ~/work/site/launch/** that runs `vercel deploy --prod --yes` and writes the deploy URL to ~/work/site/launch/.last-deploy.log. Show me the diff to settings.json.
+> When I edit any file inside ~/work/site/launch/, Vercel should auto-redeploy when my Claude session ends. Update ~/work/.claude/settings.json: add a Stop hook scoped to anything I change in that folder, that runs the Vercel production deploy and writes the deploy URL to ~/work/site/launch/.last-deploy.log. Show me the diff to settings.json.
 
 ---
 
 ### Step 10 — When it goes wrong (the near-miss)
 
-> The Vercel deploy succeeded but /api/submit returns INTERNAL_SERVER_ERROR. Check the build log via `vercel inspect`, find the root cause, fix it, redeploy, and verify the form submits successfully end-to-end. Also: add a CI step that runs `npm run build` locally before any vercel deploy, so a missing-dependency bug like this fails fast in my own terminal instead of in production at 10 PM.
+> My Vercel deploy went green but the form's submit endpoint is throwing a server error. Read the build log (`vercel inspect`), find what broke, fix it, and verify the form goes through. Also: make sure the same kind of missing-package bug catches locally next time — before it hits production at 10 PM.
 
 ---
 

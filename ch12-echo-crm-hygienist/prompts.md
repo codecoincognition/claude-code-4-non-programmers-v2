@@ -8,7 +8,7 @@ Every prompt from the chapter, verbatim and in order.
 
 ## Step 2 — Lock the asymmetry at the settings level
 
-> Block any Notion write tools on my deny list in ~/work/.claude/settings.json — defense in depth, same way we did for Gmail send in chapter 9. I know the deny list can only match tool names (not specific database IDs), so this is broad — we'll tighten it to just the CRM database in a separate hook later.
+> Block any Notion write tools on my deny list in ~/work/.claude/settings.json — the second lock, same way we did for Gmail send in chapter 9. I know the deny list can only match tool names (not specific database IDs), so this is broad — we'll tighten it to just the CRM database in a separate hook later.
 
 ## Step 3 — Run Echo's first reconciliation pass
 
