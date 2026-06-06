@@ -128,13 +128,17 @@ triage-session, review-mine, etc.) as part of larger workflows.
 
 A hook is a shell command that Claude Code runs in response to a lifecycle
 event: `SessionStart`, `SessionEnd`, `PreToolUse`, `PostToolUse`, `Stop`,
-`UserPromptSubmit`, and a handful of others. Hooks are configured in the
-`hooks` block of `settings.json`. Each event type can have multiple hooks; each
-hook can be scoped by a matcher (only fire for `Bash` tool calls, only for
-specific MCP tools, etc.). The hook script receives the relevant event context
-via environment variables (e.g. `$CLAUDE_TOOL_INPUT` for the command being
-about to run) and can do anything a shell script can do — log, audit, gate,
-notify, refuse.
+`SubagentStop`, `UserPromptSubmit`, `Notification`, and a handful of others.
+Hooks are configured in the `hooks` block of `settings.json`. Each event type
+can have multiple hooks; each hook can be scoped by a matcher (only fire for
+`Bash` tool calls, only for specific MCP tools, etc.). The hook script receives
+the event payload as JSON on **stdin** — read it with `jq` or a `python3 -c`
+one-liner; environment variables are NOT how the payload is delivered, despite
+what shell intuition suggests. The script can do anything a shell script can
+do — log, audit, gate, notify, refuse. The exit code is the gate signal: only
+`exit 2` blocks the action for most events (other non-zero codes log stderr
+but don't block); `exit 0` continues; `WorktreeCreate` is the documented
+exception where any non-zero fails creation.
 
 Hooks are how the book moves Claude from "an interactive tool you sit in front
 of" to "infrastructure that runs whether you're at the keyboard or not." The
@@ -156,9 +160,11 @@ Chapter 8 frames the safety side (deny lists, audit log). Chapters 11, 17, 19,
 
 ### Cross-cutting layer A — Skills (Chapter 14)
 
-A skill is a Markdown file in `.claude/skills/{name}.md` that Claude loads
-automatically into context when the skill's description matches the current
-task. Skills are how you teach Claude *style* and *standing rules* without
+A skill is a Markdown file Claude loads automatically into context when the
+skill's description matches the current task. The canonical layout is a
+directory at `.claude/skills/{name}/` containing a `SKILL.md` (so the skill
+can ship supporting files alongside it); a flat `.claude/skills/{name}.md`
+also works for single-file skills with no extra assets. Skills are how you teach Claude *style* and *standing rules* without
 shouting them in every prompt — your writing voice, your debugging conventions,
 your code-review checklist. Like subagents, skills are discovered from fixed
 paths (`~/.claude/skills/` and `.claude/skills/` and their sub-directories).
@@ -250,17 +256,18 @@ Claude wants to use a tool not on the `allow` list — *"allow this once / alway
 / never"* — writes to `settings.local.json` for the *always* case so the
 choice persists.
 
-**Plan mode.** A modal state Claude Code enters (manually with `/plan` or
-automatically for high-risk operations) where the model is restricted to
-read-only tool calls until the user approves a written plan. Plan mode is the
-runtime expression of the discipline Chapter 0.3 introduces: *describe before
-mutate*. The model proposes a plan; the user reads it; the user green-lights;
-the model executes. For destructive operations, plan mode is the cheapest
-safety net — cheaper than an interactive deny, more permissive than a hard
-block in `settings.json`. Engineers building tooling on top of Claude Code
-should treat plan mode as a first-class state: any prompt that might mutate
-the user's filesystem or external state should reach plan mode before any
-write.
+**Plan mode.** A modal state Claude Code enters manually (the user prefixes
+a prompt with `/plan` or cycles into plan mode via Shift+Tab) where the model
+is restricted to read-only tool calls and writes a structured plan instead of
+executing. Plan mode is the runtime expression of the discipline Chapter 0.3
+introduces: *describe before mutate*. The model proposes a plan; the user reads
+it; the user picks an execution mode at the ExitPlanMode gate (auto / accept
+edits / review each edit / keep planning); only then does execution begin. For
+destructive operations, plan mode is the cheapest safety net — cheaper than
+an interactive deny, more permissive than a hard block in `settings.json`.
+Engineers building tooling on top of Claude Code should treat plan mode as a
+first-class state: any prompt that might mutate the user's filesystem or
+external state should reach plan mode before any write.
 
 ---
 
