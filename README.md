@@ -1,5 +1,20 @@
 # Claude Code for Non-Programmers (2nd Edition) — Companion Repo
 
+# Claude Code for Non-Programmers (2nd Edition)
+### From First Prompt to AI Operator — by Vikas Sah
+
+[![Available on Amazon](https://img.shields.io/badge/Amazon-Get_the_Book-orange?logo=amazon)](https://www.amazon.com/Claude-Code-Non-Programmers-2nd-Comprehensive/dp/B0H4HCR368/)
+
+This is the official companion repository for
+**[*Claude Code for Non-Programmers (2nd Edition)*](https://www.amazon.com/Claude-Code-Non-Programmers-2nd-Comprehensive/dp/B0H4HCR368/)** —
+the comprehensive, jargon-free guide to building AI agents without writing code.
+
+Follow Maya, an everyday marketer, as she goes from her first prompt to running
+a fleet of AI agents — an inbox router, a bookkeeper, a watchdog, and more —
+that work while she sleeps.
+
+📘 **[Get the book on Amazon →](https://www.amazon.com/Claude-Code-Non-Programmers-2nd-Comprehensive/dp/B0H4HCR368/)**
+
 **The book is self-contained.** Every prompt, every artifact, and every step you need is printed in *Claude Code for Non-Programmers (2nd Edition)* by Vikas Sah — you can read it cover to cover and build everything without ever opening this repository. This repo is **extras**: ready-to-clone copies of the files each chapter has you create, plus richer variants, fixtures, and recovery artifacts so you can skip the typing, dry-run safely, or check your work against a known-good copy. Think of it as the answer key and the parts bin, not the textbook.
 
 ## How to use this repo
