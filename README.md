@@ -1,6 +1,6 @@
 # Claude Code for Non-Programmers (2nd Edition) — Companion Repo
 
-# Claude Code for Non-Programmers (2nd Edition)
+## Claude Code for Non-Programmers (2nd Edition)
 ### From First Prompt to AI Operator — by Vikas Sah
 
 [![Available on Amazon](https://img.shields.io/badge/Amazon-Get_the_Book-orange?logo=amazon)](https://www.amazon.com/Claude-Code-Non-Programmers-2nd-Comprehensive/dp/B0H4HCR368/)
