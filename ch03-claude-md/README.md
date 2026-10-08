@@ -6,7 +6,6 @@ This chapter builds the one file Claude reads at the top of every session in you
 
 ### `work/` — copy this into your `~/work/`
 - `work/CLAUDE.md` — Maya's final six-line boot script (4 borrowed + 2 hers). The exact file from Step 5.
-- `work/.claude/settings.local.json` — the deny list from Chapter 0.3 (already present at the start of Chapter 3; included so the starting position matches the book).
 - `work/.claude/commands/.gitkeep` — empty placeholder, filled in Chapter 4.
 - `work/.claude/agents/.gitkeep` — empty placeholder, filled in Chapters 6 / 9-12.
 - `work/.claude/skills/.gitkeep` — empty placeholder, filled in Chapters 6 / 15.
@@ -25,7 +24,7 @@ Same four behavioral lines, different two contextual lines. Pick the one closest
 
 ## How to use
 1. Copy `work/CLAUDE.md` to your `~/work/CLAUDE.md` (or pick a `variants/` file, rename it to `CLAUDE.md`, and edit the two contextual lines for your real folder and fences).
-2. Copy the empty placeholders if you want the full anatomy on disk now: `cp -R work/.claude ~/work/.claude` (skip `settings.local.json` if you already set up your own deny list in Chapter 0.3).
+2. Copy the empty placeholders if you want the full anatomy on disk now: `cp -R work/.claude ~/work/.claude`. The deny list `settings.local.json` is not in this folder; it comes from Chapter 0.3 (`../ch00.3-two-safety-habits/`).
 3. Quit and restart Claude in `~/work/` — `CLAUDE.md` is read at session start, so a running session won't see a file you just created. Look for `Reading CLAUDE.md... loaded.` in the boot output.
 4. Run the litmus test on every line: *"would removing this line cause you to make an actual mistake?"* Cut anything that fails.
 

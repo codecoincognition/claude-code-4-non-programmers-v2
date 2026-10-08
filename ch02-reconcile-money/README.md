@@ -23,11 +23,9 @@ ch02-reconcile-money/
 ├── fixtures/
 │   └── README.md                     ← how the private-data inputs work (Gmail/HubSpot/Stripe)
 └── work/                             ← this is your ~/work/ as it looks after Chapter 2
-    ├── .claude/
-    │   └── settings.local.json       ← the ~/work/ fence (Read/Write/Edit scoped to ~/work/**)
     ├── finance/
     │   ├── bank-statement-2026-Q3.csv        INPUT  — 847 rows, one quarter, DEBIT/CREDIT
-    │   ├── stripe-payouts-2026-Q3.csv        INPUT  — 43 payouts, gross-of-fees
+    │   ├── stripe-payouts-2026-Q3.csv        INPUT  — 43 payouts, payouts only (no fees)
     │   ├── subscription-leaks-draft.md       FROM CH1 — email-derived, not yet bank-confirmed
     │   ├── 2026-Q3-reconciliation.md         OUTPUT — exec summary + revenue recon + spend breakdown
     │   ├── subscription-leaks.md             OUTPUT — CANONICAL, 4 cols / 7 rows (Ch 21 reads this)
@@ -77,7 +75,7 @@ each subscription through browser automation. It expects this exact shape:
 - four columns: `name | monthly_cost | last_charge_date | cancellation_url`
 - seven rows
 - total: **$84.00/mo ≈ $1,008/yr** (this is the number Chapter 21's
-  "the book pays for itself thirty-three times over" line runs off)
+  "$1,008 a year, recovered in twenty-three minutes" line runs off)
 
 Don't rename it, don't change the columns, don't drop rows.
 

@@ -16,7 +16,7 @@ to swap in the real thing.
 |------------------------------------|-----------------------------------------------------|
 | Bank statement CSV                 | `work/finance/bank-statement-2026-Q3.csv` (847 rows)|
 | Stripe payouts export              | `work/finance/stripe-payouts-2026-Q3.csv` (43 rows) |
-| Subscription-confirmation emails (Gmail) | `work/finance/subscription-leaks-draft.md` (already distilled to 7 rows by Chapter 1) |
+| Subscription-confirmation PDFs (saved emails in `~/Downloads`) | `work/finance/subscription-leaks-draft.md` (already distilled to 7 rows by Chapter 1) |
 | Corporate-card statement           | `work/finance/amex-2026-Q3.csv`                     |
 | Last year's bank statement         | `work/finance/2025-bank-statement.csv`              |
 | Receipts (PDF/photo/Gmail forward) | `work/expenses/2026-Q3/receipt-*.txt` (2 stand-ins) |
@@ -30,10 +30,10 @@ flagged anomalies).
 
 ## Why nothing private is shipped
 
-- **Gmail receipts / subscription emails.** These live in your inbox. Chapter 1
-  already turned them into `subscription-leaks-draft.md`; Chapter 2 only needs
-  that draft, not the raw emails. To regenerate the draft from your own inbox,
-  re-run Chapter 1 against your real Gmail.
+- **Subscription confirmation emails.** Chapter 1 read the ones you saved as
+  PDFs in `~/Downloads` and turned them into `subscription-leaks-draft.md`;
+  Chapter 2 only needs that draft, not the raw emails. To regenerate the draft
+  from your own files, re-run Chapter 1 against your real `~/Downloads`.
 - **HubSpot / Stripe exports.** Download these from your own dashboards
   (HubSpot → Contacts → Export; Stripe → Customers → Export). Drop them into
   `work/customers/` with the same filenames and the make-it-yours prompts work

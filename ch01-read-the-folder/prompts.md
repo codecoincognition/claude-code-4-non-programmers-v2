@@ -78,3 +78,7 @@ After you read and approve the move plan:
     Read ~/work/finance/subscription-leaks-draft.md back to me and tell me the total monthly cost across the seven rows.
 
     Run a describe-only pass on ~/Desktop. Don't move anything. Show me the categorization first.
+
+If you get stuck:
+
+    audit my Chapter 1 setup against the chapter spec

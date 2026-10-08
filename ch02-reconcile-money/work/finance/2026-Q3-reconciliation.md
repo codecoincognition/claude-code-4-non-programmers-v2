@@ -8,9 +8,9 @@ Of $11.2k in Stripe gross revenue, $1.2k (Bolt Inc., 2026-08-14) appears in Stri
 
 41 of 43 Stripe payouts ($8,200 of $11,200 gross) reconcile cleanly against bank credits within the standard 1-3 business day ACH window.
 
-One payout ($1,200, 2026-08-14, customer: Bolt Inc.) does not appear on the bank side as of 2026-09-30. The most common cause is an ACH return — the customer's bank reversed the transfer days after Stripe recorded it as paid out. Recommended: check Stripe's dashboard for the dispute / failure status on that payout, then chase the customer or refund the corresponding invoice.
+One payout ($1,200, 2026-08-14, customer: Bolt Inc.) does not appear on the bank side as of 2026-09-30. The most common cause is an ACH return, the customer's bank reversed the transfer days after Stripe recorded it as paid out. Recommended: check Stripe's dashboard for the dispute / failure status on that payout, then chase the customer or refund the corresponding invoice.
 
-A second payout ($1,800, 2026-09-29, customer: Acme Corp) shows up as a bank credit on 2026-10-02. That's the quarter boundary — it's Q4 cash, not Q3. Not an anomaly; just a timing note.
+A second payout ($1,800, 2026-09-29, customer: Acme Corp) shows up as a bank credit on 2026-10-02. That's the quarter boundary, it's Q4 cash, not Q3. Not an anomaly; just a timing note.
 
 ## Spend breakdown
 

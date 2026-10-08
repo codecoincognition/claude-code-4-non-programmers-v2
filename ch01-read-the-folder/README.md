@@ -14,7 +14,6 @@ move pass*.
 
 | Path | Purpose |
 |---|---|
-| `work/.claude/settings.local.json` | The deny/allow list Maya already has saved before the chapter starts — keeps writes inside `~/work/`, blocks secrets, blocks `rm`/`sudo`. Copy into your `~/work/.claude/`. |
 | `work/finance/subscription-leaks-draft.md` | The exact 4-column / 7-row subscription table Claude writes in Step 1. **Load-bearing through Chapter 21** — don't rename the columns. Chapter 2 reads it, Chapter 21 acts on it. |
 | `Downloads/to-act-on.md` | The categorized describe-pass report Claude writes in Step 1, with the contracts / invoices / subscriptions / duplicates / junk sections. |
 | `prompts.md` | Every prompt from the chapter, verbatim and in order: Steps 1–3, the "when it goes wrong" recovery prompt, the five make-it-yours prompts, and the 60-second self-test. |
@@ -24,8 +23,9 @@ move pass*.
 ## How to use
 
 1. Copy `work/` into your home directory so it lands as `~/work/` — this gives you
-   `~/work/.claude/settings.local.json` (the safety fences) and
    `~/work/finance/subscription-leaks-draft.md` (the seed file Chapter 2 reads).
+   The deny list Maya already has saved at `~/work/.claude/settings.local.json`
+   comes from Chapter 0.3 (`../ch00.3-two-safety-habits/`).
 2. The `Downloads/to-act-on.md` here is a *reference* of what your own report will
    look like. When you run the chapter, Claude writes a fresh one against your real
    `~/Downloads/`.

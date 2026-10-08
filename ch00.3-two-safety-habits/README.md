@@ -1,15 +1,16 @@
 # Chapter 0.3 — Two Safety Habits
 
-This chapter sets up the **floor of safety** for everything that follows in the book. It's two habits:
+This chapter sets up the **floor of safety** for everything that follows in the book. It's two habits and one file:
 
-1. A 3-rule deny block in `settings.local.json` that blocks the three commands most likely to ruin your day.
-2. The habit of always reading proposed changes before approving them.
+1. **Read-before-running.** When Claude proposes an action, read the *path* and the *verb* before you say go. Two seconds.
+2. **The pause reflex.** When Claude is about to delete, send, post, transfer, or pay, stop, breathe, re-read. Five verbs. The list doesn't grow.
 
-This folder ships the file from habit #1.
+The file is a 3-rule deny block in `settings.local.json` that catches the worst categories of accident while the habits become reflex. This folder ships that file.
 
 ## What's in this folder
 
 - [`work/.claude/settings.local.json`](./work/.claude/settings.local.json) — the canonical 3-rule deny block. Copy this into your own `~/work/.claude/settings.local.json`.
+- [`prompts.md`](./prompts.md) — every prompt from the chapter, in order.
 
 ## The 3-rule deny block
 
@@ -18,7 +19,7 @@ This folder ships the file from habit #1.
   "permissions": {
     "deny": [
       "Bash(rm -rf *)",
-      "Bash(rm * ~/work/**)",
+      "Bash(rm -rf ~/work *)",
       "Bash(sudo *)"
     ]
   }
@@ -27,11 +28,11 @@ This folder ships the file from habit #1.
 
 Three rules, in plain English:
 
-- `Bash(rm -rf *)` — block the classic "delete everything recursively" command.
-- `Bash(rm * ~/work/**)` — block any `rm` that targets anything inside `~/work/`.
-- `Bash(sudo *)` — block anything that asks for admin privileges.
+- `Bash(rm -rf *)` — never run a command that recursively deletes.
+- `Bash(rm -rf ~/work *)` — never recursively delete the work folder. This protects the staff files you'll build across the rest of the book.
+- `Bash(sudo *)` — never run a command with administrator privileges. If something legitimately needs sudo, you type it yourself in the terminal.
 
-Note the **space before `*`** in each rule. That spacing matters — it's a pattern match, not a glob, and the leading space is part of the canonical form.
+One honest note from the chapter: Bash rules match the command string, not the file path, so a clever Bash pattern can't reliably fence a whole folder. The strongest path-based protection is the OS-level sandbox (Appendix B) and the audit hook in Chapter 8. The three rules are a useful floor, not the ceiling.
 
 ## This is the floor, not the ceiling
 
