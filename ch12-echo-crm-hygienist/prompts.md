@@ -62,7 +62,7 @@ Every prompt from the chapter, verbatim and in order.
 
 **6. Raw-lead-never-promoted, the fourth mismatch.**
 
-> Add a fourth mismatch category to Echo. The Notion Leads database (the one the launch landing page from Chapter 19 writes to) collects raw form submissions. Some of those leads get promoted into the CRM as prospects; some don't, and that's fine — wrong fit, missed-the-window, the form was a tire-kicker. But sometimes a real lead falls through the crack. Echo should propose any lead in the Leads DB that is more than 7 days old and has no matching CRM contact (match on email) and no 'Lost' or 'Dead' status set on the lead row itself. Let him read the Leads DB — point him at the ID from CLAUDE.md, read only, no write tools. The proposal lands in the daily queue under a new section: 'Raw lead, never promoted.'
+> Add a fourth mismatch category to Echo. The Notion Leads database (the one the launch landing page from Chapter 20 writes to) collects raw form submissions. Some of those leads get promoted into the CRM as prospects; some don't, and that's fine — wrong fit, missed-the-window, the form was a tire-kicker. But sometimes a real lead falls through the crack. Echo should propose any lead in the Leads DB that is more than 7 days old and has no matching CRM contact (match on email) and no 'Lost' or 'Dead' status set on the lead row itself. Let him read the Leads DB — point him at the ID from CLAUDE.md, read only, no write tools. The proposal lands in the daily queue under a new section: 'Raw lead, never promoted.'
 
 ## Test yourself in 60 seconds (chapter-end)
 

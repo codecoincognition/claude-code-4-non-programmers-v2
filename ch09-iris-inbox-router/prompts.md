@@ -71,7 +71,7 @@ frontmatter — you described "when Iris finishes," Claude picked the event.)
 > Swap the Notion target for Asana. `mcp__notion__create_page` becomes `mcp__asana__create_task`; `mcp__notion__append_block` becomes `mcp__asana__add_to_project`. Routing taxonomy stays. Update CLAUDE.md to point at the Asana project IDs and re-issue Iris's file.
 
 **6. Personalized follow-ups for the launch funnel.**
-> Extend Iris to read new rows in the Notion Leads database (the one the launch landing page from Chapter 19 writes to). Each morning, for any lead row created in the last 24 hours that doesn't already have a follow-up draft, draft a personalized email in my voice using `your-tone.md` from Chapter 14, save it to Gmail Drafts with the subject 'Re: your registration', and add a 'Followup drafted' line to the Iris queue. Add a Notion query tool against the Leads DB ID in CLAUDE.md to her allowlist (read only). She still never sends.
+> Extend Iris to read new rows in the Notion Leads database (the one the launch landing page from Chapter 20 writes to). Each morning, for any lead row created in the last 24 hours that doesn't already have a follow-up draft, draft a personalized email in my voice using `your-tone.md` from Chapter 15, save it to Gmail Drafts with the subject 'Re: your registration', and add a 'Followup drafted' line to the Iris queue. Add a Notion query tool against the Leads DB ID in CLAUDE.md to her allowlist (read only). She still never sends.
 
 ## Test yourself in 60 seconds
 

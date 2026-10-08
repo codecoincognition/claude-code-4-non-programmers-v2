@@ -30,7 +30,7 @@ cp ~/work/companion/ch11-reuben-bookkeeper/data/transactions.csv.sample ~/work/d
 
 ### Step 3 extension — add the Marketing section
 
-> Extend Reuben to add a Marketing section to the monthly P&L. Read the Notion Leads database (the one the Chapter 19 landing page writes to) for rows submitted in the target month, group by utm_source and utm_campaign, count leads per source, and divide the campaign cost (read from ~/work/data/ad-spend-{month}.csv) by lead count to get cost per lead. Same rule as before — the script does the math, Reuben writes the words. Add the section to ~/work/books/pnl-{month}.md after "What changed vs. last month."
+> Extend Reuben to add a Marketing section to the monthly P&L. Read the Notion Leads database (the one the Chapter 20 landing page writes to) for rows submitted in the target month, group by utm_source and utm_campaign, count leads per source, and divide the campaign cost (read from ~/work/data/ad-spend-{month}.csv) by lead count to get cost per lead. Same rule as before — the script does the math, Reuben writes the words. Add the section to ~/work/books/pnl-{month}.md after "What changed vs. last month."
 
 ---
 

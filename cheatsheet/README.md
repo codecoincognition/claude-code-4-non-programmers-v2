@@ -1,6 +1,6 @@
 # Power-User Command Cheat Sheet
 
-A printable, one-page lookup for every power-user command in *Claude Code for Nonprogrammers* (chapters 22-24). This is the companion-repo copy of **Appendix I**.
+A printable, one-page lookup for every power-user command in *Claude Code for Nonprogrammers* (chapters 23-25). This is the companion-repo copy of **Appendix I**.
 
 ## What's here
 

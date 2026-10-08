@@ -32,7 +32,7 @@ The eight jobs you run from a fresh `claude` session most mornings.
 - **Crosses:** Four newsroom agents (editor, researcher, fact-checker, headline) +
   their shared task file `~/work/newsroom/board.md`.
 - **Artifact:** A status table appended to `~/work/journal/standup-{date}.md`.
-- **Taught in:** Ch 15.
+- **Taught in:** Ch 16.
 
 > What is each newsroom agent working on right now? For each one: current task, last
 > completed artifact, anything blocking. If two agents are working on the same input,
@@ -65,7 +65,7 @@ The eight jobs you run from a fresh `claude` session most mornings.
 - **Crosses:** Notion Leads database + campaign-cost CSV `~/work/data/ad-spend-{month}.csv`
   + the `your-tone.md` skill.
 - **Artifact:** A one-page digest → `~/work/marketing/leads-digest-{week}.md`.
-- **Taught in:** Ch 19.
+- **Taught in:** Ch 20.
 
 > Pull last 7 days of rows from the Notion Leads DB. Group by utm_source then
 > utm_campaign. Compute cost per lead from the campaign-cost CSV. Write the digest in
@@ -85,7 +85,7 @@ The eight jobs you run from a fresh `claude` session most mornings.
 ### 7 — Watchdog mesh status
 - **Crosses:** Four watchdog monitors + orchestrator agent + shared event log.
 - **Artifact:** A 24-hour anomaly summary → `~/work/journal/watchdog-{date}.md`.
-- **Taught in:** Ch 17.
+- **Taught in:** Ch 18.
 
 > Ask the watchdog mesh what it noticed in the last 24 hours that I should care about.
 > Filter: things that crossed a threshold, things that stopped firing, things that
@@ -133,7 +133,7 @@ Jobs that *build* things. Each produces a file in `.claude/`.
 - **Crosses:** An existing skill file (the tone-of-voice skill) as template + the
   trigger condition + the skills folder.
 - **Artifact:** `.claude/skills/{NAME}.md`.
-- **Taught in:** Ch 14.
+- **Taught in:** Ch 15.
 
 > Write a skill at `.claude/skills/[NAME].md` for [TASK]. Read `.claude/skills/your-tone.md`
 > for the shape. The trigger should fire when [SITUATION]. Keep it under 30 lines.
@@ -153,7 +153,7 @@ Jobs that *build* things. Each produces a file in `.claude/`.
 - **Crosses:** An existing MCP server's source folder + the new tool spec + a smoke test.
 - **Artifact:** A new tool function in `~/work/mcp-servers/personal-data/`, plus a test
   entry, plus one console run of the smoke test.
-- **Taught in:** Ch 13.
+- **Taught in:** Ch 14.
 
 > Add a tool called [NAME] to my custom MCP at `~/work/mcp-servers/personal-data/`. It
 > takes [INPUTS] and returns [OUTPUT]. Pattern-match the existing tools in the same
@@ -162,7 +162,7 @@ Jobs that *build* things. Each produces a file in `.claude/`.
 ### 14 — Author the verify script
 - **Crosses:** The agent file + the watchdog's nightly runner + a known-good test input.
 - **Artifact:** `run-and-verify.sh` next to the agent file.
-- **Taught in:** Ch 17.
+- **Taught in:** Ch 18.
 
 > Write `run-and-verify.sh` for the agent in `.claude/agents/[NAME].md`. Minimum: a
 > smoke test the watchdog can run nightly that exits 0 if the agent still works and
@@ -173,7 +173,7 @@ Jobs that *build* things. Each produces a file in `.claude/`.
 - **Crosses:** The session transcript + the pattern in the last three prompts + the
   skills folder.
 - **Artifact:** `.claude/skills/{NAME}.md`.
-- **Taught in:** Ch 14.
+- **Taught in:** Ch 15.
 
 > That thing we just did — turn it into a skill at `.claude/skills/[NAME].md`. The
 > trigger is [SITUATION]. The instructions are exactly what you and I just worked
@@ -183,7 +183,7 @@ Jobs that *build* things. Each produces a file in `.claude/`.
 - **Crosses:** PostHog events (the `headline_variant` super-property) + the Notion
   Leads database (conversion rows) + a stats helper that computes confidence intervals.
 - **Artifact:** A one-paragraph readout → `~/work/marketing/ab-tests/{date}.md`.
-- **Taught in:** Ch 19.
+- **Taught in:** Ch 20.
 
 > Read PostHog events for the last 14 days, split by `headline_variant` super-property.
 > Join against the Notion Leads DB to compute conversion rate per variant. Compute the
@@ -196,7 +196,7 @@ Jobs that *build* things. Each produces a file in `.claude/`.
   a scheduled job.
 - **Artifact:** A new monitor under `.claude/agents/watchdog/`, plus a cron entry, plus
   a Slack ping configured.
-- **Taught in:** Ch 17.
+- **Taught in:** Ch 18.
 
 > Build me a watchdog that pings me if [AGENT] hasn't run in 48h, or if its last run
 > had a non-zero exit, or if its output is empty when it shouldn't be. Use the same
@@ -285,13 +285,13 @@ The Karpathy rule sits underneath all six: *paste what you saw, ask what broke*.
 ## "When something feels off" jobs (6)
 
 The soft-signal set. These catch drift before it becomes incident. Run most of these
-during the Sunday governance hour (Ch 26).
+during the Sunday governance hour (Ch 27).
 
 ### 25 — Cost trend check
 - **Crosses:** 30 days of `/cost` output by agent + a baseline from the prior 30 days +
   Appendix B's "what blows up your bill" list.
 - **Artifact:** A trend table → `~/work/journal/cost-{week}.md` with anomalies flagged.
-- **Taught in:** Ch 26.
+- **Taught in:** Ch 27.
 
 > Pull the last 30 days of token spend by agent. Anything bending up that wasn't
 > bending up last week? For each anomaly, hypothesis on cause. Cross-reference
@@ -299,10 +299,10 @@ during the Sunday governance hour (Ch 26).
 
 ### 26 — Conversion-rate trend audit
 - **Crosses:** The Notion Leads database (last 7 days vs. trailing 4-week average) + the
-  dashboard's leads-by-source tile (Ch 21) + the watchdog-mesh's funnel-anomaly source
-  (Ch 17).
+  dashboard's leads-by-source tile (Ch 22) + the watchdog-mesh's funnel-anomaly source
+  (Ch 18).
 - **Artifact:** A trend table → `~/work/marketing/conversion-trend-{week}.md`.
-- **Taught in:** Ch 19.
+- **Taught in:** Ch 20.
 
 > Compute this week's conversion rate by source from the Notion Leads DB. Compare to
 > the trailing 4-week average. For any source where this week is more than 50% below
@@ -314,7 +314,7 @@ during the Sunday governance hour (Ch 26).
   output's content.
 - **Artifact:** A list grouped into "trigger never fired" vs. "agent broke quietly" →
   `~/work/journal/quiet-{week}.md`.
-- **Taught in:** Ch 17.
+- **Taught in:** Ch 18.
 
 > Which agents haven't fired in the last seven days? For each one, tell me whether the
 > trigger never fired (no input matched) or the agent broke quietly (errored or
@@ -324,7 +324,7 @@ during the Sunday governance hour (Ch 26).
 - **Crosses:** Hook overhead measurements + MCP latency samples + CLAUDE.md size +
   session timing.
 - **Artifact:** Numbers showing the actual bottleneck, plus a proposed fix.
-- **Taught in:** Ch 22.
+- **Taught in:** Ch 23.
 
 > My sessions feel slower this week. Find the actual bottleneck: hook overhead, MCP
 > latency, CLAUDE.md size, or something else. Measure, don't guess. Show me the numbers
@@ -347,7 +347,7 @@ during the Sunday governance hour (Ch 26).
   graph (which agent calls which skill).
 - **Artifact:** An audit grouped into never-used / used-once / duplicates / conflicts →
   `~/work/journal/garden-{quarter}.md`. No changes applied.
-- **Taught in:** Ch 26.
+- **Taught in:** Ch 27.
 
 > Read every file in `.claude/`. Tell me what's stale, redundant, or contradictory.
 > Don't change anything yet — just the audit. Group by: never-used, used-once,
@@ -361,7 +361,7 @@ during the Sunday governance hour (Ch 26).
   unhelpful output back, say *"this didn't help — what would have helped,"* and let
   Claude refine the prompt with you.
 - The four categories map back to four chapters' worth of pattern: daily-drivers to
-  Ch 7, agent-authoring to Ch 6 / Ch 13 / Ch 14, debugging to Appendix E, "feels off"
-  to Ch 17 and Ch 26.
+  Ch 7, agent-authoring to Ch 6 / Ch 14 / Ch 15, debugging to Appendix E, "feels off"
+  to Ch 18 and Ch 27.
 - If a job here surprises you, walk back to its taught-in chapter — that's where the
   surrounding shape lives.

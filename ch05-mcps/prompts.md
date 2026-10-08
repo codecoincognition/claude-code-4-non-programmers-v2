@@ -64,7 +64,7 @@ If it comes back wrong, empty, or partial — debug each MCP individually first:
 
 ## Step 6 — Install Slack and Buffer (parked until later)
 
-> Add the Slack MCP and the Buffer MCP. We won't use them today, but Chapter 9 needs Slack and Chapter 16 needs Buffer. Install both, OAuth me through them, and confirm both show up in the list.
+> Add the Slack MCP and the Buffer MCP. We won't use them today, but Chapter 9 needs Slack and Chapter 17 needs Buffer. Install both, OAuth me through them, and confirm both show up in the list.
 
 ## Step 7 — List everything with one-line glosses
 

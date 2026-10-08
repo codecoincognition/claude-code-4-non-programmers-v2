@@ -1,4 +1,4 @@
-# subscription-leaks (canonical; Ch 20 reads this file)
+# subscription-leaks (canonical; Ch 21 reads this file)
 
 | name                  | monthly_cost | last_charge_date | cancellation_url                              |
 |-----------------------|--------------|------------------|-----------------------------------------------|

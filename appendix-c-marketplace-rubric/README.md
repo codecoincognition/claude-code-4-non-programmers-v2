@@ -33,7 +33,7 @@ appendix's rubric and diagnostic prompt — so you don't have to retype it.
 
 ## Cross-links
 
-- Authoring your own: Ch 13 (MCP), Ch 14 (skill).
+- Authoring your own: Ch 14 (MCP), Ch 15 (skill).
 - Scoped permission profiles for Tier 3: the named profiles from Ch 8;
   Appendix F shows the shape.
 - Signature verification is complementary, not a substitute — signatures don't

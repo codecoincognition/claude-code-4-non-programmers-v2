@@ -9,7 +9,7 @@ This chapter builds the one file Claude reads at the top of every session in you
 - `work/.claude/settings.local.json` — the deny list from Chapter 0.3 (already present at the start of Chapter 3; included so the starting position matches the book).
 - `work/.claude/commands/.gitkeep` — empty placeholder, filled in Chapter 4.
 - `work/.claude/agents/.gitkeep` — empty placeholder, filled in Chapters 6 / 9-12.
-- `work/.claude/skills/.gitkeep` — empty placeholder, filled in Chapters 6 / 14.
+- `work/.claude/skills/.gitkeep` — empty placeholder, filled in Chapters 6 / 15.
 
 ### `variants/` — the five "Make it yours" templates
 Same four behavioral lines, different two contextual lines. Pick the one closest to you, rename it to `CLAUDE.md`, and edit the contextual lines to fit your real folder and your real fences.

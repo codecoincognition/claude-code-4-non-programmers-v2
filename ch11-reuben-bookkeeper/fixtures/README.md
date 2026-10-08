@@ -2,7 +2,7 @@
 
 Most of Reuben's input is the `transactions.csv` you export from your own
 bank (a real file you download). The chapter's **Marketing-section extension**
-(Step 3) pulls one additional input from a Notion database that your Chapter 19
+(Step 3) pulls one additional input from a Notion database that your Chapter 20
 landing page writes to. We do **not** ship anyone's private Notion data here —
 instead this folder documents the input *shape* so you can wire your own, plus
 a tiny synthetic sample.
@@ -30,7 +30,7 @@ cp data/transactions.csv.sample ~/work/data/transactions.csv
 
 ## 2. The Notion Leads database (Marketing extension only)
 
-The Chapter 19 landing page captures each form submission into a Notion
+The Chapter 20 landing page captures each form submission into a Notion
 "Leads" database. Reuben reads it through the Notion MCP — there is no file
 to ship. The columns the extension prompt expects:
 

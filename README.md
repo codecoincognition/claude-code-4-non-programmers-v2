@@ -21,7 +21,7 @@ that work while she sleeps.
 
 Each `chNN-*` folder mirrors exactly what that chapter builds. The convention is the same throughout:
 
-- **`work/`** — the contents that belong in *your* working folder. Copy them into your `~/work/` (preserving the layout). This is where the carried-forward `.claude/` configuration, output files, and scaffolding live. Many artifacts are load-bearing across chapters (Chapter 1's subscription table is still being read in Chapter 20), so keep the folder structure and filenames intact.
+- **`work/`** — the contents that belong in *your* working folder. Copy them into your `~/work/` (preserving the layout). This is where the carried-forward `.claude/` configuration, output files, and scaffolding live. Many artifacts are load-bearing across chapters (Chapter 1's subscription table is still being read in Chapter 21), so keep the folder structure and filenames intact.
 - **`work/.claude/`** — the project-level Claude Code configuration (settings, agents, skills, commands, hooks) for that chapter. Copy this into your project's `.claude/` directory to start from the chapter's end-state instead of building it prompt by prompt.
 - **`fixtures/`** — safe synthetic stand-in data so you can dry-run a prompt before pointing Claude at your real Gmail, Downloads, or finances. The chapters read *your* private data; fixtures let you rehearse without it.
 - **`prompts.md`** — every prompt from the chapter, verbatim and in order (main steps, the "when it goes wrong" recovery prompts, and the make-it-yours variations).
@@ -45,20 +45,20 @@ Workflow: read the chapter, then `git clone` this repo, copy the matching `chNN-
 | 10 — Atlas, your watch on the world | A world-watcher subagent that monitors external signals on a schedule. | [`ch10-atlas-world-watcher`](./ch10-atlas-world-watcher) |
 | 11 — Reuben, the bookkeeper | A bookkeeper hire showing how scheduled, data-driven agents are wired together. | [`ch11-reuben-bookkeeper`](./ch11-reuben-bookkeeper) |
 | 12 — Echo, the CRM hygienist | A daily CRM-hygiene agent — the fourth staff member of Part III. | [`ch12-echo-crm-hygienist`](./ch12-echo-crm-hygienist) |
-| 13 — Your first custom MCP server | Cross from installing other people's MCPs to writing your own. | [`ch13-custom-mcp`](./ch13-custom-mcp) |
-| 14 — Your first custom skill | Turn your writing voice into a reusable skill file from three of your own samples. | [`ch14-custom-skill`](./ch14-custom-skill) |
-| 15 — The newsroom | A four-agent newsroom: a parent orchestrator coordinating specialist subagents. | [`ch15-newsroom`](./ch15-newsroom) |
-| 16 — The launch crew | A five-agent crew under one parent folder that ships a launch. | [`ch16-launch-crew`](./ch16-launch-crew) |
-| 17 — The watchdog mesh | A reactive orchestrator that runs on a schedule and dispatches watchdogs. | [`ch17-watchdog-mesh`](./ch17-watchdog-mesh) |
-| 18 — The deck your boss asked for | A multi-source deck composer: Claude reads inputs and assembles a presentation. | [`ch18-the-deck`](./ch18-the-deck) |
-| 19 — The landing page that converts | A webinar-registration landing page built as two layers. | [`ch19-the-website`](./ch19-the-website) |
-| 20 — Browser and computer use | Claude drives a real browser (Claude-in-Chrome MCP) and falls back to computer use. | [`ch20-browser-and-computer-use`](./ch20-browser-and-computer-use) |
-| 21 — The dashboard that replaced six browser tabs | A self-refreshing stakeholder dashboard from one static HTML file. | [`ch21-the-dashboard`](./ch21-the-dashboard) |
-| 22 — Session mastery and the latest surface | The session command surface: eleven commands and one mindset. | [`ch22-session-mastery`](./ch22-session-mastery) |
-| 23 — Code review at home | A personal code-review surface built on top of Claude. | [`ch23-code-review-at-home`](./ch23-code-review-at-home) |
-| 24 — Self-improving and the SDK | A self-improving automation loop, a meta-judge agent, and moving scheduled work into CI via the Agent SDK. | [`ch24-self-improving-and-sdk`](./ch24-self-improving-and-sdk) |
-| 25 — Your second brain | An llm-wiki: a plain-Markdown knowledge base with Obsidian as the visualizer and Claude as the writer. | [`ch25-second-brain`](./ch25-second-brain) |
-| 26 — The Sunday-night governance hour | The closing chapter — no new primitives. Two practices (the weekly governance hour, the three-question rubric for firing an agent) and the two artifacts they produce. | [`ch26-coda`](./ch26-coda) |
+| 13 — Your first custom MCP server | Cross from installing other people's MCPs to writing your own. | [`ch14-custom-mcp`](./ch14-custom-mcp) |
+| 14 — Your first custom skill | Turn your writing voice into a reusable skill file from three of your own samples. | [`ch15-custom-skill`](./ch15-custom-skill) |
+| 15 — The newsroom | A four-agent newsroom: a parent orchestrator coordinating specialist subagents. | [`ch16-newsroom`](./ch16-newsroom) |
+| 16 — The launch crew | A five-agent crew under one parent folder that ships a launch. | [`ch17-launch-crew`](./ch17-launch-crew) |
+| 17 — The watchdog mesh | A reactive orchestrator that runs on a schedule and dispatches watchdogs. | [`ch18-watchdog-mesh`](./ch18-watchdog-mesh) |
+| 18 — The deck your boss asked for | A multi-source deck composer: Claude reads inputs and assembles a presentation. | [`ch19-the-deck`](./ch19-the-deck) |
+| 19 — The landing page that converts | A webinar-registration landing page built as two layers. | [`ch20-the-website`](./ch20-the-website) |
+| 20 — Browser and computer use | Claude drives a real browser (Claude-in-Chrome MCP) and falls back to computer use. | [`ch21-browser-and-computer-use`](./ch21-browser-and-computer-use) |
+| 21 — The dashboard that replaced six browser tabs | A self-refreshing stakeholder dashboard from one static HTML file. | [`ch22-the-dashboard`](./ch22-the-dashboard) |
+| 22 — Session mastery and the latest surface | The session command surface: eleven commands and one mindset. | [`ch23-session-mastery`](./ch23-session-mastery) |
+| 23 — Code review at home | A personal code-review surface built on top of Claude. | [`ch24-code-review-at-home`](./ch24-code-review-at-home) |
+| 24 — Self-improving and the SDK | A self-improving automation loop, a meta-judge agent, and moving scheduled work into CI via the Agent SDK. | [`ch25-self-improving-and-sdk`](./ch25-self-improving-and-sdk) |
+| 25 — Your second brain | An llm-wiki: a plain-Markdown knowledge base with Obsidian as the visualizer and Claude as the writer. | [`ch26-second-brain`](./ch26-second-brain) |
+| 26 — The Sunday-night governance hour | The closing chapter — no new primitives. Two practices (the weekly governance hour, the three-question rubric for firing an agent) and the two artifacts they produce. | [`ch27-coda`](./ch27-coda) |
 
 A [`cheatsheet`](./cheatsheet) folder collects the quick-reference material.
 
@@ -73,7 +73,7 @@ A [`cheatsheet`](./cheatsheet) folder collects the quick-reference material.
 
 ## If you wandered in here as an engineer
 
-This book is written for non-programmers, but the artifacts are real, inspectable code and configuration. For per-chapter detail, read that chapter's own `README.md` — each one documents the files it ships, what's load-bearing across chapters, and where state lives (registry entries and auth tokens deliberately stay out of the repo, in `~/.claude.json` and your OS Keychain). For the architecture view across all 26 chapters — the five extension layers, the three-layer architecture from Ch 24, permission and plan-mode semantics — read [`ENGINEER-GUIDE.md`](./ENGINEER-GUIDE.md) at the root of this repo.
+This book is written for non-programmers, but the artifacts are real, inspectable code and configuration. For per-chapter detail, read that chapter's own `README.md` — each one documents the files it ships, what's load-bearing across chapters, and where state lives (registry entries and auth tokens deliberately stay out of the repo, in `~/.claude.json` and your OS Keychain). For the architecture view across all 26 chapters — the five extension layers, the three-layer architecture from Ch 25, permission and plan-mode semantics — read [`ENGINEER-GUIDE.md`](./ENGINEER-GUIDE.md) at the root of this repo.
 
 ## License
 

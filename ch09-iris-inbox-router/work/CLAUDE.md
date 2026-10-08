@@ -19,7 +19,7 @@ the ID (with or without dashes — both work).
 ## Leads DB (used by Iris's launch-funnel extension — "Make it yours" #6)
 
 - **Leads DB ID:** `REPLACE_WITH_YOUR_NOTION_LEADS_DB_ID`
-  Written to by the launch landing page (Chapter 19). Iris reads new rows here
+  Written to by the launch landing page (Chapter 20). Iris reads new rows here
   to draft personalized follow-ups.
 
 ## Who's who (helps Iris route)

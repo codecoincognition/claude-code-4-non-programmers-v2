@@ -3,7 +3,7 @@
 Companion repo for Chapter 2 of *Claude Code for Non-Programmers*.
 
 Two CSV files. Ten minutes. A categorized P&L narrative Maya hands to her
-co-founder, plus the canonical seven-row leak file Chapter 20 reads to cancel
+co-founder, plus the canonical seven-row leak file Chapter 21 reads to cancel
 each subscription. None of it happens in a chat window — it all happens where
 the files live.
 
@@ -30,7 +30,7 @@ ch02-reconcile-money/
     │   ├── stripe-payouts-2026-Q3.csv        INPUT  — 43 payouts, gross-of-fees
     │   ├── subscription-leaks-draft.md       FROM CH1 — email-derived, not yet bank-confirmed
     │   ├── 2026-Q3-reconciliation.md         OUTPUT — exec summary + revenue recon + spend breakdown
-    │   ├── subscription-leaks.md             OUTPUT — CANONICAL, 4 cols / 7 rows (Ch 20 reads this)
+    │   ├── subscription-leaks.md             OUTPUT — CANONICAL, 4 cols / 7 rows (Ch 21 reads this)
     │   ├── vendor-categories.md              the vendor-name-drift fix (read me first each run)
     │   ├── amex-2026-Q3.csv                  make-it-yours prompt 1 (corporate card)
     │   └── 2025-bank-statement.csv           make-it-yours prompt 4 (Schedule C draft)
@@ -71,12 +71,12 @@ ch02-reconcile-money/
 
 ## The canonical leak file — do not change its shape
 
-`work/finance/subscription-leaks.md` is the file **Chapter 20** opens to cancel
+`work/finance/subscription-leaks.md` is the file **Chapter 21** opens to cancel
 each subscription through browser automation. It expects this exact shape:
 
 - four columns: `name | monthly_cost | last_charge_date | cancellation_url`
 - seven rows
-- total: **$84.00/mo ≈ $1,008/yr** (this is the number Chapter 20's
+- total: **$84.00/mo ≈ $1,008/yr** (this is the number Chapter 21's
   "the book pays for itself thirty-three times over" line runs off)
 
 Don't rename it, don't change the columns, don't drop rows.
