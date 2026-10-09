@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(rm * ~/work/**)",
+      "Bash(sudo *)",
+      "mcp__gmail__send_*"
+    ]
+  }
+}

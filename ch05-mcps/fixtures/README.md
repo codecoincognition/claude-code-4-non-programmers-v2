@@ -17,7 +17,7 @@ The finished brief these inputs roll up into lives at `../work/inbox/2026-Q4-pri
 |--------|-----|--------------------------|-----------------|
 | Gmail | `gmail` | Unread threads from the last 12 hours — subject + sender + a one-line gist. | OAuth (browser). Read + draft scopes only; never sends. |
 | Calendar | `calendar` | Today's events — time + title. | OAuth (browser). Read + create; no delete. |
-| Notion | `notion` | Pages that mention you, updated in the last 24h — title + author + a note on contents. | Integration token (paste). Only pages shared with the "Claude Code" integration are visible. |
+| Notion | `notion` | Pages that mention you, updated in the last 24h — title + author + a note on contents. | OAuth (browser). Only pages shared with the "Claude Code" integration are visible. |
 
 None of these come from a file in your repo. The MCP talks directly to each service. The `*-sample.md` files here are illustrations only.
 

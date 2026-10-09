@@ -64,18 +64,10 @@ Walk me through the three layers — slash commands, subagents, SDK. For each of
 
 ---
 
-**8. Cowork dispatch evaluation**
+**8. Author the insights-config gate file (When-it-goes-wrong recovery)**
 
 ```
-For the dashboard build that now runs in GitHub Actions, evaluate whether moving it to Claude Cowork dispatch instead would be better. Compare cost over a month, compare reliability, compare the operations overhead. Be honest about cowork's GA status as of the date of this evaluation.
-```
-
----
-
-**9. Author the insights-config gate file (When-it-goes-wrong recovery)**
-
-```
-Author ~/work/.claude/insights-config.md with the gate question and any other policies for /insights-to-skills. The gate question must fire before every skill commit, not just the first one. Default answer is "no — don't author" if I don't respond within 60 seconds. Better to under-author than over-author.
+Author ~/work/.claude/insights-config.md as the policy file I'll reference in every "distill a pattern into a skill" prompt. The gate question must fire before every skill commit, not just the first one. Default answer is "no — don't author" if I don't respond within 60 seconds. Better to under-author than over-author.
 ```
 
 ---
@@ -98,7 +90,7 @@ Author ~/work/.claude/insights-config.md with the gate question and any other po
 
 ## Chapter-end "test yourself" prompts
 
-1. *Run `/insights` against last month's session history. Confirm the gate fires before any new skill auto-installs.*
+1. *Run `/insights` against last month's session history. Confirm the gate fires before any new skill is authored.*
 2. *Open `~/work/.claude/three-layer.md` and tell me which jobs live at slash, subagent, and SDK layers.*
 3. *Show me `~/work/sdk/dashboard-ci/` and confirm the GitHub Actions workflow is wired to run nightly.*
 

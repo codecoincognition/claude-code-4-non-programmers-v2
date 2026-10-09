@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(rm * ~/work/**)",
+      "Bash(sudo *)",
+      "mcp__gmail__send_*",
+      "mcp__notion__create_page",
+      "mcp__notion__update_page",
+      "mcp__notion__delete_page"
+    ]
+  }
+}

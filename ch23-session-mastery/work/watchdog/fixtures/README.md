@@ -1,13 +1,15 @@
 # Watchdog fixtures
 
-The watchdog mesh, orchestrator, and kill-switch hook are built in earlier
-chapters (Ch 17 watchdog mesh, Ch 18 launch crew / kill-switch). This folder
-exists only to make Chapter 23's scenes runnable in isolation, with synthetic
-data — no private state.
+The watchdog mesh, orchestrator, and kill-switch hook are built in an earlier
+chapter (Ch 18, the watchdog mesh). This folder exists only to make
+Chapter 23's scenes runnable in isolation, with synthetic data — no private
+state.
 
 ## escalations.log
 
-`../escalations.log` is the file two of Chapter 23's scenes reference:
+`../escalations.log` is the file two of Chapter 23's scenes reference. (It is
+not in the repo: `*.log` files are git-ignored. The notes below describe how
+to seed it.)
 
 - **Scenario 2 (`/btw`):** Devon folds in the constraint "also append every
   intercept to ~/work/watchdog/escalations.log — don't create a new log file."
@@ -30,5 +32,5 @@ Each line:
 
 Labels seen in the wild: `INTERCEPT` (a monitor proposed an action),
 `APPROVED` / `DENIED` (your decision on a proposal). The orchestrator and
-kill-switch in Ch 17/18 write these; nothing in Ch 23 changes the format —
+kill-switch in Ch 18 write these; nothing in Ch 23 changes the format —
 it only reads and (via /btw) appends to it.

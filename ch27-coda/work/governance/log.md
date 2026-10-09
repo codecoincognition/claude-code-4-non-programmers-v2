@@ -19,4 +19,4 @@ an agent back out of `~/work/.claude/retired/` because the need came back.
 
 ## Entries
 
-2026-05-10: retired research-helper — superseded by Atlas and newsroom/researcher; not invoked in 8 weeks. Archived to .claude/retired/research-helper.md.
+2026-05-10: retired research-helper — superseded by Atlas and newsroom/researcher; not invoked in 8 weeks. Archived for reference.

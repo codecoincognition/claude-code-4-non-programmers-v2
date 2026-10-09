@@ -2,8 +2,9 @@
 #
 # refresh_notion.sh — pull Notion content into the dashboard cache.
 #
-# POST-/batch version: set -euo pipefail at top + propagate $? from the
-# notion CLI (applied across all six refreshers in Ch 24's /batch run).
+# POST-review version: set -euo pipefail at top + propagate $? from the
+# notion CLI (applied per file across all six refreshers in Ch 24; six
+# similar tweaks are below /batch's threshold).
 #
 set -euo pipefail
 

@@ -48,8 +48,7 @@ deploy line in `vercel-sample.txt`. States seen: `queued`, `building`,
 `ready`, `error`.
 
 ### dashboard (nightly cron build log)
-A plain log file. See `dashboard-cron-sample.log` for the shape: one line
-per nightly run with an exit code.
+A plain log file: one line per nightly run with an exit code.
 
 ### buffer
 Reads via the Buffer MCP. Relevant fields per scheduled post:
@@ -67,5 +66,4 @@ Reads via the Buffer MCP. Relevant fields per scheduled post:
 ### funnel (optional fourth source)
 One Notion query — count rows in the Leads DB where
 `Submitted At > now() - 24h` — joined against the launch-fired timestamp
-in `~/work/launches/last-fire.log` (the launch crew writes it). See
-`../work/launches/last-fire.log` for that file's shape.
+in `~/work/launches/last-fire.log` (the launch crew writes it).

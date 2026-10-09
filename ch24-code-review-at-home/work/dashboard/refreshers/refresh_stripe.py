@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """refresh_stripe.py — pull Stripe revenue into the dashboard cache.
 
-POST-/batch version: try/except wrapper + sys.exit(1) on failure
-(the Python equivalent of `set -euo pipefail`, adapted automatically
-by the /batch classifier in Ch 24).
+POST-review version: try/except wrapper + sys.exit(1) on failure
+(the Python equivalent of `set -euo pipefail`, applied per file
+in Ch 24).
 """
 import os
 import sys

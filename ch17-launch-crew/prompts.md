@@ -36,7 +36,7 @@
 
 ## When it goes wrong — the postmortem prompt
 
-> The email never sent yesterday — Buffer says the email channel isn't connected. First: tell me what Buffer's account actually has connected (use claude mcp logs buffer if you need to). Second: rewrite the producer's Buffer-dispatch logic so it verifies channel availability before reporting success, and so it surfaces a per-channel readiness check at launch-package time, not at scheduling time.
+> The email never sent yesterday — Buffer says the email channel isn't connected. First: tell me what Buffer's account actually has connected (ask Buffer to list its channels). Second: rewrite the producer's Buffer-dispatch logic so it verifies channel availability before reporting success, and so it surfaces a per-channel readiness check at launch-package time, not at scheduling time.
 
 ## The lift — distilled prompt grammar
 

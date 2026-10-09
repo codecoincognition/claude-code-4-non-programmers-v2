@@ -21,14 +21,11 @@ ch18-watchdog-mesh/
 ├── schedule.md                       Step 5 — cron expression + cost note
 ├── work/
 │   ├── .claude/settings.json         SessionStart + PreToolUse kill-switch hook block
+│   ├── .claude/agents/watchdog/      fuller versions of the same four agent files
 │   ├── scripts/
-│   │   ├── kill-switch.sh             macOS — per-interception 4-digit code, 60s timeout
-│   │   ├── kill-switch-linux.sh       Linux variant (notify-send)
-│   │   └── kill-switch-windows.ps1    Windows variant (PowerShell toast)
-│   ├── watchdog/
-│   │   └── escalations.log            append-only review trail (canonical Step 6 entries)
-│   ├── launches/
-│   │   └── last-fire.log              launch-fired timestamp (funnel-anomaly source input)
+│   │   ├── kill-switch.sh             macOS — per-interception 4-digit code typed into a dialog, 50s timeout
+│   │   ├── kill-switch-linux.sh       Linux variant (zenity dialog)
+│   │   └── kill-switch-windows.ps1    Windows variant (PowerShell dialog)
 │   └── worktrees/watchdog-mesh/
 │       └── .claude/agents/watchdog/
 │           ├── orchestrator.md        ~37 lines — parallel dispatch, tier aggregation
@@ -40,8 +37,7 @@ ch18-watchdog-mesh/
 │   └── quiet-hours-override.md        Make-it-yours #2 — 24/7 watch, no night pings
 └── fixtures/
     ├── README.md                      input shapes for each monitor's data source
-    ├── vercel-sample.txt              synthetic `vercel ls` output
-    └── dashboard-cron-sample.log      synthetic nightly cron build log
+    └── vercel-sample.txt              synthetic `vercel ls` output
 ```
 
 ## How to use
@@ -52,8 +48,7 @@ ch18-watchdog-mesh/
    into your real `~/work/`. `chmod +x ~/work/scripts/kill-switch.sh`.
    On Linux or Windows, swap in the matching `kill-switch-*` script and
    point the hook command at it.
-3. Create `~/work/watchdog/escalations.log` (an empty file is fine; the
-   one here shows the canonical entry shape).
+3. Create `~/work/watchdog/escalations.log` (an empty file is fine).
 4. Schedule the orchestrator with the prompt in `schedule.md`
    (`*/15 7-23 * * 1-5`).
 5. Force one canonical escalation (Step 6 prompt in `prompts.md`) and
@@ -67,3 +62,27 @@ no private data is fabricated here.
 
 The book is self-contained — these files are ready-to-clone copies of what
 Chapter 18 walks you through building.
+
+## How the kill-switch here differs from the printed listing
+
+The printed `kill-switch.sh` asks for the code with `read` at a terminal
+prompt. A hook has no terminal, and its input is the JSON payload the script
+has already read, so that `read` returns at once and every escalation is
+denied without anyone being asked. The scripts here ask in a dialog instead
+(osascript on macOS, zenity on Linux, a small Windows Forms dialog on
+Windows). Three other changes make the gate hold:
+
+- The alert text reaches the macOS dialog as an argument, never pasted into
+  the AppleScript, so quotes in an alert cannot run commands.
+- Only exit code 2 blocks a tool call; a crash, another exit code, or a hook
+  that runs past its timeout lets the call through. So the escalation check
+  reads the raw payload (no `jq` needed to spot it), and after that every
+  failure exits 2. The dialog gives up after 50 seconds, which counts as a
+  denial.
+- The Windows script matched the tag with `-like`, which treats
+  `[WATCHDOG:ESCALATE]` as a set of single characters; it now checks for the
+  literal text.
+
+The macOS and Linux scripts were tested against every path (approve, wrong
+code, no answer, no `jq`, no zenity). The Windows script was written to the
+same rules but has not been run on Windows.

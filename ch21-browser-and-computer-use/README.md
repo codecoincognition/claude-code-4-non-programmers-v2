@@ -20,11 +20,10 @@ ch21-browser-and-computer-use/
     ├── .claude/commands/
     │   └── cancel-leak.md            the capstone slash command (Step 8)
     ├── finance/
-    │   ├── subscription-leaks.md     the Ch 2 input (4 cols, 7 rows) + [CANCELLED] markers
+    │   ├── subscription-leaks.md     the Ch 2 input (4 cols, 7 rows)
     │   └── cancellations/2026-05-08/
     │       ├── summary.md            per-flow dark-pattern transcript
     │       ├── total-saved.md        $84/mo, $1,008/yr ledger
-    │       ├── permissions.log       every auto-approve decision (audit trail)
     │       └── fixtures-README.md    why the 7 confirmation PDFs aren't shipped
     ├── research/
     │   ├── competitors.csv           input for the Step 7 browser-as-data-source scrape
@@ -45,9 +44,10 @@ the command at `~/work/.claude/commands/cancel-leak.md` (project-scoped, not glo
 ## How to use
 
 1. Copy `work/.claude/commands/cancel-leak.md` to your own `~/work/.claude/commands/`.
-2. Make sure you have the Claude-in-Chrome MCP and computer-use MCP installed
-   (one-time, the same way every other MCP in this book installs — see Appendix C).
-   Claude will prompt you the first time it tries to drive the browser.
+2. Make sure Claude-in-Chrome and computer use are set up (one-time). Claude-in-Chrome
+   is a Chrome extension (launch with `claude --chrome` or `/chrome` mid-session);
+   computer use is a built-in MCP server you enable once via `/mcp`. Neither installs
+   via `claude mcp add` like the Chapter 5 connectors — see Appendix C.
 3. Have a `subscription-leaks.md` from Chapter 2 (4 columns:
    `name | monthly_cost | last_charge_date | cancellation_url`). A synthetic sample
    ships at `work/finance/subscription-leaks.md`.

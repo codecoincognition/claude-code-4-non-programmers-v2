@@ -1,10 +1,29 @@
----
-description: Sort a folder of incoming files into the right places.
----
+# /triage
 
-Triage the loose files sitting at the top of this work folder.
+Cross-system inbox sweep. Read three sources, in this order:
 
-1. List every file that isn't already filed inside a subfolder. Tell me what you found.
-2. For each one, propose where it belongs (`finance/`, `inbox/`, or a new folder you name) and why, in one line.
-3. Wait for my go-ahead, then move them. Never delete anything — moving only.
-4. Report the final layout as a short tree.
+1. Unread Gmail from the last 24 hours.
+   - If the Gmail MCP is connected, use it.
+   - If not, say so and ask me to paste a digest.
+
+2. Slack DMs and @-mentions from the last 24 hours.
+   - If the Slack MCP is connected, use it.
+   - If not, say so and ask me to paste a digest.
+
+3. Notion mentions and assigned tasks updated in the last 24h.
+   - If the Notion MCP is connected, use it.
+   - If not, say so and ask me to paste a digest.
+
+For every thread/message/task, classify into ONE of:
+  - **Needs reply** (someone is waiting for me, deadline implied)
+  - **Needs action by me** (I owe a thing — not just a reply)
+  - **FYI** (good to know, no action)
+  - **Safe to ignore** (newsletter, automated, social)
+
+Output: 4 sections, terse. Per item: one-line summary,
+who, when (relative to now), the platform.
+
+Do not draft replies. Triage only.
+If anything is flagged "needs reply" with a deadline in
+< 4 hours, surface it at the top of the output before
+the four sections.

@@ -17,8 +17,10 @@ ch10-atlas-world-watcher/
 ├── README.md                         this file
 ├── prompts.md                        every prompt from the chapter, in order
 └── work/
-    ├── .claude/agents/
-    │   └── atlas.md                  the Atlas subagent (frontmatter + tools allowlist + body)
+    ├── .claude/
+    │   ├── settings.json             permissions.allow — scopes Edit / Write / Read to ~/work/atlas/**
+    │   └── agents/
+    │       └── atlas.md              the Atlas subagent (frontmatter + tools allowlist + body)
     ├── atlas/
     │   ├── sources.md                THE WATCHLIST — Maya edits this; Atlas reads it every run
     │   ├── signals-2026-05-07.md     baseline run (nothing to diff yet)
@@ -38,8 +40,15 @@ ch10-atlas-world-watcher/
     │       └── 2026-05-14/           diff week
     │           ├── acme-pricing.html        (Pro $87 — the 12% cut)
     │           ├── bolt-pricing.html        (unchanged)
-    │           └── crate-pricing.html       (unchanged)
+    │           ├── crate-pricing.html       (unchanged)
+    │           ├── vercel-nextjs-releases.json   (unchanged)
+    │           ├── polars-releases.json          (unchanged)
+    │           ├── playwright-releases.json      (unchanged)
+    │           ├── stratechery-feed.xml          (unchanged)
+    │           ├── latent-space-feed.xml         (unchanged)
+    │           └── crunchbase-funding-feed.xml   (unchanged)
     └── scripts/
+        ├── atlas-watch.sh            walk-fetch-diff skeleton the Atlas agent wraps around
         ├── show-brief.sh             morning brief; section 3 pulls Atlas's latest signals
         └── fixtures/
             ├── acme-pricing-captcha.html         the bot-block page that faked a "$0" price
@@ -63,7 +72,7 @@ version, which is what you want in production from day one.
    file. The `signals-2026-05-07.md` / `2026-05-14` files here show you the shape
    of a baseline run and the shape of a first real diff.
 
-3. **Schedule it.** *"Schedule Atlas to run every weeknight at 11 PM"* →
+3. **Schedule it.** *"Schedule Atlas every weeknight at 11 PM."* →
    `0 23 * * 1-5`. Keep it on a different cadence from Iris's 7 AM morning run.
 
 4. **Surface signals.** `work/scripts/show-brief.sh` is the Chapter 7/9 morning

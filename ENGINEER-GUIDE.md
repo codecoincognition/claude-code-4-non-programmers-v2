@@ -2,7 +2,7 @@
 
 > *For readers who finished the book and want the view from the engine room.*
 >
-> The 26 chapters are written for operators: a small-business owner, a
+> The 27 chapters are written for operators: a small-business owner, a
 > consultant, a Maya. They teach by building. This guide is written for the
 > reader who closed the book and asked "how does this actually compose?" If you
 > are coming from the chapter side, none of what follows is *required* — the
@@ -19,7 +19,7 @@ context, and the loop runs until the model is done or asks for input. Five
 extension layers ride on top of that loop — the **Agent SDK**, **MCP
 servers**, **subagents**, **slash commands**, and **hooks**. Plus two
 cross-cutting facilities (**skills** and **settings.json**) that shape how the
-core loop behaves. The book introduces these one at a time across 26 chapters;
+core loop behaves. The book introduces these one at a time across 27 chapters;
 this guide describes them as a single system and points you at where the
 chapters cover each.
 
@@ -51,29 +51,41 @@ Chapter 25.
 introduction. Appendix G points outward to the SDK reference docs for the full
 API surface.
 
-### 2. MCP servers (Chapters 5, 14)
+### 2. MCP servers (Chapters 5, 13, 14)
 
 The Model Context Protocol is Anthropic's open-source spec for exposing tools
 and data sources to an LLM. An MCP server is a process — typically Node, Python,
 or a binary — that speaks the protocol over stdio or HTTP. It declares a set of
 tools (functions the model can call) and a set of resources (data the model can
-read). Claude Code reads `~/.claude.json` (registry) and the `mcpServers` block
-of `settings.json` to know which servers to start; it launches them as child
-processes at session boot and routes tool calls to the right one.
+read). Claude Code reads the servers registered in `~/.claude.json` (user and
+local scope) and in a project's `.mcp.json` to know which servers to start; it
+launches them as child processes at session boot and routes tool calls to the
+right one.
 
 The book introduces MCP twice. Chapter 5 is the *consumer* view: install five
-existing servers (Gmail, Calendar, Notion, Slack, Buffer) by prompting Claude
-to add them to `settings.json`. Chapter 14 is the *producer* view: write your
+existing servers (Gmail, Calendar, Notion, Slack, Buffer) by asking Claude to
+connect them, then checking them in `/mcp`. Chapter 14 is the *producer* view: write your
 own MCP server in TypeScript, register it locally, and call your custom tools
 from any session. The protocol itself is small — the spec fits on a page —
 and the ecosystem of existing servers is large enough that most operators never
 need to write one. The chapter still shows how, because writing one demystifies
 the whole layer.
 
-**Where the book covers it:** Chapter 5 (install existing MCPs), Chapter 14
-(write your own). Appendix D is a wishlist of MCP servers worth building.
+Chapter 13 adds a third view: **channels**. A channel is an MCP server that
+also *pushes* events into a running session. It declares the `claude/channel`
+capability and sends `notifications/claude/channel`, so Claude reacts to a
+Telegram, iMessage, Slack, or WhatsApp message without anyone typing in the
+terminal. Channels load only when you opt them in at launch with `--channels`
+(or, for one you wrote, `--dangerously-load-development-channels`), must gate
+every message on a sender allowlist, and can relay tool-approval prompts to a
+phone. Events arrive only while a session is open, so a channel-driven agent
+needs a long-running session. `ch13-pheme-channels/custom-channels/` has two
+complete custom channels, Slack DM and WhatsApp, each with an end-to-end test.
 
-### 3. Subagents (Chapters 6, 9-12, 16-18)
+**Where the book covers it:** Chapter 5 (install existing MCPs), Chapter 13
+(channels: MCP servers that push), Chapter 14 (write your own). Appendix D is a wishlist of MCP servers worth building.
+
+### 3. Subagents (Chapters 6, 9-13, 16-18)
 
 A subagent is a separate Claude conversation, started by the main session, with
 its own system prompt, its own tool allowlist, and its own context window. From
@@ -96,12 +108,12 @@ appropriate, so a four-agent newsroom (Chapter 16) costs less than a single
 giant prompt asking one model to do all four jobs.
 
 The book introduces subagents in Chapter 6 (one minimal agent), then spends
-Chapters 9-12 building Maya's named staff (Iris, Atlas, Reuben, Echo — one
-specialist per chapter), then Chapters 16-18 build *teams* of subagents under a
+Chapters 9-13 building Maya's named staff (Iris, Atlas, Reuben, Echo, Pheme —
+one specialist per chapter), then Chapters 16-18 build *teams* of subagents under a
 parent orchestrator (the newsroom, the launch crew, the watchdog mesh).
 
-**Where the book covers it:** Chapter 6 introduces subagents. Chapters 9-12
-build the four named specialists. Chapters 16-18 build three multi-agent teams.
+**Where the book covers it:** Chapter 6 introduces subagents. Chapters 9-13
+build the five named specialists. Chapters 16-18 build three multi-agent teams.
 
 ### 4. Slash commands (Chapters 4, 19, 21-24)
 
@@ -124,7 +136,7 @@ as a slash command that calls subagents that use MCP tools.
 21, 22, 23, 24 each ship slash commands (deck, cancel-leak, dashboard-refresh,
 triage-session, review-mine, etc.) as part of larger workflows.
 
-### 5. Hooks (Chapters 7, 8, 11, 18, 20)
+### 5. Hooks (Chapters 7, 8, 9, 11, 13, 18, 20)
 
 A hook is a shell command that Claude Code runs in response to a lifecycle
 event: `SessionStart`, `SessionEnd`, `PreToolUse`, `PostToolUse`, `Stop`,
@@ -155,8 +167,8 @@ with the same discipline as the permission system — read the script, pin its
 location, audit it on the Sunday governance hour.
 
 **Where the book covers it:** Chapter 7 introduces hooks and scheduling.
-Chapter 8 frames the safety side (deny lists, audit log). Chapters 11, 18, 20,
-26 each add lifecycle-driven hooks for specific workflows.
+Chapter 8 frames the safety side (deny lists, audit log). Chapters 9, 11, 13,
+18, 20 each add lifecycle-driven hooks for specific workflows.
 
 ### Cross-cutting layer A — Skills (Chapter 15)
 

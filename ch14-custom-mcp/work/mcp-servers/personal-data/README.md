@@ -29,7 +29,7 @@ your shell does. A 47-row sample CSV ships in this repo at
 # from inside this folder, build then register with Claude Code
 npm install
 npm run build
-claude mcp add personal-data ~/work/mcp-servers/personal-data
+claude mcp add personal-data -- node ~/work/mcp-servers/personal-data/dist/index.js
 claude mcp list          # confirm personal-data shows up
 ```
 

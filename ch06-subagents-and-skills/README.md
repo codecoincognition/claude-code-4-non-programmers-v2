@@ -32,15 +32,16 @@ variants from the chapter's "Make it yours" section and a runnable demo input.
   Reads Gmail (via the Ch 5 MCP), classifies threads action/FYI/noise, writes
   a dated digest to `~/work/inbox/`. Read-Gmail + write-to-`~/work/` only — no
   send, no external writes. (This is the bridge to Iris in Chapter 9.)
-- `work/.claude/agents/meeting-notes-summarizer.md` — read+write subagent
-  that turns a long transcript into 5 bullets + 3 action items and saves
-  the summary next to the transcript.
+- `work/.claude/agents/meeting-notes-summarizer.md` — read-only subagent
+  that turns a long transcript into 5 bullets + 3 action items and returns
+  only that summary to your main session.
 - `work/.claude/skills/copy-variants.md` — behavior skill: whenever you ask
   for copy, always returns three variants (short / long / playful).
 
 ### Sample input / fixtures
-- `work/scripts/morning-brief.sh` — the bash script the debugging demo
-  points at. Earlier drafts had a Wednesday-only timezone bug (Gmail
+- `work/scripts/morning-brief.sh` — extra practice material for the
+  debugging skill (the chapter's own demo is the empty `triage` run).
+  Earlier drafts had a Wednesday-only timezone bug (Gmail
   window computed in UTC, drifted across the local-time date boundary);
   this version ships the fixed code with a comment at the top explaining
   what changed and why, so you can read the fix end-to-end after the
@@ -59,11 +60,12 @@ variants from the chapter's "Make it yours" section and a runnable demo input.
    ```
    (Merge with whatever is already in `~/work/.claude/` from Chapters 3–5 —
    these only add `agents/` and `skills/` entries.)
-2. Confirm Claude sees them: `claude agents list` and `claude skills list`.
-3. Try the subagent: *"Use the vendor-researcher subagent to read
-   docs.loopline.com and tell me whether Loopline supports multi-step
-   drip automation and how it handles unsubscribes. Delegate — I want
-   only the one-page verdict back."*
+2. Confirm Claude sees them: ask Claude to run `/agents` and `/skills`.
+3. Try the subagent: *"Use the vendor-researcher subagent to tell me
+   whether Loopline supports multi-step drip automation and how it
+   handles unsubscribes and consent. Its docs are at docs.loopline.com.
+   Don't read the docs in this conversation — delegate. I want only the
+   one-page verdict back."*
 4. Try the skill: *"My triage came back empty this morning — zero
    threads routed — but my inbox is full of unread mail. Something
    went wrong. Figure out what."* (The debugging skill should

@@ -14,6 +14,11 @@ richer variants the chapter's make-it-yours section describes.
 
 - `work/brain/README.md` — explains the system: five folders, three rules, the
   "Claude writes; Obsidian renders" workflow, and the privacy note.
+- `work/brain/SCAFFOLD.md` — the folder shape, filename conventions, and the
+  three rules, written for a Claude session to read before writing into
+  `brain/`. Not in the chapter's day-one scaffold; an optional extra.
+- `work/brain/INDEX.md` — a one-page index of every entry in the brain. Not in
+  the chapter's day-one scaffold; an optional extra.
 - `work/brain/projects/dashboard/README.md` — one-paragraph summary of the Ch 22
   dashboard (what it shows, data source, refresh cadence).
 - `work/brain/projects/dashboard/decisions/2026-04-18-chartjs-over-d3.md` — the

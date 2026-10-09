@@ -28,7 +28,7 @@ Each cycle:
    - escalate    — loud Slack ping; the PreToolUse kill-switch
                    intercepts BEFORE the ping is sent
 3. For escalate-tier returns, compose one Slack message that BEGINS
-   with the literal token `[WATCHDOG:ESCALATE]` so the PreToolUse
+   with the literal token "[WATCHDOG:ESCALATE]" so the PreToolUse
    kill-switch hook recognizes it and gates the send. Name the
    monitor, the signal source, and the recommended human action.
 4. Append every cycle's outcome to ~/work/watchdog/escalations.log

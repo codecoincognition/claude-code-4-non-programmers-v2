@@ -25,7 +25,7 @@ fi
 # 2. Iris's queue — second section.
 echo
 echo "── Iris's queue ──"
-IRIS_FILE="$(ls -1t "${WORK}/inbox/queue-"*.md 2>/dev/null | head -n 1)"
+IRIS_FILE="$(ls -1t "${HOME}/work/queue/"[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].md 2>/dev/null | head -n 1)"
 if [[ -z "${IRIS_FILE:-}" ]]; then
   echo "  (no Iris queue file yet)"
 else

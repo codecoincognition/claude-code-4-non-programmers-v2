@@ -1,37 +1,48 @@
 # Review of build.sh — /simplify
 
-## Critic findings (3)
+## Reuse
 
-1. **No error handling on Stripe refresher.** Line 42:
-   `python refresh_stripe.py` runs unguarded; if it fails, the
-   script continues and deploys a stale build. Severity: medium.
+- Line 42: the Stripe refresher is invoked by hand. Project
+  already has a `run_with_retry` helper in scripts/lib.sh
+  that wraps any subcommand with retry + logging. Use it
+  instead of the bare call.
 
-2. **Hardcoded path to vercel binary.** Line 67:
-   `/Users/maya/.npm/bin/vercel` will break when Maya changes
-   her npm setup. Severity: low.
+## Simplification
 
-3. **No exit code propagation.** The script exits 0 even if
-   the deploy step fails. Severity: medium.
+- Line 67: hardcoded path `/Users/maya/.npm/bin/vercel`
+  will break when Maya changes her npm setup. Replace with
+  `command -v vercel` resolution. Same behavior, no path
+  fragility.
+- Top of file: no `set -euo pipefail`. Adding it removes the
+  custom "did the last command succeed?" checks scattered
+  through the script — one declaration replaces several
+  conditionals.
 
-## Simplifier proposed fixes
+## Efficiency
 
-1. Wrap the Stripe refresher in `set -euo pipefail` at the top
-   of the script; remove the unguarded run pattern.
-2. Replace the hardcoded vercel path with `command -v vercel`
-   resolution.
-3. Capture the deploy step's exit code and exit with it.
+- Lines 22-31: the script reads the build manifest twice (once
+  for the version stamp, once for the deploy target). One read
+  into a local variable would suffice.
+
+## Abstraction level
+
+- The deploy step inline-renders the build URL by concatenating
+  strings. The surrounding code uses the `deploy::url` helper.
+  Use it here too — the inline version is one altitude lower
+  than the rest of the file.
+
+## Applied cleanups
+
+1. set -euo pipefail at top of file.
+2. command -v vercel for binary resolution.
+3. Replaced inline URL render with deploy::url helper.
+4. Hoisted the manifest read into a local variable.
+5. Wrapped Stripe refresher in run_with_retry.
 
 (diffs attached at end of file)
 
-## Verifier check
+## Note
 
-- Fix 1: PASS. set -euo pipefail is the standard shell pattern;
-  no behavior change for the success path.
-- Fix 2: PASS. command -v resolves to the same binary on Maya's
-  current setup; portable.
-- Fix 3: PASS. The exit code propagation is the correct semantic;
-  the previous behavior of always exiting 0 was the bug.
-
-## Recommendation
-
-Apply all three fixes.
+`/simplify` does not look for correctness bugs (as of v2.1.154).
+If you want a bug pass on build.sh, run `/code-review` against
+the same file.

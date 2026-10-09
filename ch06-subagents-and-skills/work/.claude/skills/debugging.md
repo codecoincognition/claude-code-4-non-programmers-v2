@@ -1,21 +1,16 @@
 ---
 name: debugging
-description: Diagnostic playbook for unexpected agent behavior. Use when an agent returns wrong output or doesn't fire at all.
-allowed-tools: Read, Bash, Grep
+description: >
+  Use this skill whenever the user reports that something they set up
+  isn't working — a command that came back empty, a wrong or missing
+  result, an automation misbehaving, or any unexpected behavior, whether
+  or not it involves code.
 ---
 
 # Debugging
 
-Load this skill whenever the user reports that something they set up
-isn't working — a command that came back empty, a wrong or missing
-result, an automation misbehaving, or any unexpected behavior, whether
-or not it involves code or a script. Empty results count. Wrong
-results count. "It just didn't fire" counts. The trigger is the user
-saying *something is off*, not whether the thing in question is
-working code or not.
-
-When loaded, follow these five steps in order. Do not skip steps. If
-a step is not applicable, say why and move to the next.
+When this skill is loaded, follow these five steps in order. Do not
+skip steps. If a step doesn't apply, say why and move to the next.
 
 1. **Show what it actually did.** Look at what the thing produced or
    reported — the output, the empty result, the message on screen.

@@ -18,9 +18,9 @@ calendar month rolls over. This folder ships clone-ready copies of all of it.
 | `scripts/reuben-deterministic.sh` | The deterministic core. Pure `awk`: reads the CSV, prints exact monthly inflow / outflow / net / running balance. The agent's "truth layer." (Uses gawk's `asorti` for month sorting, as printed in the book — install gawk, or run `verify-deterministic.sh` which is portable.) |
 | `scripts/reuben-fileend.sh` | The `SessionEnd` hook script. Idempotent month-boundary checker — files the previous month's P&L once, the first time it runs in a new calendar month, and does nothing otherwise. |
 | `scripts/verify-deterministic.sh` | The CI test the chapter's callouts describe. Runs the arithmetic against the fixed sample CSV with known totals; exits non-zero on any cent of drift. Portable (no `asorti`) so it runs on stock macOS or Linux. |
-| `work/.claude/agents/reuben.md` | The Reuben agent — frontmatter + tool allowlist + the *Numerical-fidelity discipline* body that binds the AI to the script's numbers. |
+| `work/.claude/agents/reuben.md` | The Reuben agent — frontmatter (tool allowlist + the agent-scoped `Stop` hook that runs `reuben-fileend.sh`) + the *Numerical-fidelity discipline* body that binds the AI to the script's numbers. |
 | `work/.claude/agents/reuben-quarterly.md` | Make-it-yours #2: the quarterly-rollup variant. Same shape, larger window. |
-| `work/.claude/settings.json` | All three hooks side by side: `SessionStart`, `PreToolUse`, and the new `SessionEnd` scoped to `agent:reuben`. |
+| `work/.claude/settings.json` | Reuben's `permissions.allow` scope (two read folders, one write folder, one script) plus the two session-wide hooks, `SessionStart` and `PreToolUse`. Reuben's own end-of-run hook lives in his agent frontmatter, not here. |
 | `work/books/pnl-2026-04.md` | The example April P&L the chapter shows Reuben write — every number ties to the script or a CSV row. |
 | `work/books/filing-log.md` | The audit trail the hook appends to. |
 | `data/transactions.csv.sample` | The synthetic transactions across Jan–Apr 2026. Ties **exactly** to the chapter's printed totals (TOTAL inflow 71920.00, outflow 48440.73, net 23479.27). |
@@ -48,8 +48,8 @@ calendar month rolls over. This folder ships clone-ready copies of all of it.
 4. **Run the agent.** Open Claude in `~/work` and prompt:
    *"Run Reuben on April 2026. Show me the deterministic output first, then his
    narrative built on top of it."* Compare to `work/books/pnl-2026-04.md`.
-5. **The hook fires on session end.** With `settings.json` in place, ending a
-   Reuben session files the previous month's P&L into `filing-log.md` — once,
+5. **The hook fires on session end.** With the `Stop` hook in `reuben.md`'s
+   frontmatter in place, ending a Reuben session files the previous month's P&L into `filing-log.md` — once,
    on the month boundary. See it both ways with the Step 5 prompt in
    `prompts.md`.
 

@@ -3,8 +3,8 @@
 This chapter builds a personal code-review surface on top of Claude
 Code's review commands. You learn four lenses — `/simplify` (quality,
 deep on one file), `/security-review` (safety, broad audit), `/sandbox`
-(behavior, run in isolation), `/batch` (sweep a known-good pattern across
-many files) — and **auto mode**, the AI classifier that reads your prompt
+(behavior, run in isolation), `/batch` (codebase-wide sweeps, one PR
+per unit) — and **auto mode**, the AI classifier that reads your prompt
 and picks the right lens, model, and effort, telling you what it picked.
 By the end you have a personalized `/review-mine` slash command, an
 auto-mode hints file that trains the classifier from your overrides, and
@@ -28,12 +28,12 @@ ch24-code-review-at-home/
     ├── dashboard/
     │   ├── build.sh                           ← /simplify target (3 fixes applied)
     │   └── refreshers/
-    │       ├── refresh_stripe.py              ← /batch target (Python try/except)
-    │       ├── refresh_linkedin.py            ← /batch target (Python try/except)
-    │       ├── refresh_notion.sh              ← /batch target (set -euo pipefail)
-    │       ├── refresh_bank.sh                ← /batch target (set -euo pipefail)
-    │       ├── refresh_buffer.sh              ← /batch target (set -euo pipefail)
-    │       └── refresh_dashboard.sh           ← /batch target (set -euo pipefail)
+    │       ├── refresh_stripe.py              ← post-review (Python try/except)
+    │       ├── refresh_linkedin.py            ← post-review (Python try/except)
+    │       ├── refresh_notion.sh              ← post-review (set -euo pipefail)
+    │       ├── refresh_bank.sh                ← post-review (set -euo pipefail)
+    │       ├── refresh_buffer.sh              ← post-review (set -euo pipefail)
+    │       └── refresh_dashboard.sh           ← post-review (set -euo pipefail)
     ├── scripts/
     │   └── kill-switch.sh                      ← /sandbox target (2 fixes applied)
     └── reviews/
@@ -59,7 +59,7 @@ ch24-code-review-at-home/
 
 3. Override when the classifier is wrong
    (`/security-review on <file>`, `/sandbox on <script>`,
-   `/batch the <pattern> across <folder>`), then add a rule to
+   `/batch <directive> across <codebase>`), then add a rule to
    `auto-mode-hints.md` so the override becomes the default.
 
 4. The sample `build.sh`, `cancel-leak.md`, `kill-switch.sh`, and the

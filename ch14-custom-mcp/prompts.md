@@ -103,13 +103,17 @@ Run claude mcp list and confirm personal-data shows up alongside the five from C
 ```
 
 ```
-Summarize my campaigns. (Confirm Claude routes through personal-data without you naming it.)
+Summarize my campaigns.
 ```
+
+(Confirm Claude routes through personal-data without you naming it.)
 
 ```
 Open ~/work/mcp-servers/personal-data/package.json and explain what each top-level field does in one phrase.
 ```
 
+Stuck?
+
 ```
-Audit my Chapter 14 setup against the chapter spec.
+audit my Chapter 14 setup against the chapter spec
 ```

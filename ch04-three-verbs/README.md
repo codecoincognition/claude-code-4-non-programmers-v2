@@ -2,8 +2,9 @@
 
 Companion repo for Chapter 4. This is the only chapter in Part I where you
 type slash commands yourself — authoring a command requires running it. After
-this chapter the book-wide rule snaps back: you prompt in plain English and
-Claude picks the slash.
+this chapter the book mostly goes back to plain English — you describe what you
+want and Claude picks the slash — but that's the book's default style, not a
+rule: type your own commands anytime you like.
 
 The chapter takes three prompts you keep retyping and turns each into a named
 `.md` file in `~/work/.claude/commands/`. The filename (minus `.md`) becomes
@@ -16,7 +17,7 @@ ch04-three-verbs/
 ├── README.md                         ← you are here
 ├── prompts.md                        ← every prompt the chapter has you type, in order
 ├── work/                             ← clone of Maya's ~/work/ at the end of Ch 4
-│   ├── CLAUDE.md                     the work "badge" from Ch 2 (read before every command)
+│   ├── CLAUDE.md                     the work "badge" from Ch 3 (read before every command)
 │   ├── .claude/
 │   │   └── commands/
 │   │       ├── reconcile.md          /reconcile  — Step 2 (monthly bank-vs-Stripe)
@@ -74,9 +75,10 @@ ch04-three-verbs/
   contract PDF named `acme-msa-renewal.pdf` into `work/legal/` to test PDF
   parsing.
 
-## The rule, for the rest of the book
+## Type the slash, or just ask
 
-Outside this chapter, Part VII, and Appendix I, **you don't type slashes**. You
-prompt Claude in plain English; Claude picks the underlying command and tells
-you what it picked. Slash commands are the machinery; the prompt is the
-conversation.
+Slash commands are optional shortcuts. Type them anytime you like —
+`/reconcile`, `/triage`, `/renewals legal`. Or just describe what you want and
+let Claude pick the command for you. The rest of the book mostly *shows* the
+plain-English style, so you never need to memorize a command to use one — but
+both are correct, every time.

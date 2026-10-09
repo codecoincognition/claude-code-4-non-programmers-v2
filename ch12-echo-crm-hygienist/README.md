@@ -1,6 +1,6 @@
 # Chapter 12 — Echo, the CRM hygienist
 
-Echo is the fourth and final staff member of Part III: a daily **CRM hygienist** that
+Echo is the fourth staff member of Part III (Pheme, in Chapter 13, is the fifth): a daily **CRM hygienist** that
 reads what you actually did this week (outbound Gmail + Calendar) and reconciles it
 against what your CRM *says* you did. He proposes the missing entries, the stale stages,
 and the cold rows that should be marked — into a daily proposal queue file — and **never
@@ -17,8 +17,11 @@ record safe.
   requirement** (full, not a stub), the deduplication rule, and the "what you never do" list.
 - `work/.claude/settings.local.json` — the permissions block. Seven deny rules: the three
   Chapter 0.3 floor rules, the Chapter 9 Gmail-send rule, and three new Echo rules that
-  block Notion CRM writes **scoped to the CRM database ID** (`db_crm_8f3a`), so other agents'
-  writes to other Notion DBs stay unaffected.
+  block the Notion write tools (`create_page`, `update_page`, `delete_page`). Deny rules
+  match tool names only, so these block Notion writes to **every** database, not just the
+  CRM. The chapter lets Iris's Tasks DB and Project Notes writes back through with a
+  `PreToolUse` gate (`~/work/scripts/notion-write-gate.sh`, not shipped here) that keeps the
+  CRM database ID (`db_crm_8f3a` in the example, kept in `CLAUDE.md`) off its allowlist.
 - `work/.claude/memory/echo/` — Echo's between-runs memory:
   - `non-prospects.md` — people Echo has been told never to propose (accountants, vendors,
     personal contacts, recruiters). Read at the top of every run.
@@ -45,8 +48,9 @@ record safe.
 
 1. Drop `work/.claude/agents/echo.md` and the `work/.claude/memory/echo/` files into your
    `~/work/.claude/` tree, and merge the deny block from `settings.local.json` into your own.
-2. Confirm your CRM database ID in `CLAUDE.md` and update `db_crm_8f3a` in the deny rules to
-   match. (Or swap to a HubSpot / Pipedrive / Salesforce variant from `variants/`.)
+2. Put your own CRM database ID in `CLAUDE.md` in place of the example `db_crm_8f3a` — the
+   `PreToolUse` gate reads it from there (the deny rules name tools, not databases). (Or swap
+   to a HubSpot / Pipedrive / Salesforce variant from `variants/`.)
 3. Run the logic smoke test with no MCPs connected:
    ```bash
    ./prove-it.sh      # requires jq; expects 4 passed, 0 failed

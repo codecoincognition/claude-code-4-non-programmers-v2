@@ -9,7 +9,8 @@ Rules read at session start. Override the default classifier.
                                        location > content for classification.
 
 - ~/work/scripts/*.sh                → /sandbox (first), then /security-review
-- ~/work/dashboard/refreshers/*      → /batch when ≥3 files share extension
+- Codebase-wide sweeps (≥5 units,
+  each warranting its own PR)        → /batch (require git repo)
 
 ## Pattern-based rules
 

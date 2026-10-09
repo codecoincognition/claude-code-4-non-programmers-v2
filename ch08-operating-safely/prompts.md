@@ -26,8 +26,8 @@ Produces: `permissions.defaultMode = "plan"` in `work/.claude/settings.json`.
 
 ### Step 2 — See what plan mode looks like before you trust it
 
-Quit (Ctrl-C twice or `/exit`), open a fresh session, then ask for a cleanup
-that touches files:
+Open a new session, press Shift+Tab to cycle into plan mode (the footer will
+flip to `plan`), and ask Claude to research a real change before doing anything:
 
 ```
 claude
@@ -35,8 +35,9 @@ claude
 
 > Plan a cleanup of ~/work/briefs/ — find anything older than 30 days, propose what to do with it, but do not touch anything yet.
 
-Claude returns the plan and asks for approval before any deletion. That's the
-leash working. (You can refuse, edit the plan, or approve in bulk.)
+Claude reads and explores only, then returns a structured plan and stops at the
+approval gate. Nothing is moved or deleted until you accept the plan and pick a
+permission mode (or choose "Keep planning with feedback").
 
 ### Step 3 — Add an allow / ask / deny list
 
@@ -110,6 +111,15 @@ re-prompted — from then on you just *read* it.
 
 ---
 
+## The lift — rotate the log when it grows
+
+When the log gets unwieldy, ask Claude to rotate it: rename `audit.log` to
+`audit-{month}.log.gz`, gzip it, start a fresh `audit.log`, and cron it monthly.
+
+Reference: `variants/log-rotate/rotate-audit-log.sh` (includes the cron line).
+
+---
+
 ## Make it yours
 
 ### 1. Tighten for a sensitive project
@@ -140,17 +150,9 @@ The Sunday log-summarizer prompt. Catches permission-fatigue patterns.
 
 ### 5. Audit the audit hook
 
-> Read my `audit-log.sh` script and tell me: could it crash in a way that blocks Claude from running? Is there any input it doesn't sanitize? Make it bulletproof.
+> Read my `audit-log.sh` and check whether it could ever crash in a way that blocks Claude. Make it bulletproof.
 
 Run it through `shellcheck` while you're at it; ask Claude to fix any warnings.
-
----
-
-## The lift — rotate the log when it grows
-
-> Rotate my audit log monthly: rename audit.log to audit-{month}.log.gz, gzip it, start a fresh audit.log. Write it as a short script and give me the cron line to schedule it.
-
-Reference: `variants/log-rotate/rotate-audit-log.sh` (includes the cron line).
 
 ---
 
@@ -164,4 +166,4 @@ Three prompts from the chapter close. If all three land, you're ready for Chapte
 
 Stuck? Run:
 
-> Audit my Chapter 8 setup against the chapter spec.
+> audit my Chapter 8 setup against the chapter spec

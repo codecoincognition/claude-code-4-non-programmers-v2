@@ -66,15 +66,7 @@ publishing tail differs.
 
 ## Verifying the tail
 
-The chapter's reflex: before you trust the queue, read it.
-
-```
-list scheduled posts
-claude mcp logs buffer
-```
-
-The Buffer log on macOS lives at:
-
-```
-~/Library/Logs/Claude/mcp-server-buffer.log
-```
+The chapter's reflex: before you trust the queue, read it. Ask Claude to
+"list the scheduled posts" the first few times. If anything looks off,
+have Claude check the Buffer connector in `/mcp`, or ask Buffer to list
+its channels (`buffer.list_channels`).

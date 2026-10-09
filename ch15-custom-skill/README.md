@@ -21,6 +21,8 @@ ch15-custom-skill/
     │   │   └── when-to-skill.md               ← the decision-tree reference note (no frontmatter, never triggers)
     │   └── commands/
     │       └── draft.md                        ← the /draft workflow (from the recovery in "When it goes wrong")
+    ├── fixtures/
+    │   └── README.md                           ← the shape of the inputs the "Make it yours" prompts expect
     └── voice-samples/                          ← the three writing samples Claude reads to extract your voice
         ├── sample-email.md
         ├── sample-linkedin-post.md
@@ -32,6 +34,7 @@ ch15-custom-skill/
 | `work/.claude/skills/your-tone.md` | The chapter's main artifact. YAML frontmatter (`name`, behavior-keyed `description`) plus four body sections: signature moves, what to never write, rhythm rules, and email-specific rules. Auto-loads whenever a writing/editing prompt arrives. |
 | `work/.claude/skills/when-to-skill.md` | A 15-line decision tree. Deliberately has **no frontmatter** — it's a reference note that lives in the skills folder but never triggers as a skill. |
 | `work/.claude/commands/draft.md` | A slash command for the full 5-step writing routine (outline → draft → cut → add imagery → read aloud). This is the *workflow* that the chapter shows you should NOT jam into the voice skill. Loads `your-tone.md` internally for the voice rules. |
+| `work/fixtures/README.md` | What to put in `voice-samples/`, `code-review-samples/`, `refs/house-style.pdf`, and `launches/` for Step 1 and the "Make it yours" follow-ups. |
 | `work/voice-samples/*.md` | Three synthetic writing samples (email, LinkedIn post, campaign brief) demonstrating the voice the skill extracts. Replace these with three real samples of your own before authoring your own tone skill. |
 
 ## How to use
@@ -41,14 +44,15 @@ ch15-custom-skill/
    chapters, just drop `your-tone.md` and `when-to-skill.md` alongside `debugging.md`.
 2. Replace the three files in `voice-samples/` with three real samples of *your* writing —
    one email, one short post, one longer piece. The skill is only as good as the samples.
-3. Confirm the skill is registered: `claude skills list` should show `your-tone`.
+3. Confirm the skill is registered: `/skills` should show `your-tone`.
 4. Trigger it: ask Claude to "Write me a 100-word LinkedIn post announcing my new hire…"
    You don't name the skill — Claude matches the `description` and loads it automatically.
 5. To run the full 5-step writing routine instead of a one-shot draft, ask Claude for the
    "full draft process" — it picks `/draft` under the hood, which loads `your-tone.md` for
    the voice rules.
 6. As you notice gaps, edit `your-tone.md` — add a section, narrow a rule. Skills evolve;
-   they just shouldn't sprawl. Keep the body under ~6,000 characters.
+   they just shouldn't sprawl. The body isn't capped, but every loaded skill eats context —
+   keep it focused on one job.
 
 The book is self-contained — these files are ready-to-clone copies of what Chapter 15
 walks you through building.

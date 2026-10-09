@@ -10,7 +10,7 @@ and only then renders the `.pptx` against the company template. The
 last move teaches the whole flow to a `/deck` slash command so the
 next deck takes 30 minutes instead of 90. The patterns introduced —
 **multi-source synthesis**, **clarification dialogue**, and
-**template-bound generation** — recur in Ch 20, 22, and 25.
+**template-bound generation** — recur in Ch 20, 22, and 26.
 
 ## Files in this folder
 
