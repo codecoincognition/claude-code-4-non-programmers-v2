@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(~/work/data/**)",
+      "Read(~/work/books/**)",
+      "Edit(~/work/books/**)",
+      "Write(~/work/books/**)",
+      "Bash(~/work/scripts/reuben-deterministic.sh)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "~/work/scripts/show-brief.sh" }]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [{ "type": "command", "command": "~/work/scripts/audit-log.sh" }]
+      },
+      {
+        "matcher": "mcp__plugin_telegram_telegram__reply|mcp__plugin_imessage_imessage__reply|mcp__slack-dm__reply|mcp__whatsapp__reply",
+        "hooks": [{ "type": "command", "command": "~/work/scripts/channel-events-log.sh" }]
+      }
+    ]
+  }
+}

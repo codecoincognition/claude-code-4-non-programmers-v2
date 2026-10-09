@@ -1,0 +1,6 @@
+{
+  "allowFrom": ["+15550100", "+15550123"],
+  "relayTo": ["+15550100"],
+  "quietHours": { "start": "22:00", "end": "07:00" },
+  "urgentWord": "URGENT"
+}

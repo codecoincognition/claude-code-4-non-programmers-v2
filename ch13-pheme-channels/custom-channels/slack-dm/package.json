@@ -1,0 +1,23 @@
+{
+  "name": "slack-dm-channel",
+  "version": "1.0.0",
+  "description": "Custom Claude Code channel: Slack direct messages from allowlisted users, with optional permission relay.",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node test/smoke.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "@slack/socket-mode": "^3.1.0",
+    "@slack/web-api": "^8.2.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "typescript": "^7.0.2",
+    "ws": "^8.22.0"
+  },
+  "engines": { "node": ">=20" }
+}

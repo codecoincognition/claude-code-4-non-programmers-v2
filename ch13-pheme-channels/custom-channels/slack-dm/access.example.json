@@ -1,0 +1,4 @@
+{
+  "allowFrom": ["U0123MAYA", "U0456DANA"],
+  "relayTo": ["U0123MAYA"]
+}

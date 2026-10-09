@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "slack-dm": {
+      "command": "node",
+      "args": ["/Users/YOU/work/mcp-servers/slack-dm/dist/index.js"]
+    }
+  }
+}
