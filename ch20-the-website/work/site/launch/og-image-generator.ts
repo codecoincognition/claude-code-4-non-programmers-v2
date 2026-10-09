@@ -20,27 +20,9 @@ const png = await new ImageResponse(
         fontFamily: 'Inter, system-ui, sans-serif',
       },
       children: [
-        {
-          type: 'div',
-          props: {
-            style: { fontSize: 72, fontWeight: 700, lineHeight: 1.1 },
-            children: HEADLINE,
-          },
-        },
-        {
-          type: 'div',
-          props: {
-            style: { fontSize: 32, marginTop: 32, color: '#666' },
-            children: SUB,
-          },
-        },
-        {
-          type: 'div',
-          props: {
-            style: { fontSize: 28, marginTop: 48, color: '#2c5cdb', fontWeight: 600 },
-            children: 'Save my seat →',
-          },
-        },
+        { type: 'div', props: { style: { fontSize: 72, fontWeight: 700, lineHeight: 1.1 }, children: HEADLINE } },
+        { type: 'div', props: { style: { fontSize: 32, marginTop: 32, color: '#666' }, children: SUB } },
+        { type: 'div', props: { style: { fontSize: 28, marginTop: 48, color: '#2c5cdb', fontWeight: 600 }, children: 'Save my seat →' } },
       ],
     },
   },

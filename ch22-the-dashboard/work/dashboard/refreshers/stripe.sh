@@ -9,7 +9,6 @@ TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 
 # The Stripe MCP exposes weekly aggregates as a single tool call.
 claude --no-interactive --tool stripe.summary_week > /tmp/stripe.raw
-
 # Compose the snapshot file.
 jq --arg ts "$TS" '
   { mrr: .mrr_cents / 100,

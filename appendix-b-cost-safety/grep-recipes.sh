@@ -6,12 +6,13 @@
 # agents, hooks, and scheduled jobs. Each is a small function you can copy
 # into your shell or run directly. They assume the log conventions in the
 # README: hooks under ~/.claude/logs/hooks/, jobs under ~/.claude/logs/jobs/,
-# MCP server logs under ~/Library/Logs/Claude/ (macOS).
+# self-built MCP server logs under ~/.claude/logs/mcp/. For a connector,
+# check /mcp inside a Claude session instead.
 #
 # Usage:
 #   ./grep-recipes.sh did-hook-fire   sessionstart
 #   ./grep-recipes.sh why-exit        reuben
-#   ./grep-recipes.sh which-mcp       08:42
+#   ./grep-recipes.sh which-mcp       08:42 personal-data
 #   ./grep-recipes.sh watch           ~/.claude/logs/hooks/sessionstart.log
 #
 # Nothing here writes or deletes. All recipes are read-only.
@@ -20,7 +21,7 @@ set -euo pipefail
 
 HOOK_LOG_DIR="${HOOK_LOG_DIR:-$HOME/.claude/logs/hooks}"
 JOB_LOG_DIR="${JOB_LOG_DIR:-$HOME/.claude/logs/jobs}"
-MCP_LOG_DIR="${MCP_LOG_DIR:-$HOME/Library/Logs/Claude}"   # Linux: ~/.config/Claude/logs
+MCP_LOG_DIR="${MCP_LOG_DIR:-$HOME/.claude/logs/mcp}"
 
 # "Did my hook fire this morning?"
 # Show today's lines from a named hook log.
@@ -40,12 +41,14 @@ why_exit() {
   }
 }
 
-# "Which MCP returned the empty payload at <time>?"
-# Show 10 lines after a timestamp across all MCP server logs.
+# "Why did my custom MCP return an empty payload at <time>?"
+# Show 10 lines after a timestamp in a self-built MCP server's log.
+# Name the server to search its log; omit it to search every log in the folder.
 which_mcp() {
-  local stamp="${1:?usage: which-mcp <HH:MM>}"
-  grep -A 10 "$stamp" "$MCP_LOG_DIR"/mcp-server-*.log 2>/dev/null || {
-    echo "No match for '$stamp' in $MCP_LOG_DIR/mcp-server-*.log"
+  local stamp="${1:?usage: which-mcp <HH:MM> [servername]}"
+  local name="${2:-*}"
+  grep -A 10 "$stamp" "$MCP_LOG_DIR"/$name.log 2>/dev/null || {
+    echo "No match for '$stamp' in $MCP_LOG_DIR/$name.log"
   }
 }
 

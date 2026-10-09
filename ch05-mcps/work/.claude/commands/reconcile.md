@@ -1,11 +1,23 @@
----
-description: Reconcile a bank export against my ledger and flag mismatches.
----
+# /reconcile
 
-Reconcile the most recent bank export in `finance/` against my ledger.
+Read every CSV in ~/work/finance/ that matches:
+  - bank-*.csv  (the latest by date is the one to reconcile)
+  - stripe-*.csv (the latest by date)
 
-1. Find the newest CSV in `finance/` (the bank export). Tell me which file you picked.
-2. Match each bank line to a ledger entry by date + amount.
-3. Produce three lists: matched, in-bank-not-in-ledger, in-ledger-not-in-bank.
-4. Write the reconciliation to `finance/reconcile-{today's date}.md` and give me the path and a one-line summary (e.g. "27 matched, 2 unexplained").
-5. Do not change my ledger. Reconciliation is read-and-report only.
+Reconcile the bank charges against Stripe revenue:
+  - Match every Stripe charge to a bank deposit by amount + date.
+  - Flag any bank charge that doesn't correspond to a Stripe customer.
+  - Group the remaining bank charges into spend buckets:
+    SaaS, contractors, infra, taxes, owner draw, misc.
+
+Open ~/work/finance/subscription-leaks.md.
+For each subscription in the leaks file, confirm it still
+appeared on this month's bank statement. If a subscription
+DIDN'T appear, mark it (cancelled?) in the file.
+If a NEW recurring charge appeared, add it as a row.
+
+Write the full report to:
+  ~/work/finance/{current-month-YYYY-MM}-reconciliation.md
+
+Format: 4 sections — matched, unmatched, spend buckets, leaks update.
+Be terse. One line per row in tables. No commentary, no preamble.

@@ -33,7 +33,7 @@ its research tool.
    cd ~/work/mcp-servers/personal-data
    npm install
    npm run build
-   claude mcp add personal-data ~/work/mcp-servers/personal-data
+   claude mcp add personal-data -- node ~/work/mcp-servers/personal-data/dist/index.js
    claude mcp list           # personal-data should appear
    ```
 3. Try it: *"Use the personal-data MCP to summarize my campaigns CSV."*
@@ -47,8 +47,8 @@ The chapter walks you into the un-expanded-tilde bug on purpose: a literal
 `"~/work/data/campaigns.csv"` passed to `fs.readFile` fails because Node does
 not expand `~` the way the shell does. The `src/index.ts` shipped here is the
 **fixed** version — `CSV_PATH` is built with `path.join(os.homedir(), ...)`.
-If you want to reproduce the failure to see `claude mcp logs` in action,
-temporarily replace `CSV_PATH` with the literal-tilde string.
+If you want to reproduce the failure and read the server's own output (the
+`ENOENT` line), temporarily replace `CSV_PATH` with the literal-tilde string.
 
 ## Bring your own data
 

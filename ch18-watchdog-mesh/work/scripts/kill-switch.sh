@@ -4,45 +4,61 @@
 # call belongs to the watchdog at escalate tier, and (if so) requires
 # typed-code confirmation. Anything else passes through.
 #
-# Exit codes per Claude Code hook docs:
-#   exit 0 — allow the tool call (pass through)
-#   exit 2 — BLOCK the tool call; stderr is surfaced to Claude
-#   any other non-zero — non-blocking error (logged but does not block)
+# Two facts about hooks shape this script:
+#  - A hook has no terminal, and its stdin is the JSON payload, so the code
+#    is typed into a macOS dialog, not at a prompt.
+#  - Only exit code 2 blocks the tool call. A crash, any other exit code, or
+#    a hook that runs past its timeout lets the call go through. So once a
+#    message is known to be an escalation, every failure path exits 2.
 
-set -euo pipefail
+set -uo pipefail
 
 LOG=~/work/watchdog/escalations.log
 mkdir -p "$(dirname "$LOG")"
 
 PAYLOAD=$(cat)                                  # PreToolUse sends JSON on stdin
-TOOL_NAME=$(echo "$PAYLOAD" | jq -r '.tool_name // "unknown"')
-MESSAGE=$(echo "$PAYLOAD" | jq -r '.tool_input.text // .tool_input.message // ""')
 
 # Only gate watchdog-orchestrator escalate-tier sends. The orchestrator
 # tags its escalate messages with a "[WATCHDOG:ESCALATE]" prefix; quiet
 # notify-tier sends from the same agent don't carry the prefix and pass.
-# Iris/Reuben/etc. that also use Slack but never carry the prefix also pass.
-if [[ "$MESSAGE" != *"[WATCHDOG:ESCALATE]"* ]]; then
+# Matched on the raw payload, so a missing or failing jq can't let one through.
+if [[ "$PAYLOAD" != *"[WATCHDOG:ESCALATE]"* ]]; then
   exit 0                                        # pass through, no gate
 fi
+
+trap 'echo "Kill-switch error; blocking to be safe" >&2; exit 2' ERR
+
+TOOL_NAME=$(printf '%s' "$PAYLOAD" | jq -r '.tool_name // "unknown"' 2>/dev/null) || TOOL_NAME="unknown"
+MESSAGE=$(printf '%s' "$PAYLOAD" | jq -r '.tool_input.text // .tool_input.message // ""' 2>/dev/null) || MESSAGE="[WATCHDOG:ESCALATE] (message could not be read)"
 
 PROPOSED_ACTION="$TOOL_NAME: ${MESSAGE:0:80}"
 CODE=$(printf "%04d" $((RANDOM % 10000)))
 
 echo "[$(date -Iseconds)] INTERCEPT: $PROPOSED_ACTION" >> "$LOG"
 
-# Send the code to the user via desktop notification alongside the proposed action.
-# (osascript is macOS's command-line scripting tool — it's how a shell script pops a
-#  native macOS notification. On Linux substitute notify-send; on Windows substitute a
-#  PowerShell toast call. See kill-switch-linux.sh / kill-switch-windows.ps1.)
-osascript -e "display notification \"Watchdog wants to: $PROPOSED_ACTION. Type code $CODE to approve.\" with title \"Kill-switch\""
+# Show the proposed action and the code in a native macOS dialog, and wait
+# for the code to be typed back. (osascript is macOS's command-line scripting
+# tool. On Linux use kill-switch-linux.sh; on Windows, kill-switch-windows.ps1.)
+# The action text and the code are passed to AppleScript as arguments, never
+# pasted into the script, so quotes in an alert cannot run commands. The
+# dialog gives up after 50 seconds, which counts as a denial and is well
+# inside the hook's default 600-second timeout.
+ENTERED=$(osascript - "$PROPOSED_ACTION" "$CODE" 2>/dev/null <<'APPLESCRIPT'
+on run argv
+  set r to display dialog ("Watchdog wants to: " & item 1 of argv & return & return & "Type code " & item 2 of argv & " to approve.") default answer "" with title "Kill-switch" buttons {"Deny", "Approve"} default button "Approve" cancel button "Deny" giving up after 50
+  if gave up of r then return ""
+  return text returned of r
+end run
+APPLESCRIPT
+) || ENTERED=""
 
-# Wait for the user to type the code back. Exit 2 tells Claude Code to BLOCK
-# the tool call (2 is the documented blocking exit code that surfaces stderr
-# to Claude).
-read -r -t 60 -p "Enter 4-digit code to approve: " ENTERED || { echo "[$(date -Iseconds)] DENIED (timeout): $PROPOSED_ACTION" >> "$LOG"; echo "Kill-switch timed out" >&2; exit 2; }
-
-if [[ "$ENTERED" == "$CODE" ]]; then
+# Exit 2 tells Claude Code to BLOCK the tool call and shows the stderr
+# message to Claude. It is the only exit code that blocks.
+if [[ -z "$ENTERED" ]]; then
+  echo "[$(date -Iseconds)] DENIED (no answer): $PROPOSED_ACTION" >> "$LOG"
+  echo "Kill-switch denied: no code entered" >&2
+  exit 2
+elif [[ "$ENTERED" == "$CODE" ]]; then
   echo "[$(date -Iseconds)] APPROVED: $PROPOSED_ACTION" >> "$LOG"
   exit 0
 else

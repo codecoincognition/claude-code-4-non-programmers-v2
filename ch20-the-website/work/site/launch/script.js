@@ -4,8 +4,12 @@
 // ============================================================
 !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],
   e.init=function(i,s,a){/* posthog snippet body — paste the full
-  official snippet from your PostHog project's "Web" install page */}}(
+  official snippet from your PostHog project's "Web" install page */})}(
   document, window.posthog || []);
+// Until the official snippet replaces the placeholder above, these no-ops keep
+// the rest of this file (A/B test, form handler) working. The real snippet
+// defines both methods, so this line then does nothing.
+['register', 'capture'].forEach(m => { if (typeof posthog[m] !== 'function') posthog[m] = () => {}; });
 
 posthog.init('phc_YOUR_PROJECT_KEY', {
   api_host: 'https://us.i.posthog.com',

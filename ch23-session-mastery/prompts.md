@@ -13,7 +13,7 @@ chapter introduces them, then the full English prompts.
 ### Devon Scenario 1 — Navigation
 - `claude --resume`
 - `/context`
-- `/fork` (mentioned; used in Scenario 4)
+- `/fork` and `/branch` (mentioned, not run)
 - `Ctrl+G` (open external editor for a long prompt)
 
 ### Devon Scenario 2 — Mid-task
@@ -22,20 +22,26 @@ chapter introduces them, then the full English prompts.
 - `/btw also append every intercept to ~/work/watchdog/escalations.log — don't create a new log file`
 
 ### Devon Scenario 3 — Situational awareness
-- `/cost`
-- `/context`
+- `/cost /context`
 
 ### Devon Scenario 4 — Model and effort
 - `/model opus`
 - `/effort high`
 - `ultrathink — read orchestrator.md, kill-switch.sh, and the last 200 lines of escalations.log. There's a double-ping bug. Either the orchestrator is double-dispatching deploys-monitor on rapid escalations, or the kill-switch matcher is failing to deduplicate. Pin which one. Show me the evidence and the proposed fix.`
-- `/effort medium`
-- `/model sonnet`
+- `/effort medium /model sonnet`
 - `/plan` (or Shift+Tab) — enter plan mode for the risky production step
 
-### Marketplaces
-- `/skills marketplace`
-- `/mcp marketplace`
+### The two persistence primitives — /loop and /goal
+- `/loop 30s tail the last 20 lines of the deploy log and tell me if there are any new errors`
+- `/goal the orchestrator double-ping tests pass three runs in a row`
+
+Three follow-up prompts to make this surface yours:
+
+1. > Use `/loop` to check my deploy log every minute and ping me only if a new error line appears — silent otherwise.
+
+2. > Set a `/goal` that says the watchdog mesh runs for two hours with zero false positives. Keep iterating on the matchers until you hit it.
+
+3. > Drop a default loop prompt into `~/work/.claude/loop.md` that runs `/cost` and `/context` — so any `/loop 30m` with no prompt becomes my long-session autopilot check.
 
 ---
 
@@ -55,13 +61,19 @@ chapter introduces them, then the full English prompts.
 
 2. > Set my default `/effort` to `high` and my default `/model` to the latest Sonnet via `~/.claude/settings.json` so I don't have to set them at the start of every session.
 
-3. > Author a `/safe-fork` slash command that pairs `/fork` with `/cost` so I see the parent thread's spend before I commit to a new fork.
+3. > Author a `/safe-branch` slash command that pairs `/branch` with `/cost` so I see the parent thread's spend before I switch into a copy.
 
 4. > Look at my last 5 sessions in `--resume` history and propose 3 places where I should have used `/rewind` or `/fork` but didn't. Tell me what the cost was of not using them — extra prompts, lost work, restarts.
 
 5. > Audit my `~/work/.claude/cheatsheet.md` quarterly — for each command, mark whether I've used it in the past 30 days. Flag any I haven't, so I either start using them or remove them from the sheet.
 
 6. > Tuesday night before the Wednesday launch — the auto-rebuild Stop hook on my landing page (Ch 20) just redeployed a hero-headline change I'm second-guessing. Use `/rewind` to roll the conversation back to the state right before I asked Claude to rewrite the headline, then re-prompt the variant I actually want. The hook will redeploy the corrected version. No git revert needed — Claude's session is the source of truth here, not the deploy log.
+
+---
+
+## The plugin surface
+
+- `/plugin`
 
 ---
 

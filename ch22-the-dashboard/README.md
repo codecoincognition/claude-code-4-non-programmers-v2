@@ -34,7 +34,6 @@ ch22-the-dashboard/
     └── dashboard/
         ├── build.sh                  ← nightly build: refresh → regenerate → deploy
         ├── index.html                ← reference render (regenerated each build)
-        ├── dashboard-deploy.log      ← append-only build log (sample entries)
         ├── templates/
         │   └── build-prompt.md       ← prompt that composes index.html from snapshots
         ├── data/                     ← JSON snapshots (one per source)

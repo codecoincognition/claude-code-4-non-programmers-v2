@@ -14,7 +14,7 @@
 send variants — you describe the door you want locked, Claude writes the deny
 rule.)
 
-## Step 3 — Give Iris an output style for her queue voice
+## Step 3 — Sharpen Iris's queue voice in her agent body
 
 > Now expand the Queue rules section at the bottom of ~/work/.claude/agents/iris.md. Calm, dry, bullets over paragraphs, always names the reasoning behind each routing call ("archived because: …"), addresses me as Maya, signs nothing. Keep it short — a tight list of rules, not a manifesto.
 
@@ -26,13 +26,13 @@ rule.)
 
 > Looks right. Create the Notion task rows and the project notes. Save the drafts to Gmail Drafts. Don't send anything. Show me what you wrote.
 
-## Step 6 — Set Iris up as a long-running session
+## Step 6 — Set Iris up as a long-running session that resumes every morning
 
 > Set Iris up as a long-running session that resumes every morning at 6:25 AM. She picks up where she left off — remembers which threads she's already routed so she doesn't re-process them — runs against the last 12 hours of mail, and produces a fresh queue. Save the launcher to ~/work/scripts/iris-morning.sh and schedule it weekdays at 6:25 AM.
 
 > Schedule iris-morning.sh to run every weekday at 6:25 AM.
 
-## Step 7 — Surface Iris's queue into the morning brief
+## Step 7 — Extend the Stop hook to surface Iris's queue into the morning brief
 
 > When Iris finishes her morning pass, have her write a one-page queue summary to ~/work/queue/{date}.md listing every routing call (one line each: thread → destination → reason) and every draft (recipient + first 30 words + Iris's one-line reason). The morning brief should include an "Iris's queue" section pulling from this file.
 
@@ -59,7 +59,7 @@ frontmatter — you described "when Iris finishes," Claude picked the event.)
 > For Iris's first week, only route threads from senders who emailed me in the last 30 days. Anyone else gets archived with the reason 'unknown sender'. Update her agent file.
 
 **2. Slack drafts too.**
-> Extend Iris to draft Slack DMs the same way — a Slack-draft tool if her connector exposes one; never the Slack send tool. Drafts go into a 'Slack drafts' subsection of the queue.
+> Extend Iris to draft Slack DMs the same way — let her create drafts, but never let her send anything. Drafts go into a 'Slack drafts' subsection of the queue.
 
 **3. The voice score.**
 > Have Iris score each draft on a 1-5 'sounds like Maya' scale based on how much it diverges from my last 20 sent emails. Anything below a 4 gets flagged for extra review.
@@ -68,10 +68,10 @@ frontmatter — you described "when Iris finishes," Claude picked the event.)
 > Read the last week of Iris's queue files vs. what I actually did with each item — which Notion tasks did I close as 'wrong call,' which drafts did I edit before sending, which I discarded. Update her system prompt to learn from those patterns.
 
 **5. Asana instead of Notion.**
-> Swap the Notion target for Asana. `mcp__notion__create_page` becomes `mcp__asana__create_task`; `mcp__notion__append_block` becomes `mcp__asana__add_to_project`. Routing taxonomy stays. Update CLAUDE.md to point at the Asana project IDs and re-issue Iris's file.
+> Swap the Notion target for Asana. Instead of creating Notion Tasks pages, have her create Asana tasks; instead of appending Notion blocks to project notes, have her add items to the matching Asana project. Routing taxonomy stays. Update CLAUDE.md to point at the Asana project IDs and re-issue Iris's file.
 
 **6. Personalized follow-ups for the launch funnel.**
-> Extend Iris to read new rows in the Notion Leads database (the one the launch landing page from Chapter 20 writes to). Each morning, for any lead row created in the last 24 hours that doesn't already have a follow-up draft, draft a personalized email in my voice using `your-tone.md` from Chapter 15, save it to Gmail Drafts with the subject 'Re: your registration', and add a 'Followup drafted' line to the Iris queue. Add a Notion query tool against the Leads DB ID in CLAUDE.md to her allowlist (read only). She still never sends.
+> Extend Iris to read new rows in the Notion Leads database (the one the launch landing page from Chapter 20 writes to). Each morning, for any lead row created in the last 24 hours that doesn't already have a follow-up draft, draft a personalized email in my voice using `your-tone.md` from Chapter 15, save it to Gmail Drafts with the subject 'Re: your registration', and add a 'Followup drafted' line to the Iris queue. Let her query that Leads database — point her at the ID from CLAUDE.md. She still never sends.
 
 ## Test yourself in 60 seconds
 

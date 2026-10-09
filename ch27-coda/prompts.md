@@ -2,7 +2,8 @@
 
 Every prompt the chapter has you give Claude during the Sunday-night
 governance hour, in the order they appear. Eight steps, eight prompts, then
-five *Make it yours* variants and the "when it goes wrong" recovery prompt.
+the "when it goes wrong" recovery prompt, five *Make it yours* variants, and
+the *Test yourself* prompts.
 
 ---
 
@@ -180,4 +181,29 @@ fail the test.
 Tell me what I would lose, in concrete terms, if I deleted my .claude/ folder
 tomorrow. Walk me through it as if you were the cost — what re-emerges as my
 problem, what disappears for good.
+```
+
+---
+
+## Test yourself in 60 seconds
+
+```
+Block one hour on my calendar every Sunday at 7 PM, labeled governance, and
+treat it as un-cancellable.
+```
+
+```
+Read this week of ~/work/watchdog/escalations.log and identify the one
+false-positive pattern worth tightening.
+```
+
+```
+Pick any agent in my ~/work/.claude/agents/ and walk me through the
+three-question rubric: invoked in 4-8 weeks? superseded? rebuild, retire, or keep?
+```
+
+Stuck?
+
+```
+audit my Chapter 27 setup against the chapter spec
 ```

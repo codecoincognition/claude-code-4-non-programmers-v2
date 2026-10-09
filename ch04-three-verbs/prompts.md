@@ -106,9 +106,8 @@ cd ~/work && claude
 
 **[prompt]**
 
-> Now the rule, in your own words, for the rest of the book: when do I type a
-> slash command myself, and when do I just ask in plain English and let you
-> pick?
+> Now, in your own words: do I have to type my slash commands, or can I just
+> ask in plain English?
 
 ---
 

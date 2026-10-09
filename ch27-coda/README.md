@@ -1,9 +1,9 @@
-# Chapter 27 — The Sunday-night governance hour
+# Chapter 27 — What I check before I sleep — the Sunday-night governance hour
 
 > *The closing chapter introduces no new primitives. It introduces two
 > practices: the Sunday-night governance hour, and the three-question rubric
 > for when to fire an agent. This folder ships the two artifacts those
-> practices produce — a five-line weekly checklist and an append-only
+> practices produce — a weekly checklist and an append-only
 > fire/keep/rebuild log.*
 
 This is the only chapter in the book whose deliverable is a habit, not a file.
@@ -13,8 +13,8 @@ The files in `work/governance/` exist to support the habit, not to replace it.
 
 | File | What it is |
 |---|---|
-| [`prompts.md`](./prompts.md) | The chapter's key prompts — inventory walk, escalation-pattern review, fire/keep/rebuild rubric, rubric-tightening, skill audit, checklist-writing, morning-forward read |
-| [`work/governance/sunday-checklist.md`](./work/governance/sunday-checklist.md) | The five-line weekly checklist the chapter authors. Open it every Sunday at 7 PM. |
+| [`prompts.md`](./prompts.md) | The chapter's prompts — inventory walk, escalation-pattern review, fire/keep/rebuild rubric, rubric-tightening, skill audit, checklist-writing, morning-forward read, the catch-up audit, the *Make it yours* variants, and the *Test yourself* prompts |
+| [`work/governance/sunday-checklist.md`](./work/governance/sunday-checklist.md) | The weekly checklist the chapter authors (six numbered steps, as printed in the chapter). Open it every Sunday at 7 PM. |
 | [`work/governance/log.md`](./work/governance/log.md) | The append-only fire/keep/rebuild log. One line per decision. Seeded with one example entry showing the format. |
 
 ## How to use the hour

@@ -4,7 +4,7 @@ This is my work folder. When you start here, read this file first, then wait for
 
 ## Who I am and what this folder is for
 
-I run marketing operations. This folder holds my finance reconciliation, my inbox briefs, and the everyday work I hand to you. I am not a programmer. Explain what you are about to do in one plain sentence before you do it, then do it.
+I run a small marketing consulting firm. This folder holds my finance reconciliation, my inbox briefs, and the everyday work I hand to you. I am not a programmer. Explain what you are about to do in one plain sentence before you do it, then do it.
 
 ## House rules
 
@@ -21,13 +21,13 @@ I run marketing operations. This folder holds my finance reconciliation, my inbo
 
 ## My slash commands (in .claude/commands/)
 
-- `/reconcile` — reconcile a bank export against my ledger.
-- `/triage` — sort a folder of incoming files into the right places.
-- `/renewals` — scan for upcoming subscription/contract renewals.
+- `/reconcile` — monthly bank-vs-Stripe reconciliation, spend buckets, and subscription-leaks update.
+- `/triage` — cross-system inbox sweep (Gmail, Slack, Notion), classified into four buckets.
+- `/renewals` — contract-renewal scan; takes the subfolder of `~/work/` as an argument.
 
 ## My MCPs (connectors into the apps I use)
 
-I have five MCP connectors installed (see `claude mcp list`). Use them when a task needs data that lives in one of these apps. Never send/post without my say-so.
+I have five MCP connectors installed (see `/mcp`). Use them when a task needs data that lives in one of these apps. Never send/post without my say-so.
 
 - `gmail` — Read mail, draft replies. Does NOT send unless I explicitly say send.
 - `calendar` — Read events, find free time, create events. No delete.
@@ -41,4 +41,4 @@ When I ask you to "read X, Y, and Z and synthesize," pull from each MCP, cross-r
 
 ### When an MCP misbehaves
 
-Use the recipe, in this order: (1) `claude mcp list` to confirm it's installed and which account it's authed as; (2) `claude mcp logs <name>` to read what the server is actually doing; (3) re-authenticate that MCP if the logs show an auth or wrong-account problem.
+Open `/mcp` and read the connector's status line — is it connected, and to the right account? Nine times out of ten the fix is to reconnect or re-authenticate it from there.

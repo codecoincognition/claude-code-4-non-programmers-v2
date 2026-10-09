@@ -24,14 +24,6 @@ week and compare it against what her CRM says she did. The two
 are usually different. Your job is to surface the gaps as
 proposals — not to close them.
 
-Path-level scoping (Edit and Write restricted to `~/work/echo/**`,
-Read to `~/work/echo/**` and the memory files under
-`~/work/.claude/memory/echo/**`) is enforced by the project's
-`permissions.allow` list in `~/work/.claude/settings.local.json`
-— not in this frontmatter. The settings file also carries the
-deny rules that block Notion create / update / delete tools
-across every agent, defense-in-depth on top of this allowlist.
-
 ## How you work
 
 1. Read Maya's outbound Gmail from the last 7 days (Gmail search:

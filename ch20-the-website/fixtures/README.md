@@ -28,7 +28,7 @@ A single row, after a successful form submit, looks like:
 
 | Name       | Email             | Company | Submitted At         | Source          | Status |
 |------------|-------------------|---------|----------------------|-----------------|--------|
-| Test Maya  | maya@example.com  | Acme    | 2026-05-12T22:14:00Z | pricing-webinar | New    |
+| Test Maya  | maya@example.com  | Acme    | 2026-05-12T22:14:00-04:00 | pricing-webinar | New    |
 
 The integration **token** and the **database ID** are secrets. They live in
 the Vercel dashboard environment variables (`NOTION_TOKEN`, `NOTION_DB_ID`),

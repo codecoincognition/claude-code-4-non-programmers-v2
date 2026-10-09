@@ -1,7 +1,7 @@
 # Chapter 6 prompts — copy-paste, in order
 
 Every prompt below is reproduced verbatim from the chapter. By Chapter 6 your
-behavioral and contextual lines live in `~/work/.claude/CLAUDE.md` (Chapter 3),
+behavioral and contextual lines live in `~/work/CLAUDE.md` (Chapter 3),
 so you no longer type a badge preamble each session.
 
 Open Claude in your work folder first:
@@ -94,4 +94,4 @@ Then see what Claude wrote:
 
 Stuck? Run:
 
-    Audit my Chapter 6 setup against the chapter spec.
+    audit my Chapter 6 setup against the chapter spec

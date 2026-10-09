@@ -22,7 +22,7 @@ Every prompt from the chapter, verbatim and in order.
 
 > Schedule Echo to run every weekday at 7 AM, right after Iris's morning pass. He writes his proposal queue directly to ~/work/echo/proposed-{date}.md (he already has Write access scoped to that folder). Then update show-brief.sh from chapter 7 — the morning brief should include a fifth section, "Echo's proposals," that reads from the same queue file.
 
-## Step 6 — Approve, edit, discard
+## Step 6 — Approve, edit, discard — and the second separation
 
 > Walk me through the proposal queue. For each proposal, I'll say approve, edit, or discard. When I approve, who writes to the Notion CRM — me, or Claude?
 
@@ -30,7 +30,7 @@ Every prompt from the chapter, verbatim and in order.
 
 > Show me Echo's memory file at ~/work/.claude/memory/echo/. What does he remember between runs so he doesn't propose the same thing twice?
 
-## Step 8 — Swap the CRM
+## Step 8 — Swap the CRM — HubSpot, Pipedrive, Salesforce
 
 > Show me what would change in echo.md if I used HubSpot instead of Notion as my CRM. Then show me Pipedrive. Then Salesforce. Walk me through the substitutions in each case.
 

@@ -28,7 +28,7 @@ Apply both fixes from the cancel-leak.md review. Move the Stripe key to ~/.env a
 Apply both kill-switch.sh fixes from the sandbox results — input length validation and the osascript fallback. Re-run the sandbox after.
 ```
 
-### Step 5 — /batch — apply one fix to many files at once
+### Step 5 — /batch — the heavyweight orchestrator for codebase-wide work
 
 (Devon's scene in the chapter — Maya watches while he runs `/batch` on a
 fleet migration. Same prompt shape applies to any same-pattern sweep across

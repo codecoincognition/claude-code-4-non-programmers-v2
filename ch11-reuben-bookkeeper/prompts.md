@@ -34,7 +34,7 @@ cp ~/work/companion/ch11-reuben-bookkeeper/data/transactions.csv.sample ~/work/d
 
 ---
 
-## Step 4 — Add an end-of-run hook on Reuben
+## Step 4 — Install the SessionEnd hook
 
 > Set up a hook on Reuben's agent file that fires when he finishes a run. Check if a new month has been completed since the last Reuben run. If yes, confirm ~/work/books/pnl-{month}.md exists and write a one-line note to ~/work/books/filing-log.md. If no month has crossed, do nothing.
 

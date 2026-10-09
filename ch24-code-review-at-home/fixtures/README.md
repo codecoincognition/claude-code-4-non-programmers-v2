@@ -21,15 +21,18 @@ plus the six refreshers, so a clone runs cleanly:
 - `work/dashboard/build.sh` — `/simplify` target (3 fixes applied)
 - `work/.claude/commands/cancel-leak.md` — `/security-review` target (HIGH + MED fixed)
 - `work/scripts/kill-switch.sh` — `/sandbox` target (2 fixes applied)
-- `work/dashboard/refreshers/*` — six `/batch` targets (error-handling pattern applied)
+- `work/dashboard/refreshers/*` — six refreshers (error-handling pattern applied per file;
+  below `/batch`'s threshold)
 
 The matching review reports live under `work/reviews/2026-05-08/`.
 
 ## /sandbox notes
 
-`/sandbox` mocks the filesystem, network, and credentials. No real Slack
-webhook, Stripe key, or `~/work/` path is touched during a sandbox run.
+`/sandbox` is OS-level isolation (macOS Seatbelt or Linux bubblewrap)
+of the Bash tool, not value-mocking. Writes are restricted to the
+allowlist you set in the panel and network access follows its Config
+rules. Files like `~/.aws/credentials` stay readable unless you
+explicitly deny those paths in the Overrides tab.
 The `SLACK_WEBHOOK_URL`, `STRIPE_API_KEY`, `BUFFER_TOKEN` env vars the
-scripts reference are read from your real `~/.env` only on a real run —
-never inline. Keep secrets out of the files themselves (this is exactly
+scripts reference are read from your real `~/.env` — never inline. Keep secrets out of the files themselves (this is exactly
 the MEDIUM finding the chapter catches).

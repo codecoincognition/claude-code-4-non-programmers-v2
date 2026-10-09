@@ -1,6 +1,6 @@
 # Power-User Command Cheat Sheet
 
-A printable, one-page lookup for every power-user command in *Claude Code for Nonprogrammers* (chapters 23-25). This is the companion-repo copy of **Appendix I**.
+A printable, one-page lookup for every power-user command in *Claude Code for Non-Programmers* (chapters 23-25). This is the companion-repo copy of **Appendix I**.
 
 ## What's here
 
@@ -16,6 +16,6 @@ A printable, one-page lookup for every power-user command in *Claude Code for No
 
 This reflects the Claude Code v2.x command surface as of the book's draft date. The surface evolves — commands may be renamed or restructured. The errata page is the live truth:
 
-https://github.com/codecoincognition/claude-code-for-nonprogrammers-v2/blob/main/ERRATA.md
+https://github.com/codecoincognition/claude-code-4-non-programmers-v2/blob/main/ERRATA.md
 
 If an entry here doesn't match what your terminal does, the errata page wins.

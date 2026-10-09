@@ -25,5 +25,6 @@ Each PDF should show the service's "your subscription has been cancelled / will
 not renew" page — the evidence that the terminal state is genuinely a cancel and
 not a paused/discounted/free-month state.
 
-The two `.md` ledgers and `permissions.log` in this folder ARE shipped, because
-they contain only the audit narrative, not private confirmation-page content.
+The two `.md` ledgers in this folder ARE shipped, because they contain only the
+audit narrative, not private confirmation-page content. `permissions.log` is not
+shipped (the repo ignores `*.log` files); Claude writes it when you run the audit.

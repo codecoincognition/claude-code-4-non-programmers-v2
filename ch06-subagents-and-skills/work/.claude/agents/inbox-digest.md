@@ -1,7 +1,7 @@
 ---
 name: inbox-digest
 description: Use this subagent to produce a daily Gmail digest. Reads the last 24 hours of Gmail via the Gmail MCP, classifies each thread as action / FYI / noise, and writes a dated digest to ~/work/inbox/digest-{date}.md. Read-Gmail + write-to-~/work only; no send, no external writes.
-tools: Read, mcp__gmail__search
+tools: Read, Write, mcp__gmail__search
 ---
 
 # Inbox Digest

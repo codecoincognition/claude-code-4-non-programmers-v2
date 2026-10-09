@@ -75,7 +75,9 @@ Every prompt the chapter has you type, in the order they appear.
 
 ## Test yourself in 60 seconds
 
-> Draft a customer email about a delayed shipment. (Confirm your-tone auto-loads and the output reads like you.)
+> Draft a customer email about a delayed shipment.
+
+(Confirm your-tone auto-loads and the output reads like you.)
 
 > Read ~/work/.claude/skills/your-tone.md and tell me the three loudest rules in it.
 

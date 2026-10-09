@@ -36,7 +36,7 @@ for await (const message of query({
   prompt: "Run the dashboard build pipeline. Deploy on success.",
   options: {
     systemPrompt,
-    allowedTools: ["Bash", "Read", "Write", "mcp__slack"],
+    allowedTools: ["Bash", "Read", "mcp__slack"],
     permissionMode: "acceptEdits",
     mcpServers: {
       slack: {

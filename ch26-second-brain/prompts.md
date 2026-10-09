@@ -16,7 +16,6 @@ Then:
 
 ```
 Scaffold a Markdown knowledge base at ~/work/brain/. Create:
-
 - projects/ with one seeded sub-folder: projects/dashboard/ (the Ch 22 dashboard), containing README.md, decisions/, runbooks/, debug-log.md
 - concepts/ (empty for now)
 - patterns/ (empty for now)

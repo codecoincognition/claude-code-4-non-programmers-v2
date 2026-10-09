@@ -2,8 +2,8 @@
 #
 # refresh_buffer.sh — sync the Buffer queue into the dashboard cache.
 #
-# POST-/batch version: set -euo pipefail + exit-code propagation
-# (applied in Ch 24's /batch run).
+# POST-review version: set -euo pipefail + exit-code propagation
+# (applied per file in Ch 24; six similar tweaks are below /batch's threshold).
 #
 set -euo pipefail
 

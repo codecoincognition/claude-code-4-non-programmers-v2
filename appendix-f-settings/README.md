@@ -61,8 +61,8 @@ patterns worth adopting. Some find none — that is a real answer too.
   `~/work/mcp-servers/personal-data/server.js` path are this operator's. Swap in yours.
 - **The CRM lock** — `db_crm_8f3a` is a placeholder database ID. Replace with your own
   Notion (or other) database ID, or drop those three deny rules entirely.
-- **MCP server package names** — names evolve. Check the current canonical names with
-  `/mcp marketplace`. The `@pinned` tag stands in for the exact npm version you actually
+- **MCP server package names** — names evolve. Check the current canonical names in the
+  External integrations section of `/plugin` Discover. The `@pinned` tag stands in for the exact npm version you actually
   installed and reviewed (replace it with a real version number).
 - **The `apiKeyHelper` script** — `~/work/scripts/keychain-claude-code.sh` reads from
   macOS Keychain (a one-liner: `security find-generic-password -s claude-code -w`).

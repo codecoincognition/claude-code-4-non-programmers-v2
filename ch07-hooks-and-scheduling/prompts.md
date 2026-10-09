@@ -42,7 +42,7 @@ If a line worries you, ask before saving:
 (Claude converts "every weekday at 6:30 AM" to the cron expression
 `30 6 * * 1-5` and registers it. To see what it used:)
 
-> Show me the cron expression you used.
+> show me the cron expression you used
 
 ## Step 5 — Make the brief greet you at every new session
 
@@ -63,6 +63,19 @@ claude
 
 The brief should be the first thing on screen.
 
+## The hook menu — what else can fire
+
+You never type the event name. You describe the situation; Claude picks the
+event. Example prompts for each one:
+
+- **`SessionStart`** — *"Show me yesterday's brief at the top of every session."*
+- **`UserPromptSubmit`** — *"Log every prompt I type to ~/work/prompts.log so I can see what I've been asking."*
+- **`PreToolUse`** — *"Stop Claude before it deletes any file outside ~/work and ask me first."*
+- **`PostToolUse`** — *"Ping me on Slack when Claude edits anything inside ~/work/important/."*
+- **`Stop`** — *"Play a sound when Claude finishes a long task so I know to come back."*
+- **`Notification`** — *"Send me a desktop notification when Claude is waiting on a yes/no from me."*
+- **`SessionEnd`** — *"Save a one-paragraph summary of every session to ~/work/sessions/{date}.md."*
+
 ## When it goes wrong — the "paste the error" rule
 
 When you open your laptop before the 6:30 job has run, the hook crashes. Paste
@@ -72,19 +85,6 @@ the entire error back with one sentence of context:
 > — the brief script ran before the scheduled job had run today. Fix
 > show-brief.sh to handle the case where today's brief doesn't exist yet — show
 > me yesterday's brief with a note that today's hasn't been generated.
-
-## The hook menu — what else can fire
-
-You never type the event name. You describe the situation; Claude picks the
-event. Example prompts for each one:
-
-- **`SessionStart`** — *"Show me yesterday's brief at the top of every session."*
-- **`UserPromptSubmit`** — *"Log every prompt I type to ~/work/prompts.log."*
-- **`PreToolUse`** — *"Stop Claude before it deletes any file outside ~/work and ask me first."*
-- **`PostToolUse`** — *"Ping me on Slack when Claude edits anything inside ~/work/important/."*
-- **`Stop`** — *"Play a sound when Claude finishes a long task."*
-- **`Notification`** — *"Send me a desktop notification when Claude is waiting on a yes/no."*
-- **`SessionEnd`** — *"Save a one-paragraph summary of every session to ~/work/sessions/{date}.md."*
 
 ## Make it yours — the five variations
 
@@ -132,9 +132,9 @@ event. Example prompts for each one:
 ## Test yourself in 60 seconds
 
 1. *"Quit and restart claude. Tell me what shows on screen first — confirm
-   today's morning brief is the first thing I see."*
+   today's morning brief is the SessionStart hook output."*
 2. *"Show me what's scheduled and tell me which job produces the morning brief."*
 3. *"Read ~/work/briefs/ and tell me when today's brief was generated. If it's
    stale, explain why in one sentence."*
 
-Stuck? *"Audit my Chapter 7 setup against the chapter spec."*
+Stuck? *"audit my Chapter 7 setup against the chapter spec"*

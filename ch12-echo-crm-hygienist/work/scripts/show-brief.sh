@@ -5,7 +5,7 @@
 # Chapter 9 (Iris's queue), Chapter 10 (Atlas's signals), Chapter 11
 # (Reuben's filing), and Chapter 12 (Echo's proposals — section 5).
 #
-# Invoked by the Stop hook at session start. Reads from disk only —
+# Invoked by the SessionStart hook. Reads from disk only —
 # the agents write their queues; this script just displays them.
 
 set -uo pipefail
@@ -14,7 +14,7 @@ set -uo pipefail
 echo "── Today's priorities ──"
 PRIORITIES_FILE="${HOME}/work/priorities.md"
 if [[ -f "$PRIORITIES_FILE" ]]; then
-  COMMITMENTS=$(grep -cE '^- ' "$PRIORITIES_FILE" 2>/dev/null || echo 0)
+  COMMITMENTS=$(grep -cE '^- ' "$PRIORITIES_FILE" 2>/dev/null; true)
   echo "  $COMMITMENTS commitments due this week."
 else
   echo "  (no priorities file yet)"
@@ -23,12 +23,14 @@ fi
 # 2. Iris's queue.
 echo
 echo "── Iris's queue ──"
-IRIS_FILE="${HOME}/work/iris/queue.md"
-if [[ -f "$IRIS_FILE" ]]; then
-  ACTIONS=$(grep -cE '^- \[ \]' "$IRIS_FILE" 2>/dev/null || echo 0)
-  DRAFTS=$(grep -cE '^- draft:' "$IRIS_FILE" 2>/dev/null || echo 0)
-  echo "  $ACTIONS actions awaiting reply."
-  echo "  $DRAFTS draft ready for review."
+# Iris writes ~/work/queue/{date}.md; section headers carry the counts,
+# e.g. "## Notion tasks created (7)" and "## Drafts ready (4)".
+IRIS_FILE="$(ls -1t "${HOME}/work/queue/"[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].md 2>/dev/null | head -n 1)"
+if [[ -n "${IRIS_FILE:-}" ]]; then
+  ACTIONS=$(grep -oE '^## Notion tasks created \([0-9]+\)' "$IRIS_FILE" | grep -oE '[0-9]+' | head -n 1)
+  DRAFTS=$(grep -oE '^## Drafts ready \([0-9]+\)' "$IRIS_FILE" | grep -oE '[0-9]+' | head -n 1)
+  echo "  ${ACTIONS:-0} actions routed to Notion Tasks."
+  echo "  ${DRAFTS:-0} drafts ready for review."
 else
   echo "  (no Iris queue yet)"
 fi
@@ -36,9 +38,9 @@ fi
 # 3. Atlas's signals.
 echo
 echo "── Atlas's signals ──"
-ATLAS_FILE="${HOME}/work/atlas/signals.md"
-if [[ -f "$ATLAS_FILE" ]]; then
-  SIGNALS=$(grep -cE '^- ' "$ATLAS_FILE" 2>/dev/null || echo 0)
+ATLAS_FILE="$(ls -1t "${HOME}/work/atlas/signals-"*.md 2>/dev/null | head -n 1)"
+if [[ -n "${ATLAS_FILE:-}" ]]; then
+  SIGNALS=$(grep -cE '^- \*\*' "$ATLAS_FILE" 2>/dev/null; true)
   if [[ "$SIGNALS" == "0" ]]; then
     echo "  all quiet."
   else
@@ -51,9 +53,10 @@ fi
 # 4. Reuben's filing.
 echo
 echo "── Reuben's filing ──"
-REUBEN_FILE="${HOME}/work/reuben/status.md"
-if [[ -f "$REUBEN_FILE" ]]; then
-  cat "$REUBEN_FILE"
+# Reuben appends one line per filing to ~/work/books/filing-log.md (Chapter 11).
+REUBEN_FILE="${HOME}/work/books/filing-log.md"
+if [[ -f "$REUBEN_FILE" ]] && grep -q . "$REUBEN_FILE"; then
+  echo "  $(grep . "$REUBEN_FILE" | tail -n 1)"
 else
   echo "  (no filing status yet)"
 fi
@@ -65,7 +68,7 @@ echo "── Echo's proposals ──"
 if [[ -z "${ECHO_FILE:-}" ]]; then
   echo "  (no Echo proposal queue yet — first run pending)"
 else
-  MISSING=$(grep -cE '^[0-9]+\.' "$ECHO_FILE" 2>/dev/null || echo 0)
+  MISSING=$(grep -cE '^[0-9]+\.' "$ECHO_FILE" 2>/dev/null; true)
   if [[ "$MISSING" == "0" ]]; then
     echo "  CRM is clean."
   else

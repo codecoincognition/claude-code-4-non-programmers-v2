@@ -26,12 +26,12 @@ ch16-newsroom/
     │   │   ├── fact-checker.md                 verified / unverified / unknown report
     │   │   └── headline-writer.md              loads your-tone; the only prose agent
     │   └── skills/
-    │       └── your-tone.md                    voice file (from Ch14) — loaded by headline-writer only
+    │       └── your-tone.md                    voice file (from Ch 15) — loaded by headline-writer only
     ├── specs/
     │   └── auto-tag.md                          the feature spec the fact-checker validates against
     ├── personal-data/
     │   └── fixtures/
-    │       ├── README.md                        what the Ch13 MCP serves + how to point it here
+    │       ├── README.md                        what the Ch 14 MCP serves + how to point it here
     │       └── past-campaigns.csv               synthetic archive of past launches
     └── work-products/
         └── 2026-05-08-auto-tag-launch/          one folder per launch (the convention)

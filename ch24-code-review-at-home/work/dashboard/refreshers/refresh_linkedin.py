@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """refresh_linkedin.py — pull LinkedIn analytics into the dashboard cache.
 
-POST-/batch version: try/except wrapper + sys.exit(1) on failure
-(Python equivalent of `set -euo pipefail`, adapted by /batch in Ch 24).
+POST-review version: try/except wrapper + sys.exit(1) on failure
+(Python equivalent of `set -euo pipefail`, applied per file in Ch 24).
 """
 import sys
 

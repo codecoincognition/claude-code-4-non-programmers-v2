@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 #
 # morning-brief.sh — writes a daily brief of overnight Gmail to a dated
-# markdown file. Used by Chapter 6 as the target the debugging skill
-# practices on, and by Chapter 7 as the real morning brief.
+# markdown file. Extra practice target for the Chapter 6 debugging skill
+# (not shown in the chapter); Chapter 7 builds the real morning brief.
 #
-# Earlier draft had a timezone bug; this is the fixed version per Ch 6
-# when-it-goes-wrong beat. The buggy draft computed the Gmail query
+# Earlier draft had a timezone bug; this is the fixed version. The buggy draft computed the Gmail query
 # window in UTC, which on the Tue->Wed local-time boundary lands inside
 # the wrong UTC calendar day and matches 0 messages — so the brief came
 # out empty on Wednesdays only. The fix is to pass an explicit local

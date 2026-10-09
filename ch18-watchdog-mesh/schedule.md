@@ -4,9 +4,12 @@ The orchestrator only runs on demand until you schedule it. The chapter
 prompt:
 
 > Schedule the orchestrator to run every 15 minutes during weekdays from
-> 7 AM to 11 PM Eastern. Outside those hours, it should be silent.
+> 7 AM to 11 PM Eastern on this Mac mini. Outside those hours, it should
+> be silent. The mesh has to run on my hardware, not in someone else's
+> cloud.
 
-Claude picks the `/schedule` command underneath and turns the sentence
+Claude installs a local cron entry (macOS uses cron under the hood;
+launchd would also work, slightly more verbose) and turns the sentence
 into a cron expression:
 
 ```
@@ -22,15 +25,16 @@ into a cron expression:
 | day-of-week  | `1-5`     | Monday through Friday            |
 
 - Working directory: `~/work/worktrees/watchdog-mesh/`
+- Command: `claude -p "run the watchdog-orchestrator one cycle"`
 - Cadence: 64 cycles per weekday, silent unless something matters,
   paused overnight and on weekends.
-- Job id (example): `cron_watchdog_a31f`
 
-Manage it in natural language:
+Verify: `crontab -l`
+Remove: `crontab -e` and delete the line.
 
-> list scheduled jobs
-
-> cancel job cron_watchdog_a31f
+`/schedule` exists, but it runs jobs in Anthropic's cloud. For agents that
+must run on your hardware, Claude reaches for cron (macOS/Linux) or Task
+Scheduler (Windows) instead.
 
 ## Cost note (from "The lift")
 

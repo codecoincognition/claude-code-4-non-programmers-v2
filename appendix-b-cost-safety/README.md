@@ -26,10 +26,11 @@ override if your paths differ:
 |---|---|---|
 | Hook logs | `~/.claude/logs/hooks/<hookname>.log` | `HOOK_LOG_DIR` |
 | Scheduled-job logs | `~/.claude/logs/jobs/<jobname>.log` | `JOB_LOG_DIR` |
-| MCP server logs (macOS) | `~/Library/Logs/Claude/mcp-server-<name>.log` | `MCP_LOG_DIR` |
+| Self-built MCP server logs | `~/.claude/logs/mcp/<name>.log` | `MCP_LOG_DIR` |
 
-On Linux the MCP logs usually live under `~/.config/Claude/logs/` — set
-`MCP_LOG_DIR` accordingly.
+A server you built yourself logs wherever you make it log (the book's example
+is `~/.claude/logs/mcp/personal-data.log`). For a connector, open `/mcp` in a
+session instead: it shows the connector's status, account, and tools.
 
 The single most important habit: when you let Claude author a hook or job,
 **tell it to set the log path explicitly.** A freshly authored hook drops its
@@ -46,8 +47,8 @@ chmod +x grep-recipes.sh
 # "Why did Reuben exit with code 1?"
 ./grep-recipes.sh why-exit reuben
 
-# "Which MCP returned the empty payload at 8:42?"
-./grep-recipes.sh which-mcp 08:42
+# "Why did my custom MCP return an empty payload at 8:42?"
+./grep-recipes.sh which-mcp 08:42 personal-data
 
 # Follow a log in real time while you trigger the agent in another pane
 ./grep-recipes.sh watch ~/.claude/logs/hooks/sessionstart.log

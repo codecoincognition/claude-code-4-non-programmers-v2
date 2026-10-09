@@ -4,7 +4,7 @@
 |---|---|---|---|
 | Slash commands | Your terminal session | You type | One-off; reusable verb you run yourself |
 | Subagents | Inside a Claude session | Claude or a slash command | Recurring jobs; dispatched within a session |
-| Agent SDK | Anywhere — CI, VPS, server, cowork | Programmatic trigger | Scheduled; server-side; no human at terminal |
+| Agent SDK | Anywhere — CI runner, VPS, server | Programmatic trigger | Scheduled; server-side; no human at terminal |
 
 ## Devon's eight, mapped
 

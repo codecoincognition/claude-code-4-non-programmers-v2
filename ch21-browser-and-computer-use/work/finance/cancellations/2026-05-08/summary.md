@@ -4,7 +4,7 @@ One entry per cancellation: name, monthly cost recovered, dark patterns
 navigated, terminal state confirmed, time elapsed.
 
 ## 1. Hulu — $7.99/mo recovered
-- Mode: plan mode (first cancellation — every click approved)
+- Mode: default per-action approval (first cancellation — every click approved)
 - Dark patterns: 1 retention page ("We'll miss you — try a free month?").
   Picked the small grey "No thanks, cancel" over the large green
   "Take the free month."
@@ -12,7 +12,7 @@ navigated, terminal state confirmed, time elapsed.
   "Confirm cancellation".
 - Terminal state: subscription ends 2026-05-31, no further charges. (will not renew)
 - Confirmation: hulu-confirmation.pdf (214 KB)
-- Time: ~3 min (plan mode, click-by-click)
+- Time: ~3 min (per-action approval, click-by-click)
 
 ## 2. Notion Pro extra-seat — $10.00/mo recovered
 - Mode: auto-approve (final-confirmation guard active)
@@ -61,7 +61,7 @@ navigated, terminal state confirmed, time elapsed.
 - Confirmation: spotify-family-confirmation.pdf (replaces incorrect free-month PDF)
 
 ## 7. Adobe (trial->paid) — $14.99/mo recovered
-- Mode: browser MCP BLOCKED -> computer-use fallback, plan mode
+- Mode: browser MCP BLOCKED -> computer-use fallback, per-action approval
 - Dark patterns: anti-automation page ("Please verify you're a human") in the
   MCP-driven tab only; absent in a regular human-opened tab. 1 "pause for 30 days"
   retention modal — declined.
@@ -70,7 +70,7 @@ navigated, terminal state confirmed, time elapsed.
   Cmd+Shift+4 -> Preview -> PDF.
 - Terminal state: subscription ends 2026-05-31. will not renew
 - Confirmation: adobe-confirmation.pdf
-- Time: ~3 min (computer use, plan mode)
+- Time: ~3 min (computer use, per-action approval)
 
 ---
 

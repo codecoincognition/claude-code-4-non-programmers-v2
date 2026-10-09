@@ -18,7 +18,6 @@ configured by prompting Claude, none of it hand-written JSON.
 | `work/.claude/settings.json` | The full settings file: `permissions` (plan mode + allow/ask/deny) and two hooks (`SessionStart`, `PreToolUse`). This is the **final** state, after the "When the leash chafes" tightening that adds `Edit(~/work/**)` and `Write(~/work/**)` to the allow list. |
 | `work/scripts/audit-log.sh` | The 15-line `PreToolUse` logger. Reads the hook payload from stdin, appends `timestamp · tool · first-200-chars` to `audit.log`, **always exits 0** so it can never block a tool call. |
 | `work/scripts/show-brief.sh` | The Chapter 7 `SessionStart` hook, included so this chapter's `settings.json` is complete and runnable. Prints the most recent brief from `work/briefs/`. |
-| `work/.claude/audit.log` | A seeded sample audit trail (the same 10 lines the chapter shows). Append-only; yours grows over time. |
 
 ### Sample data so the setup runs
 | Path | Purpose |
@@ -52,7 +51,8 @@ configured by prompting Claude, none of it hand-written JSON.
 3. Open Claude in the folder (`cd ~/work && claude`) and ask it to read the
    settings back to you in plain English — the Step 5 checkpoint:
    *"Read ~/work/.claude/settings.json and walk me through every block, line by
-   line, as if I'd never seen JSON."*
+   line, in plain English. Treat me like I've never seen JSON. I want to know
+   exactly what I just installed."*
 4. To try a variant, copy its `.claude/settings.json` into the matching
    subfolder (e.g. `~/work/clients/{client}/.claude/`, `~/work/sandbox/.claude/`)
    and its script into `~/work/scripts/`, then `chmod +x` it.
@@ -61,4 +61,4 @@ Requirements: `python3` is used by `audit-log.sh` to parse the JSON payload
 (present by default on macOS and most Linux). The scripts are POSIX `bash`.
 
 The book is self-contained — these files are ready-to-clone copies of what
-Chapter 08 walks you through building.
+Chapter 8 walks you through building.

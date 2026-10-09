@@ -89,7 +89,7 @@ event.
   for Maya" is better than guessing.
 
 When you draft as Maya, this section does not apply.
-Drafts use the "Draft as Maya" block above instead.
+Drafts use the "draft as Maya" block above instead.
 
 ## Numerical-claim discipline (added 2026-05-15)
 

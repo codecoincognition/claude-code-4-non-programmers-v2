@@ -1,14 +1,19 @@
 # Review of kill-switch.sh — /sandbox + /security-review
 
-Ran ~/work/scripts/kill-switch.sh in an isolated sandbox:
-  filesystem: /tmp/sandbox-7f3a/  (mocked ~/work/, ~/.env)
-  network:    intercepted (Slack endpoint mocked)
-  credentials: stub values
+Ran ~/work/scripts/kill-switch.sh under /sandbox (OS-level isolation
+of the Bash tool):
+  Mode tab:      read-write (writes restricted to allowlist)
+  Overrides tab: deny  ~/.aws/credentials
+                 deny  ~/.ssh/
+                 allow ~/work/scratch/
+  Config tab:    network: allow localhost; deny external
+                 (Slack webhook explicitly allowed)
 
-## Test 1 — normal escalation (mock input)
+## Test 1 — normal escalation
 
-PASS. Script generates 4-digit code, writes to mock escalations.log,
-posts to mock Slack endpoint.
+PASS. Script generates 4-digit code, appends to escalations.log
+(write inside allowlist), posts to Slack webhook (network rule
+permitted it).
 
 ## Test 2 — malformed input
 

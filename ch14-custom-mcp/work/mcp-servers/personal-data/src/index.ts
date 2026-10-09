@@ -104,6 +104,13 @@ server.tool(
 );
 
 // Start the server over stdio — how the MCP host talks to it.
-const transport = new StdioServerTransport();
-await server.connect(transport);
-console.error("Server started.");
+async function main() {
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+  console.error("Server started.");
+}
+
+main().catch((err) => {
+  console.error(`Server failed to start: ${(err as Error).message}`);
+  process.exit(1);
+});

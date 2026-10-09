@@ -8,13 +8,13 @@
 
 > Read ~/work/finance/subscription-leaks.md (Ch 2 produced this). Tell me what's in it — name, monthly cost, last charge date, cancellation URL — in a table. Then propose the order to cancel them in. Start with the easiest flows; leave the worst dark-pattern sites for last.
 
-## Step 2 — Plan mode for the first cancellation
+## Step 2 — Default permission mode for the first cancellation
 
-> Switch to plan mode. Open Chrome. Use my logged-in session if there is one for hulu.com; ask me to log in once if not. Navigate to Hulu's cancellation flow. Walk me through every click before you do it. Capture the final confirmation page as a PDF and file it to ~/work/finance/cancellations/2026-05-08/hulu-confirmation.pdf.
+> Stay in default permission mode — I want to approve every browser action before you take it. Open Chrome. Use my logged-in session if there is one for hulu.com; ask me to log in once if not. Navigate to Hulu's cancellation flow. Walk me through every click before you do it. Capture the final confirmation page as a PDF and file it to ~/work/finance/cancellations/2026-05-08/hulu-confirmation.pdf.
 
 ## Step 3 — The auto-approval transition
 
-> I've seen you handle the "we'll miss you" page correctly. For the next six, switch from plan mode to auto-approve, but pause and ask me before any "final confirmation" click. And surface anything weird — anti-automation pages, login prompts, anything that doesn't look like a normal cancellation flow.
+> I've seen you handle the "we'll miss you" page correctly. For the next six, switch to auto-approve (I'll hit Shift+Tab to flip the mode), but pause and ask me before any "final confirmation" click. And surface anything weird — anti-automation pages, login prompts, anything that doesn't look like a normal cancellation flow.
 
 ## Step 4 — Run the next six
 
@@ -22,7 +22,7 @@
 
 ## Step 5 — Fall back to computer use for the blocked site
 
-> Adobe blocked the browser MCP. Switch to computer use as a fallback. Open the site in a regular Chrome tab (not the automated one), click through manually using the desktop, capture the same confirmation. Stay in plan mode for this one because computer use is a higher-permission tier than browser use.
+> Adobe blocked the browser path. Switch to computer use as a fallback. Open the site in a regular Chrome tab (not the automated one), click through manually using the desktop, capture the same confirmation. Drop back to per-action approval for this one because computer use is a higher-permission tier than browser use — I want to approve every mouse-move and click.
 
 ## When it goes wrong — the free-month trap (recovery prompt)
 
@@ -38,7 +38,7 @@
 
 ## Step 8 — Author a slash command for next quarter
 
-> Author ~/work/.claude/commands/cancel-leak.md — takes a leak file path as $ARGUMENTS, walks each subscription in plan mode for the first one, then auto-approves with the final-confirmation guard and the terminal-state clause we just learned. Save my preference: switch from plan mode to auto-approve after the first successful cancellation; the only acceptable terminal state is "subscription will not renew"; refuse any free-month, pause, or discount path and escalate to me.
+> Author ~/work/.claude/commands/cancel-leak.md — takes a leak file path as $ARGUMENTS, walks the first subscription in default per-action approval mode, then auto-approves the rest with the final-confirmation guard and the terminal-state clause we just learned. Save my preference: switch to auto-approve (Shift+Tab) after the first successful cancellation; the only acceptable terminal state is "subscription will not renew"; refuse any free-month, pause, or discount path and escalate to me.
 
 ---
 
